@@ -6,7 +6,7 @@
   <title>GEEMU GAMES – Escolha Seu Prazer</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
-    body { background: linear-gradient(to bottom, #0a0a0a, #4a148c, #311b92); color: #fff; font-family: 'Playfair Display', serif; min-height: 100vh; }
+    body { background: linear-gradient(to bottom, #0a0a0a, #1a0000, #0a0a0a); color: #fff; font-family: 'Playfair Display', serif; min-height: 100vh; }
     .gold { color: #d4af37; }
     .card { transition: all 0.4s; }
     .card:hover { transform: scale(1.05); box-shadow: 0 0 30px rgba(212, 175, 55, 0.4); }
@@ -15,7 +15,7 @@
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      background: rgba(0,0,0,0.92);
+      background: rgba(0,0,0,0.9);
       border: 3px solid #d4af37;
       border-radius: 16px;
       padding: 40px;
@@ -29,10 +29,10 @@
     @keyframes fadeIn { from { opacity: 0; transform: translate(-50%, -60%); } to { opacity: 1; transform: translate(-50%, -50%); } }
   </style>
 </head>
-<body class="bg-gradient-to-b from-black via-purple-950 to-black text-white">
+<body class="bg-gradient-to-b from-black via-red-950 to-black text-white">
 
   <!-- HEADER -->
-  <header class="fixed top-0 w-full bg-gradient-to-r from-black/90 to-purple-950/90 backdrop-blur-md z-50 border-b border-purple-700">
+  <header class="fixed top-0 w-full bg-black/90 backdrop-blur-md z-50 border-b border-red-900">
     <div class="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between">
       <img src="images/logo.png" alt="GEEMU GAMES" class="h-16">
       <nav class="space-x-8 text-lg">
@@ -68,9 +68,10 @@
   </button>
 
   <!-- HERO -->
-  <section class="h-screen flex items-center justify-center bg-gradient-to-b from-black to-purple-950">
+  <section class="h-screen flex items-center justify-center bg-gradient-to-b from-black to-red-950">
     <div class="text-center">
-      <h2 class="text-6xl md:text-7xl font-bold gold tracking-widest">ESCOLHA SEU PRAZER</h2>
+      <img src="images/logo.png" alt="GEEMU GAMES" class="mx-auto mb-8 max-h-64">
+      <h2 class="text-6xl font-bold gold tracking-widest">ESCOLHA SEU PRAZER</h2>
       <p class="mt-4 text-2xl text-gray-300">10 universos • Prazer sem limites</p>
     </div>
   </section>
@@ -117,7 +118,7 @@
   </section>
 
   <!-- FOOTER -->
-  <footer class="bg-black py-6 text-center text-gray-400 border-t border-purple-900">
+  <footer class="bg-black py-6 text-center text-gray-400 border-t border-red-900">
     <p>GEEMU GAMES – Prazer sem limites</p>
     <p>Contato: <a href="mailto:contato@geemugames.com" class="text-gold hover:text-red-500">contato@geemugames.com</a></p>
     <p>© 2026 GEEMU GAMES. Todos os direitos reservados.</p>
