@@ -6,7 +6,7 @@
   <title>GEEMU GAMES – Escolha Seu Prazer</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
-    body { background: linear-gradient(to bottom, #0a0a0a, #1a0000, #0a0a0a); color: #fff; font-family: 'Playfair Display', serif; min-height: 100vh; }
+    body { background: #0a0a0a; color: #fff; font-family: 'Playfair Display', serif; min-height: 100vh; }
     .gold { color: #d4af37; }
     .card { transition: all 0.4s; }
     .card:hover { transform: scale(1.05); box-shadow: 0 0 30px rgba(212, 175, 55, 0.4); }
@@ -15,7 +15,7 @@
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      background: rgba(0,0,0,0.9);
+      background: rgba(0,0,0,0.92);
       border: 3px solid #d4af37;
       border-radius: 16px;
       padding: 40px;
@@ -29,12 +29,12 @@
     @keyframes fadeIn { from { opacity: 0; transform: translate(-50%, -60%); } to { opacity: 1; transform: translate(-50%, -50%); } }
   </style>
 </head>
-<body class="bg-gradient-to-b from-black via-red-950 to-black text-white">
+<body class="bg-black text-white">
 
   <!-- HEADER -->
   <header class="fixed top-0 w-full bg-black/90 backdrop-blur-md z-50 border-b border-red-900">
     <div class="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between">
-      <img src="images/logo.png" alt="GEEMU GAMES" class="h-16">
+      <img src="images/logo-small.png" alt="GEEMU GAMES" class="h-12">
       <nav class="space-x-8 text-lg">
         <a href="#" class="hover:text-red-500 transition">Início</a>
         <a href="#" class="hover:text-red-500 transition">Universos</a>
@@ -68,10 +68,9 @@
   </button>
 
   <!-- HERO -->
-  <section class="h-screen flex items-center justify-center bg-gradient-to-b from-black to-red-950">
+  <section class="h-screen flex items-center justify-center bg-black">
     <div class="text-center">
-      <img src="images/logo.png" alt="GEEMU GAMES" class="mx-auto mb-8 max-h-64">
-      <h2 class="text-6xl font-bold gold tracking-widest">ESCOLHA SEU PRAZER</h2>
+      <h2 class="text-6xl md:text-7xl font-bold gold tracking-widest">ESCOLHA SEU PRAZER</h2>
       <p class="mt-4 text-2xl text-gray-300">10 universos • Prazer sem limites</p>
     </div>
   </section>
@@ -110,8 +109,66 @@
           </div>
         </div>
 
-        <!-- Repita o padrão para os outros 7 cards “EM BREVE” (não precisa link) -->
-        <!-- ... cole os outros cards que você já tem, mantendo a tarja “EM BREVE” ... -->
+        <div class="card bg-zinc-900 rounded-2xl overflow-hidden relative">
+          <div class="h-64 bg-pink-950 flex items-center justify-center text-6xl">🎓</div>
+          <div class="absolute top-4 right-4 bg-red-600 text-white text-xs font-bold px-6 py-1.5 rounded-full">EM BREVE</div>
+          <div class="p-6">
+            <h3 class="text-2xl font-bold gold">Academia do Pecado</h3>
+            <p class="text-gray-400 mt-2">Universidade • Idade gap • Iniciação</p>
+          </div>
+        </div>
+
+        <div class="card bg-zinc-900 rounded-2xl overflow-hidden relative">
+          <div class="h-64 bg-black flex items-center justify-center text-6xl">🩸</div>
+          <div class="absolute top-4 right-4 bg-red-600 text-white text-xs font-bold px-6 py-1.5 rounded-full">EM BREVE</div>
+          <div class="p-6">
+            <h3 class="text-2xl font-bold gold">Noite Eterna</h3>
+            <p class="text-gray-400 mt-2">Vampiros • Lobisomens • Dark romance</p>
+          </div>
+        </div>
+
+        <div class="card bg-zinc-900 rounded-2xl overflow-hidden relative">
+          <div class="h-64 bg-emerald-950 flex items-center justify-center text-6xl">🏝️</div>
+          <div class="absolute top-4 right-4 bg-red-600 text-white text-xs font-bold px-6 py-1.5 rounded-full">EM BREVE</div>
+          <div class="p-6">
+            <h3 class="text-2xl font-bold gold">Ilha dos Desejos</h3>
+            <p class="text-gray-400 mt-2">Reality erótico • Orgias • Sobrevivência</p>
+          </div>
+        </div>
+
+        <div class="card bg-zinc-900 rounded-2xl overflow-hidden relative">
+          <div class="h-64 bg-gradient-to-br from-purple-900 to-pink-900 flex items-center justify-center text-6xl">🧩</div>
+          <div class="p-6">
+            <h3 class="text-2xl font-bold gold">A Escolha do Jogador</h3>
+            <p class="text-gray-400 mt-2">Monte seu próprio harém • Customização total</p>
+          </div>
+        </div>
+
+        <div class="card bg-zinc-900 rounded-2xl overflow-hidden relative">
+          <div class="h-64 bg-rose-950 flex items-center justify-center text-6xl">🎥</div>
+          <div class="p-6">
+            <h3 class="text-2xl font-bold gold">Doramas Proibidos</h3>
+            <p class="text-gray-400 mt-2">Romance asiático • Slow-burn • Final safado</p>
+          </div>
+        </div>
+
+        <div class="card bg-zinc-900 rounded-2xl overflow-hidden relative">
+          <div class="h-64 bg-amber-950 flex items-center justify-center text-6xl">👑</div>
+          <div class="absolute top-4 right-4 bg-red-600 text-white text-xs font-bold px-6 py-1.5 rounded-full">EM BREVE</div>
+          <div class="p-6">
+            <h3 class="text-2xl font-bold gold">Corte do Prazer</h3>
+            <p class="text-gray-400 mt-2">Monarquia • Bailes • Romance proibido</p>
+          </div>
+        </div>
+
+        <div class="card bg-zinc-900 rounded-2xl overflow-hidden relative">
+          <div class="h-64 bg-slate-950 flex items-center justify-center text-6xl">🔫</div>
+          <div class="absolute top-4 right-4 bg-red-600 text-white text-xs font-bold px-6 py-1.5 rounded-full">EM BREVE</div>
+          <div class="p-6">
+            <h3 class="text-2xl font-bold gold">Império das Sombras</h3>
+            <p class="text-gray-400 mt-2">Máfia • Poder • Desejo sem limites</p>
+          </div>
+        </div>
 
       </div>
     </div>
