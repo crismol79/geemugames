@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GEEMU GAMES – Escolha Seu Prazer</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body { background: #0a0a0a; color: #fff; font-family: 'Playfair Display', serif; }
+    .gold { color: #d4af37; }
+    .card { transition: all 0.4s; }
+    .card:hover { transform: scale(1.05); box-shadow: 0 0 30px rgba(212, 175, 55, 0.4); }
+    .level-popup {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: rgba(0,0,0,0.9);
+      border: 3px solid #d4af37;
+      border-radius: 16px;
+      padding: 40px;
+      max-width: 500px;
+      text-align: center;
+      z-index: 1000;
+      box-shadow: 0 0 60px #d4af37;
+      display: none;
+    }
+    .level-popup.show { display: block; animation: fadeIn 0.6s; }
+    @keyframes fadeIn { from { opacity: 0; transform: translate(-50%, -60%); } to { opacity: 1; transform: translate(-50%, -50%); } }
+  </style>
+</head>
+<body class="bg-black text-white">
+
+  <!-- HEADER -->
+  <header class="fixed top-0 w-full bg-black/90 backdrop-blur-md z-50 border-b border-red-900">
+    <div class="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between">
+      <h1 class="text-3xl font-bold gold tracking-widest">GEEMU GAMES</h1>
+      <nav class="space-x-8 text-lg">
+        <a href="#" class="hover:text-red-500 transition">Início</a>
+        <a href="#" class="hover:text-red-500 transition">Universos</a>
+        <a href="#" class="hover:text-red-500 transition">Patreon</a>
+        <a href="#" class="hover:text-red-500 transition">Contato</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- NÍVEL DE EXCITAÇÃO -->
+  <div class="fixed top-20 left-1/2 transform -translate-x-1/2 z-40 bg-black/70 backdrop-blur-md px-6 py-2 rounded-full border border-gold/30">
+    <span class="text-gold font-bold">Excitação: <span id="excitement-level">25</span>%</span>
+    <div class="w-64 h-2 bg-zinc-800 rounded-full mt-1 overflow-hidden">
+      <div id="excitement-bar" class="h-full bg-gradient-to-r from-red-600 to-gold transition-all duration-500" style="width: 25%"></div>
+    </div>
+  </div>
+
+  <!-- POP-UP DE NÍVEL -->
+  <div id="level-popup" class="level-popup">
+    <h2 class="text-3xl gold mb-4">Parabéns!</h2>
+    <p class="text-xl mb-6">Você desbloqueou um presente especial da GEEMU GAMES 💋</p>
+    <div id="reward-content" class="text-lg text-gray-300"></div>
+    <button onclick="closePopup()" class="mt-6 bg-red-600 hover:bg-red-700 text-white px-8 py-3 rounded-full font-bold transition">
+      Continuar Jogando
+    </button>
+  </div>
+
+  <!-- HERO -->
+  <section class="h-screen flex items-center justify-center bg-gradient-to-b from-black to-red-950">
+    <div class="text-center">
+      <img src="images/logo.png" alt="GEEMU GAMES" class="mx-auto mb-8 max-h-64">
+      <h2 class="text-6xl font-bold gold tracking-widest">ESCOLHA SEU PRAZER</h2>
+      <p class="mt-4 text-2xl text-gray-300">10 universos • Prazer sem limites</p>
+    </div>
+  </section>
+
+  <!-- NOSSOS UNIVERSOS -->
+  <section class="py-20 bg-black">
+    <div class="max-w-7xl mx-auto px-6">
+      <h2 class="text-4xl font-bold text-center gold mb-12">NOSSOS UNIVERSOS</h2>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Universo 1 -->
+        <div class="card bg-zinc-900 rounded-2xl overflow-hidden cursor-pointer" onclick="window.location.href='https://escolhaseuprazer.geemugames.com'">
+          <div class="h-64 bg-red-950 flex items-center justify-center text-6xl">🔥</div>
+          <div class="p-6">
+            <h3 class="text-2xl font-bold gold">Escolha Seu Prazer</h3>
+            <p class="text-gray-400 mt-2">Realismo brasileiro • Traição • Risco</p>
+          </div>
+        </div>
+
+        <!-- Universo 2 -->
+        <div class="card bg-zinc-900 rounded-2xl overflow-hidden cursor-pointer">
+          <div class="h-64 bg-purple-950 flex items-center justify-center text-6xl">🌙</div>
+          <div class="p-6">
+            <h3 class="text-2xl font-bold gold">Crônicas do Desejo</h3>
+            <p class="text-gray-400 mt-2">Show da Luna VR • Fantasia imersiva</p>
+          </div>
+        </div>
+
+        <!-- Universos restantes com "EM BREVE" -->
+        <div class="card bg-zinc-900 rounded-2xl overflow-hidden relative">
+          <div class="h-64 bg-blue-950 flex items-center justify-center text-6xl">💼</div>
+          <div class="absolute top-4 right-4 bg-red-600 text-white text-xs font-bold px-6 py-1.5 rounded-full">EM BREVE</div>
+          <div class="p-6">
+            <h3 class="text-2xl font-bold gold">Escritório Proibido</h3>
+            <p class="text-gray-400 mt-2">Poder • Hierarquia • Sexo no trabalho</p>
+          </div>
+        </div>
+
+        <div class="card bg-zinc-900 rounded-2xl overflow-hidden relative">
+          <div class="h-64 bg-pink-950 flex items-center justify-center text-6xl">🎓</div>
+          <div class="absolute top-4 right-4 bg-red-600 text-white text-xs font-bold px-6 py-1.5 rounded-full">EM BREVE</div>
+          <div class="p-6">
+            <h3 class="text-2xl font-bold gold">Academia do Pecado</h3>
+            <p class="text-gray-400 mt-2">Universidade • Idade gap • Iniciação</p>
+          </div>
+        </div>
+
+        <div class="card bg-zinc-900 rounded-2xl overflow-hidden relative">
+          <div class="h-64 bg-black flex items-center justify-center text-6xl">🩸</div>
+          <div class="absolute top-4 right-4 bg-red-600 text-white text-xs font-bold px-6 py-1.5 rounded-full">EM BREVE</div>
+          <div class="p-6">
+            <h3 class="text-2xl font-bold gold">Noite Eterna</h3>
+            <p class="text-gray-400 mt-2">Vampiros • Lobisomens • Dark romance</p>
+          </div>
+        </div>
+
+        <div class="card bg-zinc-900 rounded-2xl overflow-hidden relative">
+          <div class="h-64 bg-emerald-950 flex items-center justify-center text-6xl">🏝️</div>
+          <div class="absolute top-4 right-4 bg-red-600 text-white text-xs font-bold px-6 py-1.5 rounded-full">EM BREVE</div>
+          <div class="p-6">
+            <h3 class="text-2xl font-bold gold">Ilha dos Desejos</h3>
+            <p class="text-gray-400 mt-2">Reality erótico • Orgias • Sobrevivência</p>
+          </div>
+        </div>
+
+        <div class="card bg-zinc-900 rounded-2xl overflow-hidden relative">
+          <div class="h-64 bg-gradient-to-br from-purple-900 to-pink-900 flex items-center justify-center text-6xl">🧩</div>
+          <div class="p-6">
+            <h3 class="text-2xl font-bold gold">A Escolha do Jogador</h3>
+            <p class="text-gray-400 mt-2">Monte seu próprio harém • Customização total</p>
+          </div>
+        </div>
+
+        <div class="card bg-zinc-900 rounded-2xl overflow-hidden relative">
+          <div class="h-64 bg-rose-950 flex items-center justify-center text-6xl">🎥</div>
+          <div class="p-6">
+            <h3 class="text-2xl font-bold gold">Doramas Proibidos</h3>
+            <p class="text-gray-400 mt-2">Romance asiático • Slow-burn • Final safado</p>
+          </div>
+        </div>
+
+        <div class="card bg-zinc-900 rounded-2xl overflow-hidden relative">
+          <div class="h-64 bg-amber-950 flex items-center justify-center text-6xl">👑</div>
+          <div class="absolute top-4 right-4 bg-red-600 text-white text-xs font-bold px-6 py-1.5 rounded-full">EM BREVE</div>
+          <div class="p-6">
+            <h3 class="text-2xl font-bold gold">Corte do Prazer</h3>
+            <p class="text-gray-400 mt-2">Monarquia • Bailes • Romance proibido</p>
+          </div>
+        </div>
+
+        <div class="card bg-zinc-900 rounded-2xl overflow-hidden relative">
+          <div class="h-64 bg-slate-950 flex items-center justify-center text-6xl">🔫</div>
+          <div class="absolute top-4 right-4 bg-red-600 text-white text-xs font-bold px-6 py-1.5 rounded-full">EM BREVE</div>
+          <div class="p-6">
+            <h3 class="text-2xl font-bold gold">Império das Sombras</h3>
+            <p class="text-gray-400 mt-2">Máfia • Poder • Desejo sem limites</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- POP-UP DE NÍVEL -->
+  <div id="level-popup" class="fixed inset-0 bg-black/90 flex items-center justify-center z-50 hidden">
+    <div class="bg-zinc-900 rounded-2xl p-10 max-w-lg text-center border-4 border-gold">
+      <h2 class="text-5xl gold mb-6">Parabéns!</h2>
+      <p class="text-2xl mb-8">Você atingiu o nível <span id="current-level" class="text-4xl font-bold gold">1</span>!</p>
+      <p id="reward-message" class="text-xl text-gray-300 mb-10"></p>
+      <button onclick="closePopup()" class="bg-red-600 hover:bg-red-700 text-white px-10 py-4 rounded-full text-xl font-bold transition">
+        Continuar Jogando
+      </button>
+    </div>
+  </div>
+
+  <script>
+    let level = parseInt(localStorage.getItem("playerLevel")) || 1;
+    let excitement = parseInt(localStorage.getItem("excitement")) || 0;
+
+    function updateExcitement(add) {
+      excitement = Math.min(100, excitement + add);
+      document.getElementById("excitement-bar").style.width = excitement + "%";
+      localStorage.setItem("excitement", excitement);
+      if (excitement >= 100) {
+        levelUp();
+      }
+    }
+
+    function levelUp() {
+      level++;
+      localStorage.setItem("playerLevel", level);
+      document.getElementById("current-level").textContent = level;
+
+      let reward = "";
+      if (level === 1) reward = "Você ganhou 1 cena bônus grátis de qualquer universo!";
+      else if (level === 3) reward = "Pack de lingerie especial liberado!";
+      else if (level === 5) reward = "Personagem customizado exclusivo para o Universo 7!";
+      else if (level === 8) reward = "Acesso antecipado à próxima história + pack premium!";
+      else if (level === 10) reward = "História totalmente personalizada só pra você!";
+
+      document.getElementById("reward-message").textContent = reward;
+      document.getElementById("level-popup").classList.remove("hidden");
+    }
+
+    function closePopup() {
+      document.getElementById("level-popup").classList.add("hidden");
+    }
+
+    // Simula ganho de excitação (substitua por cliques reais)
+    document.addEventListener("click", () => updateExcitement(15));
+  </script>
+
+</body>
+</html>
