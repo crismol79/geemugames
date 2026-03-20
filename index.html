@@ -34,12 +34,12 @@
   <!-- HEADER -->
   <header class="fixed top-0 w-full bg-black/90 backdrop-blur-md z-50 border-b border-red-900">
     <div class="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between">
-      <h1 class="text-3xl font-bold gold tracking-widest">GEEMU GAMES</h1>
+      <img src="images/logo.png" alt="GEEMU GAMES" class="h-16">
       <nav class="space-x-8 text-lg">
         <a href="#" class="hover:text-red-500 transition">Início</a>
         <a href="#" class="hover:text-red-500 transition">Universos</a>
-        <a href="#" class="hover:text-red-500 transition">Patreon</a>
-        <a href="#" class="hover:text-red-500 transition">Contato</a>
+        <a href="https://patreon.com/geemugames" class="hover:text-red-500 transition">Patreon</a>
+        <a href="mailto:contato@geemugames.com" class="hover:text-red-500 transition">Contato</a>
       </nav>
     </div>
   </header>
@@ -55,9 +55,9 @@
   <!-- POP-UP DE NÍVEL -->
   <div id="level-popup" class="level-popup">
     <h2 class="text-3xl gold mb-4">Parabéns!</h2>
-    <p class="text-xl mb-6">Você desbloqueou um presente especial da GEEMU GAMES 💋</p>
-    <div id="reward-content" class="text-lg text-gray-300"></div>
-    <button onclick="closePopup()" class="mt-6 bg-red-600 hover:bg-red-700 text-white px-8 py-3 rounded-full font-bold transition">
+    <p class="text-xl mb-6">Você atingiu o nível <span id="current-level">1</span>!</p>
+    <p id="reward-message" class="text-lg text-gray-300 mb-10"></p>
+    <button onclick="closePopup()" class="mt-6 bg-red-600 hover:bg-red-700 text-white px-10 py-4 rounded-full text-xl font-bold transition">
       Continuar Jogando
     </button>
   </div>
@@ -77,25 +77,25 @@
       <h2 class="text-4xl font-bold text-center gold mb-12">NOSSOS UNIVERSOS</h2>
       
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        <!-- Universo 1 -->
-        <div class="card bg-zinc-900 rounded-2xl overflow-hidden cursor-pointer" onclick="window.location.href='https://escolhaseuprazer.geemugames.com'">
+        <!-- Universo 1 – Escolha Seu Prazer -->
+        <a href="#" class="card bg-zinc-900 rounded-2xl overflow-hidden cursor-pointer">
           <div class="h-64 bg-red-950 flex items-center justify-center text-6xl">🔥</div>
           <div class="p-6">
             <h3 class="text-2xl font-bold gold">Escolha Seu Prazer</h3>
             <p class="text-gray-400 mt-2">Realismo brasileiro • Traição • Risco</p>
           </div>
-        </div>
+        </a>
 
-        <!-- Universo 2 -->
-        <div class="card bg-zinc-900 rounded-2xl overflow-hidden cursor-pointer">
+        <!-- Universo 2 – Crônicas do Desejo -->
+        <a href="#" class="card bg-zinc-900 rounded-2xl overflow-hidden cursor-pointer">
           <div class="h-64 bg-purple-950 flex items-center justify-center text-6xl">🌙</div>
           <div class="p-6">
             <h3 class="text-2xl font-bold gold">Crônicas do Desejo</h3>
             <p class="text-gray-400 mt-2">Show da Luna VR • Fantasia imersiva</p>
           </div>
-        </div>
+        </a>
 
-        <!-- Universos restantes com "EM BREVE" -->
+        <!-- Universos 3 a 10 – EM BREVE -->
         <div class="card bg-zinc-900 rounded-2xl overflow-hidden relative">
           <div class="h-64 bg-blue-950 flex items-center justify-center text-6xl">💼</div>
           <div class="absolute top-4 right-4 bg-red-600 text-white text-xs font-bold px-6 py-1.5 rounded-full">EM BREVE</div>
@@ -171,16 +171,21 @@
   </section>
 
   <!-- POP-UP DE NÍVEL -->
-  <div id="level-popup" class="fixed inset-0 bg-black/90 flex items-center justify-center z-50 hidden">
-    <div class="bg-zinc-900 rounded-2xl p-10 max-w-lg text-center border-4 border-gold">
-      <h2 class="text-5xl gold mb-6">Parabéns!</h2>
-      <p class="text-2xl mb-8">Você atingiu o nível <span id="current-level" class="text-4xl font-bold gold">1</span>!</p>
-      <p id="reward-message" class="text-xl text-gray-300 mb-10"></p>
-      <button onclick="closePopup()" class="bg-red-600 hover:bg-red-700 text-white px-10 py-4 rounded-full text-xl font-bold transition">
-        Continuar Jogando
-      </button>
-    </div>
+  <div id="level-popup" class="level-popup">
+    <h2 class="text-3xl gold mb-4">Parabéns!</h2>
+    <p class="text-xl mb-6">Você atingiu o nível <span id="current-level">1</span>!</p>
+    <p id="reward-message" class="text-lg text-gray-300 mb-10"></p>
+    <button onclick="closePopup()" class="mt-6 bg-red-600 hover:bg-red-700 text-white px-10 py-4 rounded-full text-xl font-bold transition">
+      Continuar Jogando
+    </button>
   </div>
+
+  <!-- FOOTER -->
+  <footer class="bg-black py-6 text-center text-gray-400 border-t border-red-900">
+    <p>GEEMU GAMES – Prazer sem limites</p>
+    <p>Contato: <a href="mailto:contato@geemugames.com" class="text-gold hover:text-red-500">contato@geemugames.com</a></p>
+    <p>© 2026 GEEMU GAMES. Todos os direitos reservados.</p>
+  </footer>
 
   <script>
     let level = parseInt(localStorage.getItem("playerLevel")) || 1;
@@ -208,14 +213,14 @@
       else if (level === 10) reward = "História totalmente personalizada só pra você!";
 
       document.getElementById("reward-message").textContent = reward;
-      document.getElementById("level-popup").classList.remove("hidden");
+      document.getElementById("level-popup").classList.add("show");
     }
 
     function closePopup() {
-      document.getElementById("level-popup").classList.add("hidden");
+      document.getElementById("level-popup").classList.remove("show");
     }
 
-    // Simula ganho de excitação (substitua por cliques reais)
+    // Simula ganho de excitação com cliques (substitua por eventos reais)
     document.addEventListener("click", () => updateExcitement(15));
   </script>
 
