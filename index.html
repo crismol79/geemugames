@@ -45,7 +45,7 @@
   </header>
 
   <!-- NÍVEL DE EXCITAÇÃO -->
-  <div class="fixed top-20 left-1/2 transform -translate-x-1/2 z-40 bg-black/70 backdrop-blur-md px-6 py-2 rounded-full border border-gold/30">
+  <div class="fixed top-20 left-1/2 transform -translate-x-1/2 z-50 bg-black/70 backdrop-blur-md px-6 py-2 rounded-full border border-gold/30">
     <span class="text-gold font-bold">Excitação: <span id="excitement-level">25</span>%</span>
     <div class="w-64 h-2 bg-zinc-800 rounded-full mt-1 overflow-hidden">
       <div id="excitement-bar" class="h-full bg-gradient-to-r from-red-600 to-gold transition-all duration-500" style="width: 25%"></div>
@@ -57,7 +57,7 @@
     <h2 class="text-3xl gold mb-4">Parabéns!</h2>
     <p class="text-xl mb-6">Você atingiu o nível <span id="current-level">1</span>!</p>
     <p id="reward-message" class="text-lg text-gray-300 mb-10"></p>
-    <button onclick="closePopup()" class="mt-6 bg-red-600 hover:bg-red-700 text-white px-10 py-4 rounded-full text-xl font-bold transition">
+    <button id="close-popup-btn" class="mt-6 bg-red-600 hover:bg-red-700 text-white px-10 py-4 rounded-full text-xl font-bold transition">
       Continuar Jogando
     </button>
   </div>
@@ -175,7 +175,7 @@
     <h2 class="text-3xl gold mb-4">Parabéns!</h2>
     <p class="text-xl mb-6">Você atingiu o nível <span id="current-level">1</span>!</p>
     <p id="reward-message" class="text-lg text-gray-300 mb-10"></p>
-    <button onclick="closePopup()" class="mt-6 bg-red-600 hover:bg-red-700 text-white px-10 py-4 rounded-full text-xl font-bold transition">
+    <button id="close-popup-btn" class="mt-6 bg-red-600 hover:bg-red-700 text-white px-10 py-4 rounded-full text-xl font-bold transition">
       Continuar Jogando
     </button>
   </div>
@@ -194,6 +194,7 @@
     function updateExcitement(add) {
       excitement = Math.min(100, excitement + add);
       document.getElementById("excitement-bar").style.width = excitement + "%";
+      document.getElementById("excitement-level").textContent = excitement;
       localStorage.setItem("excitement", excitement);
       if (excitement >= 100) {
         levelUp();
@@ -218,9 +219,19 @@
 
     function closePopup() {
       document.getElementById("level-popup").classList.remove("show");
+      // Reset excitação após pop-up (para teste)
+      excitement = 0;
+      document.getElementById("excitement-bar").style.width = "0%";
+      document.getElementById("excitement-level").textContent = "0";
+      localStorage.setItem("excitement", 0);
     }
 
-    // Simula ganho de excitação com cliques (substitua por eventos reais)
+    // Evento do botão fechar
+    document.addEventListener("DOMContentLoaded", () => {
+      document.getElementById("close-popup-btn").addEventListener("click", closePopup);
+    });
+
+    // Simula ganho de excitação com cliques (para teste)
     document.addEventListener("click", () => updateExcitement(15));
   </script>
 
