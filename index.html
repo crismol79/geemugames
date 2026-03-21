@@ -43,6 +43,12 @@
       border-bottom: 1px solid #ffffff;
       padding: 0.5rem 0;
     }
+    .profile-icon, .credits-icon {
+      transition: all 0.3s;
+    }
+    .profile-icon:hover, .credits-icon:hover {
+      transform: scale(1.1);
+    }
     @media (max-width: 768px) {
       .hero-section { height: 55vh; }
       .hero-banner { height: 55vh; object-position: center; }
@@ -60,13 +66,32 @@
 
   <!-- HEADER -->
   <header class="fixed top-0 w-full bg-black/90 backdrop-blur-md z-50 border-b border-gold">
-    <div class="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between">
-      <img src="images/logo.png" alt="GEEMU GAMES" class="h-20">
-      <nav class="space-x-8 text-lg">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+      <img src="images/logo.png" alt="GEEMU GAMES" class="h-16 md:h-20">
+      <nav class="flex items-center space-x-4 md:space-x-8 text-base md:text-lg">
         <a href="#" class="hover:text-gold transition">Início</a>
         <a href="#" class="hover:text-gold transition">Universos</a>
         <a href="https://patreon.com/geemugames" class="hover:text-gold transition">Patreon</a>
         <a href="mailto:contato@geemugames.com" class="hover:text-gold transition">Contato</a>
+
+        <!-- Botões de login/perfil/créditos (condicional) -->
+        <div id="auth-buttons" class="flex items-center space-x-4">
+          <!-- Não logado -->
+          <button onclick="alert('Login em desenvolvimento')" class="bg-gold text-black px-4 py-2 rounded-full text-sm md:text-base font-bold hover:bg-yellow-400 transition">
+            Entrar / Cadastro
+          </button>
+
+          <!-- Logado (escondido por padrão, mostre com JS quando logar) -->
+          <div id="logged-in" class="hidden flex items-center space-x-4">
+            <div class="credits-icon flex items-center bg-black/50 px-3 py-1 rounded-full border border-gold">
+              <span class="text-gold font-bold mr-1">💎</span>
+              <span id="credits">0</span>
+            </div>
+            <button onclick="alert('Perfil em desenvolvimento')" class="profile-icon bg-gold text-black w-10 h-10 rounded-full flex items-center justify-center font-bold hover:bg-yellow-400 transition">
+              C
+            </button>
+          </div>
+        </div>
       </nav>
     </div>
   </header>
@@ -267,6 +292,10 @@
     });
 
     document.addEventListener("click", () => updateExcitement(15));
+
+    // Simulação simples de login (para teste, depois integra com backend)
+    // Para testar: descomente abaixo
+    // document.getElementById("auth-buttons").innerHTML = document.getElementById("logged-in").outerHTML;
   </script>
 
 </body>
