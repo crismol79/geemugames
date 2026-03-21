@@ -8,29 +8,8 @@
   <style>
     body { background: #0a0a0a; color: #fff; font-family: 'Playfair Display', serif; }
     .gold { color: #d4af37; }
-    .card { transition: all 0.4s ease; overflow: hidden; position: relative; }
+    .card { transition: all 0.4s ease; overflow: hidden; }
     .card:hover { transform: scale(1.08); box-shadow: 0 0 40px rgba(212, 175, 55, 0.5); }
-    .card::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      border: 2px solid transparent;
-      border-radius: 1rem;
-      transition: all 0.5s ease;
-      pointer-events: none;
-    }
-    .card:hover::before {
-      border-image: linear-gradient(to right, #d4af37, #ffaa00, #d4af37) 1;
-      box-shadow: inset 0 0 20px rgba(212, 175, 55, 0.3);
-    }
-    .coming-soon {
-      transition: all 0.5s ease;
-    }
-    .card:hover .coming-soon {
-      transform: scale(1.1);
-      background: linear-gradient(to right, #d4af37, #ffaa00);
-      box-shadow: 0 0 15px #d4af37;
-    }
     .level-popup {
       position: fixed;
       top: 50%;
@@ -59,8 +38,10 @@
       position: relative;
       overflow: hidden;
     }
-    .excitement-line {
-      border-color: #d4af37 !important;
+    .excitement-container {
+      border-top: 1px solid #d4af37;
+      border-bottom: 1px solid #d4af37;
+      padding: 0.5rem 0;
     }
     @media (max-width: 768px) {
       .hero-section { height: 60vh; }
@@ -90,11 +71,11 @@
     </div>
   </header>
 
-  <!-- NÍVEL DE EXCITAÇÃO -->
-  <div class="fixed top-20 md:top-24 left-1/2 transform -translate-x-1/2 z-50 bg-black/70 backdrop-blur-md px-6 py-2 rounded-full border border-gold">
+  <!-- NÍVEL DE EXCITAÇÃO (com linhas douradas) -->
+  <div class="fixed top-20 md:top-24 left-1/2 transform -translate-x-1/2 z-50 bg-black/70 backdrop-blur-md px-6 py-2 rounded-full border border-gold excitement-container">
     <span class="text-gold font-bold">Excitação: <span id="excitement-level">25</span>%</span>
     <div class="w-64 h-2 bg-zinc-800 rounded-full mt-1 overflow-hidden">
-      <div id="excitement-bar" class="h-full bg-gradient-to-r from-gold to-red-600 transition-all duration-500" style="width: 25%"></div>
+      <div id="excitement-bar" class="h-full bg-gradient-to-r from-gold to-red-600 transition-all duration-500 ease-out" style="width: 25%"></div>
     </div>
   </div>
 
