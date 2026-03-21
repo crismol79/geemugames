@@ -39,20 +39,20 @@
       overflow: hidden;
     }
     .excitement-container {
-      border-top: 1px solid #d4af37;
-      border-bottom: 1px solid #d4af37;
+      border-top: 1px solid #ffffff;
+      border-bottom: 1px solid #ffffff;
       padding: 0.5rem 0;
     }
     @media (max-width: 768px) {
-      .hero-section { height: 60vh; }
-      .hero-banner { height: 60vh; }
-      .py-20 { padding-top: 2rem !important; padding-bottom: 2rem !important; }
-      .mt-20 { margin-top: 6rem !important; }
-      h2 { font-size: 2.5rem; }
-      h3 { font-size: 1.5rem; }
-      p { font-size: 1rem; }
-      .card h3 { font-size: 1.5rem; }
-      .card p { font-size: 0.9rem; }
+      .hero-section { height: 55vh; }
+      .hero-banner { height: 55vh; object-position: center; }
+      .py-20 { padding-top: 1rem !important; padding-bottom: 1rem !important; }
+      .mt-20 { margin-top: 7rem !important; }
+      h2 { font-size: 2.2rem; }
+      h3 { font-size: 1.4rem; }
+      p { font-size: 0.95rem; }
+      .card h3 { font-size: 1.4rem; }
+      .card p { font-size: 0.85rem; }
     }
   </style>
 </head>
@@ -71,11 +71,11 @@
     </div>
   </header>
 
-  <!-- NÍVEL DE EXCITAÇÃO (com linhas douradas) -->
-  <div class="fixed top-20 md:top-24 left-1/2 transform -translate-x-1/2 z-50 bg-black/70 backdrop-blur-md px-6 py-2 rounded-full border border-gold excitement-container">
+  <!-- NÍVEL DE EXCITAÇÃO -->
+  <div class="fixed top-20 md:top-24 left-1/2 transform -translate-x-1/2 z-50 bg-black/70 backdrop-blur-md px-6 py-2 rounded-full border border-white excitement-container">
     <span class="text-gold font-bold">Excitação: <span id="excitement-level">25</span>%</span>
     <div class="w-64 h-2 bg-zinc-800 rounded-full mt-1 overflow-hidden">
-      <div id="excitement-bar" class="h-full bg-gradient-to-r from-gold to-red-600 transition-all duration-500 ease-out" style="width: 25%"></div>
+      <div id="excitement-bar" class="h-full bg-gradient-to-r from-red-500 to-red-700 transition-all duration-500 ease-out" style="width: 25%"></div>
     </div>
   </div>
 
@@ -95,9 +95,9 @@
   </section>
 
   <!-- NOSSOS UNIVERSOS -->
-  <section class="py-8 md:py-20 bg-black">
+  <section class="py-4 md:py-12 bg-black">
     <div class="max-w-7xl mx-auto px-4 md:px-6">
-      <h2 class="text-3xl md:text-4xl font-bold text-center gold mb-6 md:mb-12">NOSSOS UNIVERSOS, explore sem limites!</h2>
+      <h2 class="text-2xl md:text-4xl font-bold text-center gold mb-4 md:mb-8">NOSSOS UNIVERSOS, explore sem limites!</h2>
       
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
         <!-- Universo 1 -->
