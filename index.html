@@ -8,15 +8,8 @@
   <style>
     body { background: #0a0a0a; color: #fff; font-family: 'Playfair Display', serif; }
     .gold { color: #d4af37; }
-    .card { 
-      transition: all 0.4s ease;
-      overflow: hidden;
-      position: relative;
-    }
-    .card:hover { 
-      transform: scale(1.08);
-      box-shadow: 0 0 40px rgba(212, 175, 55, 0.5);
-    }
+    .card { transition: all 0.4s ease; overflow: hidden; position: relative; }
+    .card:hover { transform: scale(1.08); box-shadow: 0 0 40px rgba(212, 175, 55, 0.5); }
     .card::before {
       content: '';
       position: absolute;
@@ -27,16 +20,16 @@
       pointer-events: none;
     }
     .card:hover::before {
-      border-image: linear-gradient(to right, #ff00aa, #00ffff, #ffaa00) 1;
-      box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.2);
+      border-image: linear-gradient(to right, #d4af37, #ffaa00) 1;
+      box-shadow: inset 0 0 20px rgba(212, 175, 55, 0.3);
     }
     .coming-soon {
       transition: all 0.5s ease;
     }
     .card:hover .coming-soon {
       transform: scale(1.1);
-      background: linear-gradient(to right, #ff0066, #ff9900);
-      box-shadow: 0 0 15px #ff0066;
+      background: linear-gradient(to right, #d4af37, #ffaa00);
+      box-shadow: 0 0 15px #d4af37;
     }
     .level-popup {
       position: fixed;
@@ -57,39 +50,50 @@
     @keyframes fadeIn { from { opacity: 0; transform: translate(-50%, -60%); } to { opacity: 1; transform: translate(-50%, -50%); } }
     .hero-banner {
       width: 100%;
-      height: 70vh;
+      height: 100vh;
       object-fit: cover;
       object-position: center;
     }
+    .hero-section {
+      height: 100vh;
+      position: relative;
+      overflow: hidden;
+    }
+    .excitement-line {
+      border-color: #d4af37 !important;
+    }
     @media (max-width: 768px) {
+      .hero-section { height: 60vh; }
       .hero-banner { height: 60vh; }
-      h2 { font-size: 3rem; }
-      h3 { font-size: 1.8rem; }
-      p { font-size: 1.2rem; }
-      .py-20 { padding-top: 5rem; padding-bottom: 5rem; }
+      .mt-24 { margin-top: 5rem !important; } /* Abaixa o banner no mobile */
+      .py-20 { padding-top: 2rem !important; padding-bottom: 4rem !important; } /* Reduz espaço até universos */
+      h2 { font-size: 2.5rem; }
+      h3 { font-size: 1.5rem; }
+      p { font-size: 1rem; }
+      .gap-8 { gap: 1.5rem !important; }
     }
   </style>
 </head>
 <body class="bg-black text-white">
 
   <!-- HEADER -->
-  <header class="fixed top-0 w-full bg-black/90 backdrop-blur-md z-50 border-b border-red-900">
+  <header class="fixed top-0 w-full bg-black/90 backdrop-blur-md z-50 border-b border-gold">
     <div class="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between">
       <img src="images/logo.png" alt="GEEMU GAMES" class="h-20">
       <nav class="space-x-8 text-lg">
-        <a href="#" class="hover:text-red-500 transition">Início</a>
-        <a href="#" class="hover:text-red-500 transition">Universos</a>
-        <a href="https://patreon.com/geemugames" class="hover:text-red-500 transition">Patreon</a>
-        <a href="mailto:contato@geemugames.com" class="hover:text-red-500 transition">Contato</a>
+        <a href="#" class="hover:text-gold transition">Início</a>
+        <a href="#" class="hover:text-gold transition">Universos</a>
+        <a href="https://patreon.com/geemugames" class="hover:text-gold transition">Patreon</a>
+        <a href="mailto:contato@geemugames.com" class="hover:text-gold transition">Contato</a>
       </nav>
     </div>
   </header>
 
   <!-- NÍVEL DE EXCITAÇÃO -->
-  <div class="fixed top-24 left-1/2 transform -translate-x-1/2 z-50 bg-black/70 backdrop-blur-md px-6 py-2 rounded-full border border-gold/30">
+  <div class="fixed top-20 md:top-24 left-1/2 transform -translate-x-1/2 z-50 bg-black/70 backdrop-blur-md px-6 py-2 rounded-full border border-gold">
     <span class="text-gold font-bold">Excitação: <span id="excitement-level">25</span>%</span>
     <div class="w-64 h-2 bg-zinc-800 rounded-full mt-1 overflow-hidden">
-      <div id="excitement-bar" class="h-full bg-gradient-to-r from-red-600 to-gold transition-all duration-500" style="width: 25%"></div>
+      <div id="excitement-bar" class="h-full bg-gradient-to-r from-gold to-yellow-400 transition-all duration-500" style="width: 25%"></div>
     </div>
   </div>
 
@@ -98,59 +102,60 @@
     <h2 class="text-3xl gold mb-4">Parabéns!</h2>
     <p class="text-xl mb-6">Você atingiu o nível <span id="current-level">1</span>!</p>
     <p id="reward-message" class="text-lg text-gray-300 mb-10"></p>
-    <button id="close-popup-btn" class="mt-6 bg-red-600 hover:bg-red-700 text-white px-10 py-4 rounded-full text-xl font-bold transition">
+    <button id="close-popup-btn" class="mt-6 bg-gold hover:bg-yellow-400 text-black px-10 py-4 rounded-full text-xl font-bold transition">
       Continuar Jogando
     </button>
   </div>
 
   <!-- HERO COM BANNER (só imagem) -->
-  <section class="relative h-screen flex items-center justify-center overflow-hidden">
+  <section class="hero-section relative flex items-center justify-center overflow-hidden mt-24 md:mt-0">
     <img src="images/banner-hero.png" alt="Banner GEEMU GAMES" class="hero-banner absolute inset-0">
   </section>
 
   <!-- NOSSOS UNIVERSOS -->
-  <section class="py-20 bg-black">
+  <section class="py-12 md:py-20 bg-black">
     <div class="max-w-7xl mx-auto px-6">
-      <h2 class="text-4xl font-bold text-center gold mb-12">NOSSOS UNIVERSOS, explore sem limites!</h2>
+      <h2 class="text-3xl md:text-4xl font-bold text-center gold mb-8 md:mb-12">NOSSOS UNIVERSOS, explore sem limites!</h2>
       
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
         <!-- Universo 1 -->
         <a href="https://patreon.com/geemugames" class="card bg-zinc-900 rounded-2xl overflow-hidden cursor-pointer">
-          <div class="h-64 bg-red-950 flex items-center justify-center text-6xl">🔥</div>
-          <div class="p-6">
-            <h3 class="text-2xl font-bold gold">Escolha Seu Prazer</h3>
-            <p class="text-gray-400 mt-2">Realismo brasileiro • Traição • Risco</p>
+          <div class="h-48 md:h-64 bg-red-950 flex items-center justify-center text-5xl md:text-6xl">🔥</div>
+          <div class="p-4 md:p-6">
+            <h3 class="text-xl md:text-2xl font-bold gold">Escolha Seu Prazer</h3>
+            <p class="text-sm md:text-base text-gray-400 mt-2">Realismo brasileiro • Traição • Risco</p>
           </div>
         </a>
 
         <!-- Universo 2 -->
         <a href="https://patreon.com/geemugames" class="card bg-zinc-900 rounded-2xl overflow-hidden cursor-pointer">
-          <div class="h-64 bg-purple-950 flex items-center justify-center text-6xl">🌙</div>
-          <div class="p-6">
-            <h3 class="text-2xl font-bold gold">Crônicas do Desejo</h3>
-            <p class="text-gray-400 mt-2">Show da Luna VR • Fantasia imersiva</p>
+          <div class="h-48 md:h-64 bg-purple-950 flex items-center justify-center text-5xl md:text-6xl">🌙</div>
+          <div class="p-4 md:p-6">
+            <h3 class="text-xl md:text-2xl font-bold gold">Crônicas do Desejo</h3>
+            <p class="text-sm md:text-base text-gray-400 mt-2">Show da Luna VR • Fantasia imersiva</p>
           </div>
         </a>
 
-        <!-- Universo 5 (exemplo com animação na tarja) -->
+        <!-- Universo 5 -->
         <div class="card bg-zinc-900 rounded-2xl overflow-hidden relative">
-          <div class="h-64 bg-black flex items-center justify-center text-6xl">🩸</div>
-          <div class="absolute top-4 right-4 bg-red-600 text-white text-xs font-bold px-6 py-1.5 rounded-full coming-soon">EM BREVE</div>
-          <div class="p-6">
-            <h3 class="text-2xl font-bold gold">Noite Eterna</h3>
-            <p class="text-gray-400 mt-2">Vampiros • Lobisomens • Dark romance sobrenatural</p>
+          <div class="h-48 md:h-64 bg-black flex items-center justify-center text-5xl md:text-6xl">🩸</div>
+          <div class="absolute top-3 md:top-4 right-3 md:right-4 bg-red-600 text-white text-xs font-bold px-4 md:px-6 py-1 rounded-full coming-soon">EM BREVE</div>
+          <div class="p-4 md:p-6">
+            <h3 class="text-xl md:text-2xl font-bold gold">Noite Eterna</h3>
+            <p class="text-sm md:text-base text-gray-400 mt-2">Vampiros • Lobisomens • Dark romance sobrenatural</p>
           </div>
         </div>
 
-        <!-- ... Repita o padrão para os outros universos ... -->
+        <!-- ... (cole os outros 9 cards aqui, seguindo o mesmo padrão) ... -->
+
       </div>
     </div>
   </section>
 
   <!-- FOOTER -->
-  <footer class="bg-black py-6 text-center text-gray-400 border-t border-red-900">
+  <footer class="bg-black py-6 text-center text-gray-400 border-t border-gold">
     <p>GEEMU GAMES – Aqui você gemi de prazer</p>
-    <p>Contato: <a href="mailto:contato@geemugames.com" class="text-gold hover:text-red-500">contato@geemugames.com</a></p>
+    <p>Contato: <a href="mailto:contato@geemugames.com" class="text-gold hover:text-yellow-400">contato@geemugames.com</a></p>
     <p>© 2026 GEEMU GAMES. Todos os direitos reservados.</p>
   </footer>
 
