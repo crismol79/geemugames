@@ -29,9 +29,9 @@
     @keyframes fadeIn { from { opacity: 0; transform: translate(-50%, -60%); } to { opacity: 1; transform: translate(-50%, -50%); } }
     .hero-banner {
       width: 100%;
-      height: 100%;
+      height: 100vh;
       object-fit: cover;
-      object-position: center center;
+      object-position: center;
     }
     .hero-section {
       height: 100vh;
@@ -42,7 +42,6 @@
       border-top: 1px solid #ffffff;
       border-bottom: 1px solid #ffffff;
       padding: 0.5rem 0;
-      margin-top: 4rem; /* mais espaço embaixo da barra no mobile */
     }
     .auth-buttons {
       display: flex;
@@ -56,7 +55,6 @@
       border-radius: 9999px;
       font-weight: bold;
       transition: all 0.3s;
-      white-space: nowrap;
     }
     .login-btn:hover {
       background: #ffea00;
@@ -87,10 +85,10 @@
       font-size: 0.875rem;
     }
     @media (max-width: 768px) {
-      .hero-section { height: 55vh; margin-top: 5rem; } /* abaixa o banner */
+      .hero-section { height: 55vh; margin-top: 5rem; }
       .hero-banner { height: 55vh; object-position: center center !important; }
       .py-20 { padding-top: 1rem !important; padding-bottom: 1rem !important; }
-      .mt-20 { margin-top: 8rem !important; } /* mais espaço abaixo da barra */
+      .mt-20 { margin-top: 8rem !important; }
       h2 { font-size: 2rem; }
       h3 { font-size: 1.3rem; }
       p { font-size: 0.9rem; }
@@ -105,15 +103,14 @@
 </head>
 <body class="bg-black text-white">
 
-  <!-- HEADER -->
+  <!-- HEADER (sem Contato) -->
   <header class="fixed top-0 w-full bg-black/90 backdrop-blur-md z-50 border-b border-gold">
     <div class="max-w-7xl mx-auto px-4 md:px-6 py-3 md:py-4 flex items-center justify-between">
       <img src="images/logo.png" alt="GEEMU GAMES" class="h-14 md:h-20">
-      <nav class="flex items-center space-x-3 md:space-x-8 text-sm md:text-lg">
+      <nav class="flex items-center space-x-4 md:space-x-8 text-sm md:text-lg">
         <a href="#" class="hover:text-gold transition">Início</a>
         <a href="#" class="hover:text-gold transition">Universos</a>
         <a href="https://patreon.com/geemugames" class="hover:text-gold transition">Patreon</a>
-        <a href="mailto:contato@geemugames.com" class="hover:text-gold transition">Contato</a>
 
         <!-- Botões de auth sempre visíveis -->
         <div class="auth-buttons">
@@ -161,9 +158,9 @@
   </section>
 
   <!-- NOSSOS UNIVERSOS -->
-  <section class="py-4 md:py-8 bg-black">
+  <section class="py-4 md:py-12 bg-black">
     <div class="max-w-7xl mx-auto px-4 md:px-6">
-      <h2 class="text-2xl md:text-4xl font-bold text-center gold mb-4 md:mb-6">NOSSOS UNIVERSOS, explore sem limites!</h2>
+      <h2 class="text-2xl md:text-4xl font-bold text-center gold mb-4 md:mb-8">NOSSOS UNIVERSOS, explore sem limites!</h2>
       
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
         <!-- Universo 1 -->
@@ -334,7 +331,7 @@
 
     document.addEventListener("click", () => updateExcitement(15));
 
-    // Função para simular login (para teste)
+    // Simulação simples de login (para teste)
     function showLoggedIn() {
       document.getElementById("auth-buttons").innerHTML = document.getElementById("logged-in").outerHTML;
     }
