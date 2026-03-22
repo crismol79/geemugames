@@ -31,16 +31,18 @@
       z-index: 100; box-shadow: 0 0 30px rgba(212, 175, 55, 0.4);
     }
     .menu-dropdown.show { display: block; }
+    .hamburger { cursor: pointer; }
     @media (max-width: 768px) {
-      .hero-section { height: 55vh; margin-top: 5rem; }
+      .hero-section { height: 55vh; margin-top: 6rem; }
       .hero-banner { height: 55vh; object-position: 50% 50% !important; }
-      .py-20 { padding-top: 1rem !important; padding-bottom: 1rem !important; }
-      .mt-20 { margin-top: 8rem !important; }
-      h2 { font-size: 2rem; }
-      .logo-size { height: 3.8rem !important; }
+      .py-20 { padding-top: 0.5rem !important; padding-bottom: 0.5rem !important; }
+      h2 { font-size: 1.8rem; }
+      .logo-size { height: 5rem !important; } /* maior no celular */
+      .excitement-container { top: 5.5rem !important; } /* barra desceu */
     }
     @media (min-width: 769px) {
-      .logo-size { height: 6.5rem !important; }
+      .logo-size { height: 7rem !important; } /* maior no desktop */
+      .excitement-container { top: 7rem !important; } /* barra desceu */
     }
   </style>
 </head>
@@ -51,12 +53,12 @@
     <div class="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between relative">
       
       <!-- Logo centralizado -->
-      <div class="flex-1 flex justify-center">
+      <div class="absolute left-1/2 transform -translate-x-1/2">
         <img src="images/logo.png" alt="GEEMU GAMES" class="logo-size transition-all">
       </div>
 
-      <!-- Hamburger (só aparece no celular) -->
-      <div onclick="toggleMenu()" class="hamburger md:hidden flex flex-col gap-1.5 cursor-pointer">
+      <!-- Hamburger (só celular) -->
+      <div onclick="toggleMenu()" class="hamburger md:hidden flex flex-col gap-1.5 cursor-pointer ml-auto">
         <div class="w-8 h-0.5 bg-gold"></div>
         <div class="w-8 h-0.5 bg-gold"></div>
         <div class="w-8 h-0.5 bg-gold"></div>
@@ -84,8 +86,8 @@
     </div>
   </header>
 
-  <!-- BARRA DE EXCITAÇÃO (fixa) -->
-  <div class="fixed top-20 md:top-24 left-1/2 transform -translate-x-1/2 z-50 bg-black/70 backdrop-blur-md px-6 py-2 rounded-full border border-white excitement-container">
+  <!-- BARRA DE EXCITAÇÃO (fixa, desceu um pouco) -->
+  <div class="fixed top-20 md:top-28 left-1/2 transform -translate-x-1/2 z-50 bg-black/70 backdrop-blur-md px-6 py-2 rounded-full border border-white excitement-container">
     <span class="text-gold font-bold">Excitação: <span id="excitement-level">25</span>%</span>
     <div class="w-64 h-2 bg-zinc-800 rounded-full mt-1 overflow-hidden">
       <div id="excitement-bar" class="h-full bg-gradient-to-r from-red-500 to-red-700 transition-all duration-500 ease-out" style="width: 25%"></div>
@@ -97,7 +99,9 @@
     <h2 class="text-3xl gold mb-4">Parabéns!</h2>
     <p class="text-xl mb-6">Você atingiu o nível <span id="current-level">1</span>!</p>
     <p id="reward-message" class="text-lg text-gray-300 mb-10"></p>
-    <button id="close-popup-btn" class="mt-6 bg-red-600 hover:bg-red-700 text-white px-10 py-4 rounded-full text-xl font-bold transition">Continuar Jogando</button>
+    <button id="close-popup-btn" class="mt-6 bg-red-600 hover:bg-red-700 text-white px-10 py-4 rounded-full text-xl font-bold transition">
+      Continuar Jogando
+    </button>
   </div>
 
   <!-- HERO BANNER -->
@@ -105,10 +109,10 @@
     <img src="images/banner-hero.png" alt="Banner GEEMU GAMES" class="hero-banner absolute inset-0">
   </section>
 
-  <!-- NOSSOS UNIVERSOS -->
-  <section class="py-4 md:py-12 bg-black">
+  <!-- NOSSOS UNIVERSOS (subiu mais perto do banner) -->
+  <section class="py-4 md:py-8 bg-black">
     <div class="max-w-7xl mx-auto px-4 md:px-6">
-      <h2 class="text-2xl md:text-4xl font-bold text-center gold mb-4 md:mb-8">NOSSOS UNIVERSOS, explore sem limites!</h2>
+      <h2 class="text-2xl md:text-4xl font-bold text-center gold mb-4 md:mb-6">NOSSOS UNIVERSOS, explore sem limites!</h2>
       
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
         <!-- Universo 1 -->
@@ -243,7 +247,7 @@
       document.getElementById("menu-dropdown").classList.toggle("show");
     }
 
-    // Barra de excitação + pop-up (igual ao anterior)
+    // Barra de excitação + pop-up
     let level = parseInt(localStorage.getItem("playerLevel")) || 1;
     let excitement = parseInt(localStorage.getItem("excitement")) || 0;
 
