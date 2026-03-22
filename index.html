@@ -29,9 +29,9 @@
     @keyframes fadeIn { from { opacity: 0; transform: translate(-50%, -60%); } to { opacity: 1; transform: translate(-50%, -50%); } }
     .hero-banner {
       width: 100%;
-      height: 100vh;
+      height: 100%;
       object-fit: cover;
-      object-position: center;
+      object-position: center center;
     }
     .hero-section {
       height: 100vh;
@@ -42,6 +42,7 @@
       border-top: 1px solid #ffffff;
       border-bottom: 1px solid #ffffff;
       padding: 0.5rem 0;
+      margin-top: 4rem; /* mais espaço embaixo da barra no mobile */
     }
     .auth-buttons {
       display: flex;
@@ -55,6 +56,7 @@
       border-radius: 9999px;
       font-weight: bold;
       transition: all 0.3s;
+      white-space: nowrap;
     }
     .login-btn:hover {
       background: #ffea00;
@@ -85,19 +87,19 @@
       font-size: 0.875rem;
     }
     @media (max-width: 768px) {
-      .hero-section { height: 55vh; }
-      .hero-banner { height: 55vh; object-position: center; }
+      .hero-section { height: 55vh; margin-top: 5rem; } /* abaixa o banner */
+      .hero-banner { height: 55vh; object-position: center center !important; }
       .py-20 { padding-top: 1rem !important; padding-bottom: 1rem !important; }
-      .mt-20 { margin-top: 7rem !important; }
-      h2 { font-size: 2.2rem; }
-      h3 { font-size: 1.4rem; }
-      p { font-size: 0.95rem; }
-      .card h3 { font-size: 1.4rem; }
-      .card p { font-size: 0.85rem; }
+      .mt-20 { margin-top: 8rem !important; } /* mais espaço abaixo da barra */
+      h2 { font-size: 2rem; }
+      h3 { font-size: 1.3rem; }
+      p { font-size: 0.9rem; }
+      .card h3 { font-size: 1.3rem; }
+      .card p { font-size: 0.8rem; }
       .auth-buttons { gap: 0.5rem; }
-      .login-btn { padding: 0.4rem 0.8rem; font-size: 0.875rem; }
-      .profile-btn { width: 2rem; height: 2rem; font-size: 0.875rem; }
-      .credits-badge { font-size: 0.75rem; padding: 0.2rem 0.5rem; }
+      .login-btn { padding: 0.4rem 0.8rem; font-size: 0.8rem; }
+      .profile-btn { width: 2rem; height: 2rem; font-size: 0.8rem; }
+      .credits-badge { font-size: 0.7rem; padding: 0.2rem 0.5rem; }
     }
   </style>
 </head>
@@ -105,9 +107,9 @@
 
   <!-- HEADER -->
   <header class="fixed top-0 w-full bg-black/90 backdrop-blur-md z-50 border-b border-gold">
-    <div class="max-w-7xl mx-auto px-4 md:px-6 py-4 flex items-center justify-between">
-      <img src="images/logo.png" alt="GEEMU GAMES" class="h-16 md:h-20">
-      <nav class="flex items-center space-x-4 md:space-x-8 text-base md:text-lg">
+    <div class="max-w-7xl mx-auto px-4 md:px-6 py-3 md:py-4 flex items-center justify-between">
+      <img src="images/logo.png" alt="GEEMU GAMES" class="h-14 md:h-20">
+      <nav class="flex items-center space-x-3 md:space-x-8 text-sm md:text-lg">
         <a href="#" class="hover:text-gold transition">Início</a>
         <a href="#" class="hover:text-gold transition">Universos</a>
         <a href="https://patreon.com/geemugames" class="hover:text-gold transition">Patreon</a>
@@ -121,7 +123,7 @@
           </button>
 
           <!-- Logado (escondido por padrão) -->
-          <div id="logged-in" class="hidden flex items-center space-x-3 md:space-x-4">
+          <div id="logged-in" class="hidden flex items-center space-x-2 md:space-x-4">
             <div class="credits-badge">
               <span class="text-gold font-bold">💎</span>
               <span id="credits">0</span>
@@ -136,9 +138,9 @@
   </header>
 
   <!-- NÍVEL DE EXCITAÇÃO -->
-  <div class="fixed top-20 md:top-24 left-1/2 transform -translate-x-1/2 z-50 bg-black/70 backdrop-blur-md px-6 py-2 rounded-full border border-white excitement-container">
-    <span class="text-gold font-bold">Excitação: <span id="excitement-level">25</span>%</span>
-    <div class="w-64 h-2 bg-zinc-800 rounded-full mt-1 overflow-hidden">
+  <div class="fixed top-16 md:top-24 left-1/2 transform -translate-x-1/2 z-50 bg-black/70 backdrop-blur-md px-4 md:px-6 py-2 rounded-full border border-white excitement-container">
+    <span class="text-gold font-bold text-sm md:text-base">Excitação: <span id="excitement-level">25</span>%</span>
+    <div class="w-48 md:w-64 h-2 bg-zinc-800 rounded-full mt-1 overflow-hidden">
       <div id="excitement-bar" class="h-full bg-gradient-to-r from-red-500 to-red-700 transition-all duration-500 ease-out" style="width: 25%"></div>
     </div>
   </div>
@@ -159,9 +161,9 @@
   </section>
 
   <!-- NOSSOS UNIVERSOS -->
-  <section class="py-4 md:py-12 bg-black">
+  <section class="py-4 md:py-8 bg-black">
     <div class="max-w-7xl mx-auto px-4 md:px-6">
-      <h2 class="text-2xl md:text-4xl font-bold text-center gold mb-4 md:mb-8">NOSSOS UNIVERSOS, explore sem limites!</h2>
+      <h2 class="text-2xl md:text-4xl font-bold text-center gold mb-4 md:mb-6">NOSSOS UNIVERSOS, explore sem limites!</h2>
       
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
         <!-- Universo 1 -->
@@ -332,10 +334,9 @@
 
     document.addEventListener("click", () => updateExcitement(15));
 
-    // Função simples para simular login (para teste)
+    // Função para simular login (para teste)
     function showLoggedIn() {
       document.getElementById("auth-buttons").innerHTML = document.getElementById("logged-in").outerHTML;
-      // Aqui você pode integrar login real depois
     }
   </script>
 
