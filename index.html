@@ -11,140 +11,83 @@
     .card { transition: all 0.4s ease; overflow: hidden; }
     .card:hover { transform: scale(1.08); box-shadow: 0 0 40px rgba(212, 175, 55, 0.5); }
     .level-popup {
-      position: fixed;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      background: rgba(0,0,0,0.9);
-      border: 3px solid #d4af37;
-      border-radius: 16px;
-      padding: 40px;
-      max-width: 500px;
-      text-align: center;
-      z-index: 1000;
-      box-shadow: 0 0 60px #d4af37;
-      display: none;
+      position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);
+      background: rgba(0,0,0,0.95); border: 3px solid #d4af37; border-radius: 16px;
+      padding: 40px; max-width: 500px; text-align: center; z-index: 1000;
+      box-shadow: 0 0 60px #d4af37; display: none;
     }
     .level-popup.show { display: block; animation: fadeIn 0.6s; }
     @keyframes fadeIn { from { opacity: 0; transform: translate(-50%, -60%); } to { opacity: 1; transform: translate(-50%, -50%); } }
-    .hero-section {
-      height: 100vh;
-      position: relative;
-      overflow: hidden;
-    }
+    .hero-section { height: 100vh; position: relative; overflow: hidden; }
     .hero-banner {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: 50% 50% !important;
-      background-size: cover;
-      background-position: center;
+      width: 100%; height: 100%; object-fit: cover; object-position: 50% 50% !important;
     }
     .excitement-container {
-      border-top: 1px solid #ffffff;
-      border-bottom: 1px solid #ffffff;
-      padding: 0.5rem 0;
+      border-top: 1px solid #ffffff; border-bottom: 1px solid #ffffff; padding: 0.5rem 0;
     }
-    .auth-buttons {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
+    .menu-dropdown {
+      display: none; position: absolute; top: 100%; right: 20px; background: #111;
+      border: 2px solid #d4af37; border-radius: 12px; padding: 15px; width: 260px;
+      z-index: 100; box-shadow: 0 0 30px rgba(212, 175, 55, 0.4);
     }
-    .login-btn {
-      background: #d4af37;
-      color: #000;
-      padding: 0.5rem 1rem;
-      border-radius: 9999px;
-      font-weight: bold;
-      transition: all 0.3s;
-      white-space: nowrap;
-    }
-    .login-btn:hover {
-      background: #ffea00;
-    }
-    .profile-btn {
-      background: #d4af37;
-      color: #000;
-      width: 2.5rem;
-      height: 2.5rem;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: bold;
-      transition: all 0.3s;
-    }
-    .profile-btn:hover {
-      transform: scale(1.1);
-    }
-    .credits-badge {
-      background: rgba(0,0,0,0.5);
-      border: 1px solid #d4af37;
-      padding: 0.25rem 0.75rem;
-      border-radius: 9999px;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      font-size: 0.875rem;
-    }
+    .menu-dropdown.show { display: block; }
     @media (max-width: 768px) {
       .hero-section { height: 55vh; margin-top: 5rem; }
       .hero-banner { height: 55vh; object-position: 50% 50% !important; }
       .py-20 { padding-top: 1rem !important; padding-bottom: 1rem !important; }
       .mt-20 { margin-top: 8rem !important; }
       h2 { font-size: 2rem; }
-      h3 { font-size: 1.3rem; }
-      p { font-size: 0.9rem; }
-      .card h3 { font-size: 1.3rem; }
-      .card p { font-size: 0.8rem; }
-      .auth-buttons { gap: 0.5rem; }
-      .login-btn { padding: 0.4rem 0.8rem; font-size: 0.8rem; }
-      .profile-btn { width: 2rem; height: 2rem; font-size: 0.8rem; }
-      .credits-badge { font-size: 0.7rem; padding: 0.2rem 0.5rem; }
-      .logo-size { height: 3.5rem !important; } /* logo maior no celular */
+      .logo-size { height: 3.8rem !important; }
     }
     @media (min-width: 769px) {
-      .logo-size { height: 6.5rem !important; } /* logo maior no desktop */
+      .logo-size { height: 6.5rem !important; }
     }
   </style>
 </head>
 <body class="bg-black text-white">
 
-  <!-- HEADER -->
+  <!-- HEADER NOVA - Logo centralizado + Hamburger -->
   <header class="fixed top-0 w-full bg-black/90 backdrop-blur-md z-50 border-b border-gold">
-    <div class="max-w-7xl mx-auto px-4 md:px-6 py-3 md:py-4 flex items-center justify-between">
-      <img src="images/logo.png" alt="GEEMU GAMES" class="logo-size h-14 md:h-20 transition-all duration-300">
-      <nav class="flex items-center space-x-4 md:space-x-8 text-sm md:text-lg">
+    <div class="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between relative">
+      
+      <!-- Logo centralizado -->
+      <div class="flex-1 flex justify-center">
+        <img src="images/logo.png" alt="GEEMU GAMES" class="logo-size transition-all">
+      </div>
+
+      <!-- Hamburger (só aparece no celular) -->
+      <div onclick="toggleMenu()" class="hamburger md:hidden flex flex-col gap-1.5 cursor-pointer">
+        <div class="w-8 h-0.5 bg-gold"></div>
+        <div class="w-8 h-0.5 bg-gold"></div>
+        <div class="w-8 h-0.5 bg-gold"></div>
+      </div>
+
+      <!-- Menu desktop -->
+      <nav class="hidden md:flex items-center gap-8 text-lg">
         <a href="#" class="hover:text-gold transition">Início</a>
         <a href="#" class="hover:text-gold transition">Universos</a>
         <a href="https://patreon.com/geemugames" class="hover:text-gold transition">Patreon</a>
-
-        <!-- Botões de auth sempre visíveis -->
-        <div class="auth-buttons">
-          <!-- Não logado -->
-          <button onclick="showLoggedIn()" class="login-btn">
-            Entrar / Cadastro
-          </button>
-
-          <!-- Logado (escondido por padrão) -->
-          <div id="logged-in" class="hidden flex items-center space-x-2 md:space-x-4">
-            <div class="credits-badge">
-              <span class="text-gold font-bold">💎</span>
-              <span id="credits">0</span>
-            </div>
-            <button onclick="alert('Perfil em desenvolvimento')" class="profile-btn">
-              C
-            </button>
-          </div>
-        </div>
       </nav>
+
+      <!-- Menu dropdown mobile -->
+      <div id="menu-dropdown" class="menu-dropdown md:hidden">
+        <a href="#" class="block py-3 text-lg hover:text-gold">Início</a>
+        <a href="#" class="block py-3 text-lg hover:text-gold">Universos</a>
+        <a href="https://patreon.com/geemugames" class="block py-3 text-lg hover:text-gold">Patreon</a>
+        <div class="border-t border-gold my-3"></div>
+        <a href="#" class="block py-3 text-lg hover:text-gold">Redes Sociais</a>
+        <div class="flex items-center gap-3 py-3">
+          <span class="text-gold text-2xl">💎</span>
+          <span class="text-lg">Saldo do Tesão: <span id="tokens-mobile" class="gold font-bold">0</span> tokens</span>
+        </div>
+      </div>
     </div>
   </header>
 
-  <!-- NÍVEL DE EXCITAÇÃO -->
-  <div class="fixed top-16 md:top-24 left-1/2 transform -translate-x-1/2 z-50 bg-black/70 backdrop-blur-md px-4 md:px-6 py-2 rounded-full border border-white excitement-container">
-    <span class="text-gold font-bold text-sm md:text-base">Excitação: <span id="excitement-level">25</span>%</span>
-    <div class="w-48 md:w-64 h-2 bg-zinc-800 rounded-full mt-1 overflow-hidden">
+  <!-- BARRA DE EXCITAÇÃO (fixa) -->
+  <div class="fixed top-20 md:top-24 left-1/2 transform -translate-x-1/2 z-50 bg-black/70 backdrop-blur-md px-6 py-2 rounded-full border border-white excitement-container">
+    <span class="text-gold font-bold">Excitação: <span id="excitement-level">25</span>%</span>
+    <div class="w-64 h-2 bg-zinc-800 rounded-full mt-1 overflow-hidden">
       <div id="excitement-bar" class="h-full bg-gradient-to-r from-red-500 to-red-700 transition-all duration-500 ease-out" style="width: 25%"></div>
     </div>
   </div>
@@ -154,12 +97,10 @@
     <h2 class="text-3xl gold mb-4">Parabéns!</h2>
     <p class="text-xl mb-6">Você atingiu o nível <span id="current-level">1</span>!</p>
     <p id="reward-message" class="text-lg text-gray-300 mb-10"></p>
-    <button id="close-popup-btn" class="mt-6 bg-red-600 hover:bg-red-700 text-white px-10 py-4 rounded-full text-xl font-bold transition">
-      Continuar Jogando
-    </button>
+    <button id="close-popup-btn" class="mt-6 bg-red-600 hover:bg-red-700 text-white px-10 py-4 rounded-full text-xl font-bold transition">Continuar Jogando</button>
   </div>
 
-  <!-- HERO COM BANNER (só imagem) -->
+  <!-- HERO BANNER -->
   <section class="hero-section relative flex items-center justify-center overflow-hidden">
     <img src="images/banner-hero.png" alt="Banner GEEMU GAMES" class="hero-banner absolute inset-0">
   </section>
@@ -297,6 +238,12 @@
   </footer>
 
   <script>
+    // Toggle menu hamburger
+    function toggleMenu() {
+      document.getElementById("menu-dropdown").classList.toggle("show");
+    }
+
+    // Barra de excitação + pop-up (igual ao anterior)
     let level = parseInt(localStorage.getItem("playerLevel")) || 1;
     let excitement = parseInt(localStorage.getItem("excitement")) || 0;
 
@@ -337,11 +284,6 @@
     });
 
     document.addEventListener("click", () => updateExcitement(15));
-
-    // Simulação de login (para teste)
-    function showLoggedIn() {
-      document.getElementById("auth-buttons").innerHTML = document.getElementById("logged-in").outerHTML;
-    }
   </script>
 
 </body>
