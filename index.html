@@ -32,17 +32,20 @@
     }
     .menu-dropdown.show { display: block; }
     .hamburger { cursor: pointer; }
+    .logo-container { position: absolute; left: 50%; transform: translateX(-50%); z-index: 10; }
     @media (max-width: 768px) {
-      .hero-section { height: 55vh; margin-top: 6rem; }
+      .hero-section { height: 55vh; margin-top: 6.5rem; } /* banner desce um pouco */
       .hero-banner { height: 55vh; object-position: 50% 50% !important; }
-      .py-20 { padding-top: 0.5rem !important; padding-bottom: 0.5rem !important; }
+      .py-20 { padding-top: 0.5rem !important; padding-bottom: 0.5rem !important; } /* subiu mais perto do banner */
       h2 { font-size: 1.8rem; }
-      .logo-size { height: 5rem !important; } /* maior no celular */
-      .excitement-container { top: 5.5rem !important; } /* barra desceu */
+      .logo-size { height: 5.5rem !important; } /* logo maior no celular */
+      .excitement-container { top: 6rem !important; } /* barra desceu */
+      .menu-desktop { display: none !important; } /* esconde menu desktop no celular */
     }
     @media (min-width: 769px) {
-      .logo-size { height: 7rem !important; } /* maior no desktop */
-      .excitement-container { top: 7rem !important; } /* barra desceu */
+      .logo-size { height: 7.5rem !important; } /* logo maior no desktop */
+      .excitement-container { top: 8rem !important; } /* barra desceu */
+      .logo-container { left: 50%; transform: translateX(-50%); }
     }
   </style>
 </head>
@@ -53,7 +56,7 @@
     <div class="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between relative">
       
       <!-- Logo centralizado -->
-      <div class="absolute left-1/2 transform -translate-x-1/2">
+      <div class="logo-container">
         <img src="images/logo.png" alt="GEEMU GAMES" class="logo-size transition-all">
       </div>
 
@@ -65,7 +68,7 @@
       </div>
 
       <!-- Menu desktop -->
-      <nav class="hidden md:flex items-center gap-8 text-lg">
+      <nav class="menu-desktop hidden md:flex items-center gap-8 text-lg">
         <a href="#" class="hover:text-gold transition">Início</a>
         <a href="#" class="hover:text-gold transition">Universos</a>
         <a href="https://patreon.com/geemugames" class="hover:text-gold transition">Patreon</a>
@@ -110,9 +113,9 @@
   </section>
 
   <!-- NOSSOS UNIVERSOS (subiu mais perto do banner) -->
-  <section class="py-4 md:py-8 bg-black">
+  <section class="py-2 md:py-8 bg-black">
     <div class="max-w-7xl mx-auto px-4 md:px-6">
-      <h2 class="text-2xl md:text-4xl font-bold text-center gold mb-4 md:mb-6">NOSSOS UNIVERSOS, explore sem limites!</h2>
+      <h2 class="text-2xl md:text-4xl font-bold text-center gold mb-2 md:mb-6">NOSSOS UNIVERSOS, explore sem limites!</h2>
       
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
         <!-- Universo 1 -->
