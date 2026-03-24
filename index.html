@@ -26,15 +26,15 @@
         </div>
       </div>
 
-      <div class="flex items-center gap-8">
-        <nav class="hidden md:flex gap-8 text-lg">
-          <a href="#" class="hover:text-gold transition">Início</a>
-          <a href="#" onclick="showRelacionamentos()" class="hover:text-gold transition">Meus Relacionamentos</a>
-          <a href="https://patreon.com/geemugames" target="_blank" class="hover:text-gold transition">Patreon</a>
-        </nav>
+      <!-- Menu Desktop -->
+      <nav class="hidden md:flex gap-8 text-lg">
+        <a href="#" class="hover:text-gold transition">Início</a>
+        <a href="#" onclick="showRelacionamentos()" class="hover:text-gold transition">Meus Relacionamentos</a>
+        <a href="https://patreon.com/geemugames" target="_blank" class="hover:text-gold transition">Patreon</a>
+      </nav>
 
-        <div onclick="toggleMenu()" class="md:hidden text-3xl cursor-pointer">☰</div>
-      </div>
+      <!-- Hamburger Menu (Mobile) -->
+      <div onclick="toggleMenu()" class="md:hidden text-3xl cursor-pointer">☰</div>
     </div>
   </header>
 
@@ -164,9 +164,14 @@
       document.getElementById("excitement-percent").textContent = excitement + "%";
     }
 
-    // ==================== MENU ====================
+    // ==================== MENU HAMBURGER ====================
     function toggleMenu() {
-      alert("Menu mobile em desenvolvimento - Em breve!");
+      const menu = document.getElementById("mobile-menu");
+      if (menu) {
+        menu.classList.toggle("hidden");
+      } else {
+        alert("Menu mobile em desenvolvimento - Em breve!");
+      }
     }
 
     function showRelacionamentos() {
