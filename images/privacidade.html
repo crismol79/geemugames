@@ -74,6 +74,21 @@
     </div>
   </div>
 
+  <!-- RODAPÉ LIMPO -->
+  <footer class="bg-black py-8 border-t border-gold/20">
+    <div class="max-w-7xl mx-auto px-6 text-center text-sm text-zinc-400">
+      <p>GEEMU GAMES – Aqui você gemi de prazer</p>
+      <p class="mt-1">Contato: contato@geemugames.com</p>
+      <p class="mt-4">© 2026 GEEMU GAMES. Todos os direitos reservados.</p>
+      
+      <div class="mt-6 flex justify-center gap-6 text-xs">
+        <a href="privacidade.html" class="hover:text-gold">Política de Privacidade</a>
+        <a href="#" class="hover:text-gold">Termos de Uso</a>
+        <a href="#" class="hover:text-gold">Aviso Legal</a>
+      </div>
+    </div>
+  </footer>
+
   <script>
     // ==================== DADOS DOS 12 UNIVERSOS ====================
     const universos = [
@@ -114,7 +129,7 @@
       });
     }
 
-    // ==================== RELACIONAMENTOS (Afinidade) ====================
+    // ==================== RELACIONAMENTOS ====================
     let relacionamentos = {
       "Ana": { nome: "Ana", afinidade: 68 },
       "Cristiana": { nome: "Rainha Cristiana", afinidade: 45 },
@@ -164,7 +179,6 @@
       renderUniversos();
       renderRelacionamentos();
 
-      // Clique em qualquer lugar aumenta excitação
       document.addEventListener("click", () => {
         updateExcitement();
       });
