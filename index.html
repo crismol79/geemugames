@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Geemu Games – Plataforma de Relacionamento Interativo</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <style>
     body { font-family: system-ui, sans-serif; }
     .gold { color: #d4af37; }
@@ -17,7 +16,7 @@
 <body class="bg-zinc-950 text-white min-h-screen">
 
   <!-- HEADER -->
-  <header class="fixed top-0 w-full bg-black/95 backdrop-blur-md z-50 border-b border-gold/30">
+  <header class="fixed top-0 w-full bg-black/95 z-50 border-b border-gold/30">
     <div class="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between">
       <div class="flex items-center gap-3">
         <img src="images/logo.png" alt="Geemu Games" class="h-12 md:h-16">
@@ -74,19 +73,18 @@
     </div>
   </div>
 
-  <!-- RODAPÉ LIMPO (sem repetição) -->
-  <footer class="bg-black py-8 border-t border-gold/20 mt-auto">
+  <!-- RODAPÉ LIMPO -->
+  <footer class="bg-black py-8 border-t border-gold/20">
     <div class="max-w-7xl mx-auto px-6 text-center text-sm text-zinc-400">
-      <p class="font-medium">GEEMU GAMES – Aqui você gemi de prazer</p>
+      <p>GEEMU GAMES – Aqui você gemi de prazer</p>
       <p class="mt-1">Contato: contato@geemugames.com</p>
+      <p class="mt-6">© 2026 GEEMU GAMES. Todos os direitos reservados.</p>
       
       <div class="mt-6 flex justify-center gap-6 text-xs">
-        <a href="privacidade.html" class="hover:text-gold transition">Política de Privacidade</a>
-        <a href="#" class="hover:text-gold transition">Termos de Uso</a>
-        <a href="#" class="hover:text-gold transition">Aviso Legal</a>
+        <a href="privacidade.html" class="hover:text-gold">Política de Privacidade</a>
+        <a href="#" class="hover:text-gold">Termos de Uso</a>
+        <a href="#" class="hover:text-gold">Aviso Legal</a>
       </div>
-
-      <p class="mt-8 text-xs">© 2026 GEEMU GAMES. Todos os direitos reservados.</p>
     </div>
   </footer>
 
@@ -103,7 +101,7 @@
       { id: 8, nome: "Doramas Proibidos", desc: "Romance asiático intenso", cor: "from-red-500 to-rose-600" },
       { id: 9, nome: "Corte do Prazer", desc: "Monarquia, bailes e luxo", cor: "from-amber-400 to-yellow-600" },
       { id: 10, nome: "Império das Sombras", desc: "Máfia, poder e perigo", cor: "from-slate-700 to-zinc-900" },
-      { id: 11, nome: "Viagem Proibida – Escapismo em Movimento", desc: "Mallorca, Tokyo, Paris e muito mais", cor: "from-sky-500 to-indigo-600" },
+      { id: 11, nome: "Viagem Proibida", desc: "Tokyo, Paris, Mallorca, Havana e muito mais", cor: "from-sky-500 to-indigo-600" },
       { id: 12, nome: "Sonhos Molhados", desc: "Fantasia surreal e sonhos intensos", cor: "from-purple-600 to-indigo-700" }
     ];
 
