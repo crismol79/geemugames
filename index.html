@@ -21,7 +21,7 @@
     .universe-card {
       transition: all 0.4s ease;
       background: #18181b;
-      border-radius: 24px; /* cantos bem arredondados */
+      border-radius: 24px; /* cantos arredondados */
     }
     .universe-card:hover {
       transform: translateY(-10px);
@@ -41,14 +41,14 @@
   <header class="header fixed top-0 left-0 right-0 z-50 border-b border-gold/30 py-5">
     <div class="max-w-7xl mx-auto px-6 flex items-center relative">
 
-      <!-- Hamburger -->
+      <!-- Hamburger visível em todos os dispositivos -->
       <button onclick="toggleMenu()" class="text-4xl text-gold hover:text-amber-400 transition-all">
         <i class="fas fa-bars"></i>
       </button>
 
       <!-- Logo maior e centralizado -->
       <div class="logo-center flex items-center gap-4">
-        <img src="images/logo.png" alt="Geemu Games" class="h-20 md:h-24"> <!-- LOGO MAIOR -->
+        <img src="images/logo.png" alt="Geemu Games" class="h-20 md:h-24"> <!-- Logo maior -->
         <div class="hidden sm:block">
           <h1 class="text-3xl font-bold gold">Geemu Games</h1>
           <p class="text-xs text-zinc-400 -mt-1">Plataforma de Relacionamento Interativo</p>
@@ -79,12 +79,11 @@
     </div>
   </div>
 
-  <!-- ESPAÇO PARA BANNER (logo abaixo da barra de excitação) -->
+  <!-- ESPAÇO PARA BANNER (logo abaixo da barra) -->
   <div class="pt-36 pb-8">
     <div class="max-w-7xl mx-auto px-6">
-      <!-- Aqui você pode colocar sua imagem de banner -->
-      <img src="images/banner.jpg" alt="Banner Geemu Games" 
-           class="w-full rounded-3xl shadow-2xl object-cover h-64 md:h-80">
+      <img src="images/banner.png" alt="Banner Geemu Games" 
+           class="w-full rounded-3xl shadow-2xl object-cover h-64 md:h-96">
     </div>
   </div>
 
