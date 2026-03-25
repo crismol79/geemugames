@@ -12,31 +12,43 @@
       background-color: #0a0a0a; 
     }
     .gold { color: #d4af37; }
-    .header { background: #000000; }
 
-    /* Barra vermelha delicada e arredondada */
-    .excitement-bar-container {
-      background: #27272a;
-      height: 8px;
-      border-radius: 9999px;
-      overflow: hidden;
+    /* Barra de excitação vermelha com chama */
+    .excitement-container {
+      background: #1f1f23;
+      padding: 12px 0;
     }
     .excitement-bar {
-      height: 100%;
-      background: #e11d48; /* Vermelho forte */
+      height: 9px;
+      background: linear-gradient(to right, #ff3333, #ff6600, #ffaa00);
       border-radius: 9999px;
-      transition: width 0.7s ease-out;
-      box-shadow: 0 0 10px rgba(225, 29, 72, 0.7);
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 0 12px rgba(255, 80, 0, 0.7);
+    }
+    .excitement-bar::after {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: 0;
+      width: 30%;
+      height: 200%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.6), transparent);
+      animation: flame 1.5s infinite linear;
+    }
+    @keyframes flame {
+      0% { transform: translateX(-100%); }
+      100% { transform: translateX(400%); }
     }
 
     .universe-card {
       transition: all 0.4s ease;
       background: #18181b;
-      border-radius: 28px; /* Cantos bem arredondados */
+      border-radius: 28px; /* cantos bem arredondados */
     }
     .universe-card:hover {
       transform: translateY(-10px);
-      box-shadow: 0 20px 25px rgba(212, 175, 55, 0.25);
+      box-shadow: 0 20px 30px rgba(212, 175, 55, 0.25);
     }
     .logo-center {
       position: absolute;
@@ -49,7 +61,7 @@
 <body class="text-white min-h-screen">
 
   <!-- HEADER -->
-  <header class="header fixed top-0 left-0 right-0 z-50 border-b border-gold/30 py-5">
+  <header class="fixed top-0 left-0 right-0 z-50 bg-black border-b border-gold/30 py-5">
     <div class="max-w-7xl mx-auto px-6 flex items-center relative">
 
       <!-- Hamburger -->
@@ -79,18 +91,22 @@
     </div>
   </header>
 
-  <!-- BARRA DE EXCITAÇÃO VERMELHA -->
-  <div class="fixed top-24 left-0 right-0 bg-zinc-900 border-b border-gold/30 z-40">
-    <div class="max-w-7xl mx-auto px-6 py-4 flex items-center gap-4">
-      <span class="text-gold font-medium text-sm">Excitação</span>
-      <div class="flex-1 excitement-bar-container">
-        <div id="excitement-bar" class="excitement-bar w-[25%]"></div>
+  <!-- BARRA DE EXCITAÇÃO VERMELHA COM CHAMA -->
+  <div class="excitement-container fixed top-24 left-0 right-0 z-40">
+    <div class="max-w-7xl mx-auto px-8">
+      <div class="flex items-center gap-4">
+        <span class="text-gold font-medium text-sm flex items-center gap-2">
+          <i class="fas fa-fire"></i> Excitação
+        </span>
+        <div class="flex-1 excitement-bar">
+          <div id="excitement-bar" class="excitement-bar w-[25%]"></div>
+        </div>
+        <span id="excitement-percent" class="font-bold text-lg text-gold min-w-[50px]">25%</span>
       </div>
-      <span id="excitement-percent" class="font-bold text-lg text-gold">25%</span>
     </div>
   </div>
 
-  <!-- BANNER (entre logo e cards) -->
+  <!-- BANNER -->
   <div class="pt-36 pb-8">
     <div class="max-w-7xl mx-auto px-6">
       <img src="images/banner.png" alt="Banner Geemu Games" 
