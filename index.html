@@ -33,19 +33,19 @@
         <a href="https://patreon.com/geemugames" target="_blank" class="hover:text-gold transition">Patreon</a>
       </nav>
 
-      <!-- Hamburger (Mobile) -->
+      <!-- Hamburger Menu (Mobile) -->
       <div onclick="toggleMenu()" class="md:hidden text-3xl cursor-pointer">☰</div>
     </div>
   </header>
 
-  <!-- BARRA DE EXCITAÇÃO -->
+  <!-- BARRA DE EXCITAÇÃO (como era antes) -->
   <div class="fixed top-20 md:top-24 w-full bg-zinc-900 border-b border-gold/30 z-40">
-    <div class="max-w-7xl mx-auto px-6 py-3 flex items-center gap-4">
+    <div class="max-w-7xl mx-auto px-6 py-3 flex items-center justify-between">
       <span class="text-gold font-medium">Excitação</span>
-      <div class="flex-1 h-2.5 bg-zinc-800 rounded-full overflow-hidden">
-        <div id="excitement-bar" class="excitement-bar h-full bg-gradient-to-r from-pink-500 via-red-500 to-rose-600 w-[25%]"></div>
+      <div class="flex-1 mx-4 h-3 bg-zinc-800 rounded-full overflow-hidden">
+        <div id="excitement-bar" class="excitement-bar h-full bg-gradient-to-r from-pink-500 to-red-600 w-[25%]"></div>
       </div>
-      <span id="excitement-percent" class="font-bold text-lg text-gold">25%</span>
+      <span id="excitement-percent" class="font-bold text-lg">25%</span>
     </div>
   </div>
 
@@ -155,7 +155,7 @@
       });
     }
 
-    // ==================== EXCITAÇÃO ====================
+    // ==================== EXCITAÇÃO (como era antes) ====================
     let excitement = 25;
 
     function updateExcitement() {
