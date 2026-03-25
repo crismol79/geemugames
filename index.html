@@ -33,7 +33,7 @@
         <a href="https://patreon.com/geemugames" target="_blank" class="hover:text-gold transition">Patreon</a>
       </nav>
 
-      <!-- Hamburger Menu (Mobile) -->
+      <!-- Hamburger (Mobile) -->
       <div onclick="toggleMenu()" class="md:hidden text-3xl cursor-pointer">☰</div>
     </div>
   </header>
@@ -101,7 +101,7 @@
       { id: 8, nome: "Doramas Proibidos", desc: "Romance asiático intenso", cor: "from-red-500 to-rose-600" },
       { id: 9, nome: "Corte do Prazer", desc: "Monarquia, bailes e luxo", cor: "from-amber-400 to-yellow-600" },
       { id: 10, nome: "Império das Sombras", desc: "Máfia, poder e perigo", cor: "from-slate-700 to-zinc-900" },
-      { id: 11, nome: "Viagem Proibida", desc: "Tokyo, Paris, Mallorca, Havana e muito mais", cor: "from-sky-500 to-indigo-600" },
+      { id: 11, nome: "Viagem Proibida", desc: "Mile high club, risco em trânsito", cor: "from-sky-500 to-indigo-600" },
       { id: 12, nome: "Sonhos Molhados", desc: "Fantasia surreal e sonhos intensos", cor: "from-purple-600 to-indigo-700" }
     ];
 
@@ -164,14 +164,9 @@
       document.getElementById("excitement-percent").textContent = excitement + "%";
     }
 
-    // ==================== MENU HAMBURGER ====================
+    // ==================== MENU ====================
     function toggleMenu() {
-      const menu = document.getElementById("mobile-menu");
-      if (menu) {
-        menu.classList.toggle("hidden");
-      } else {
-        alert("Menu mobile em desenvolvimento - Em breve!");
-      }
+      alert("Menu mobile em desenvolvimento - Em breve!");
     }
 
     function showRelacionamentos() {
