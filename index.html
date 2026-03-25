@@ -13,8 +13,8 @@
     }
     .gold { color: #d4af37; }
     .header { background: #000000; }
-    
-    /* Barra de excitação no modelo antigo - vermelha e delicada */
+
+    /* Barra vermelha delicada e arredondada */
     .excitement-bar-container {
       background: #27272a;
       height: 8px;
@@ -23,20 +23,20 @@
     }
     .excitement-bar {
       height: 100%;
-      background: linear-gradient(to right, #ef4444, #f97316); /* vermelho para laranja-vermelho */
+      background: #e11d48; /* Vermelho forte */
       border-radius: 9999px;
       transition: width 0.7s ease-out;
-      box-shadow: 0 0 8px rgba(239, 68, 68, 0.6);
+      box-shadow: 0 0 10px rgba(225, 29, 72, 0.7);
     }
-    
+
     .universe-card {
       transition: all 0.4s ease;
       background: #18181b;
-      border-radius: 24px;
+      border-radius: 28px; /* Cantos bem arredondados */
     }
     .universe-card:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 20px 25px rgba(212, 175, 55, 0.2);
+      transform: translateY(-10px);
+      box-shadow: 0 20px 25px rgba(212, 175, 55, 0.25);
     }
     .logo-center {
       position: absolute;
@@ -52,7 +52,7 @@
   <header class="header fixed top-0 left-0 right-0 z-50 border-b border-gold/30 py-5">
     <div class="max-w-7xl mx-auto px-6 flex items-center relative">
 
-      <!-- Hamburger visível em todos os dispositivos -->
+      <!-- Hamburger -->
       <button onclick="toggleMenu()" class="text-4xl text-gold hover:text-amber-400 transition-all">
         <i class="fas fa-bars"></i>
       </button>
@@ -79,7 +79,7 @@
     </div>
   </header>
 
-  <!-- BARRA DE EXCITAÇÃO - Modelo antigo, vermelha e delicada -->
+  <!-- BARRA DE EXCITAÇÃO VERMELHA -->
   <div class="fixed top-24 left-0 right-0 bg-zinc-900 border-b border-gold/30 z-40">
     <div class="max-w-7xl mx-auto px-6 py-4 flex items-center gap-4">
       <span class="text-gold font-medium text-sm">Excitação</span>
@@ -90,7 +90,7 @@
     </div>
   </div>
 
-  <!-- ESPAÇO PARA BANNER -->
+  <!-- BANNER (entre logo e cards) -->
   <div class="pt-36 pb-8">
     <div class="max-w-7xl mx-auto px-6">
       <img src="images/banner.png" alt="Banner Geemu Games" 
@@ -106,12 +106,6 @@
         “Existe um desejo adormecido dentro de você…<br>
         e um universo pronto para despertá-lo.”
       </p>
-    </div>
-
-    <!-- RELACIONAMENTOS -->
-    <div id="relacionamentos-section" class="hidden mb-20">
-      <h2 class="text-3xl font-bold gold mb-8">Meus Relacionamentos</h2>
-      <div id="affinity-list" class="grid grid-cols-1 md:grid-cols-3 gap-6"></div>
     </div>
 
     <!-- UNIVERSOS -->
