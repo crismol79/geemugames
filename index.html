@@ -13,19 +13,30 @@
     }
     .gold { color: #d4af37; }
     .header { background: #000000; }
-    .excitement-bar { 
-      height: 10px; 
-      background: linear-gradient(to right, #ff1493, #ff69b4, #ff4500); 
-      transition: width 0.6s ease-out; 
+    
+    /* Barra de excitação delicada e arredondada como antes */
+    .excitement-bar-container {
+      background: #27272a;
+      height: 8px;
+      border-radius: 9999px;
+      overflow: hidden;
     }
+    .excitement-bar {
+      height: 100%;
+      background: linear-gradient(to right, #ff69b4, #ff1493);
+      border-radius: 9999px;
+      transition: width 0.7s ease-out;
+      box-shadow: 0 0 8px rgba(255, 105, 180, 0.6);
+    }
+    
     .universe-card {
       transition: all 0.4s ease;
       background: #18181b;
-      border-radius: 24px; /* cantos arredondados */
+      border-radius: 24px;
     }
     .universe-card:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 20px 25px rgba(212, 175, 55, 0.25);
+      transform: translateY(-8px);
+      box-shadow: 0 20px 25px rgba(212, 175, 55, 0.2);
     }
     .logo-center {
       position: absolute;
@@ -41,14 +52,14 @@
   <header class="header fixed top-0 left-0 right-0 z-50 border-b border-gold/30 py-5">
     <div class="max-w-7xl mx-auto px-6 flex items-center relative">
 
-      <!-- Hamburger visível em todos os dispositivos -->
+      <!-- Hamburger -->
       <button onclick="toggleMenu()" class="text-4xl text-gold hover:text-amber-400 transition-all">
         <i class="fas fa-bars"></i>
       </button>
 
-      <!-- Logo maior e centralizado -->
+      <!-- Logo maior centralizado -->
       <div class="logo-center flex items-center gap-4">
-        <img src="images/logo.png" alt="Geemu Games" class="h-20 md:h-24"> <!-- Logo maior -->
+        <img src="images/logo.png" alt="Geemu Games" class="h-20 md:h-24">
         <div class="hidden sm:block">
           <h1 class="text-3xl font-bold gold">Geemu Games</h1>
           <p class="text-xs text-zinc-400 -mt-1">Plataforma de Relacionamento Interativo</p>
@@ -68,18 +79,18 @@
     </div>
   </header>
 
-  <!-- BARRA DE EXCITAÇÃO -->
+  <!-- BARRA DE EXCITAÇÃO DELICADA -->
   <div class="fixed top-24 left-0 right-0 bg-zinc-900 border-b border-gold/30 z-40">
     <div class="max-w-7xl mx-auto px-6 py-4 flex items-center gap-4">
-      <span class="text-gold font-medium">Excitação</span>
-      <div class="flex-1 h-3 bg-zinc-800 rounded-full overflow-hidden">
+      <span class="text-gold font-medium text-sm">Excitação</span>
+      <div class="flex-1 excitement-bar-container">
         <div id="excitement-bar" class="excitement-bar w-[25%]"></div>
       </div>
-      <span id="excitement-percent" class="font-bold text-xl text-gold">25%</span>
+      <span id="excitement-percent" class="font-bold text-lg text-gold">25%</span>
     </div>
   </div>
 
-  <!-- ESPAÇO PARA BANNER (logo abaixo da barra) -->
+  <!-- ESPAÇO PARA BANNER -->
   <div class="pt-36 pb-8">
     <div class="max-w-7xl mx-auto px-6">
       <img src="images/banner.png" alt="Banner Geemu Games" 
@@ -119,7 +130,6 @@
   </footer>
 
   <script>
-    // Dados dos universos
     const universos = [
       { nome: "Escolha Seu Prazer", desc: "Realismo brasileiro, traição e risco", cor: "from-rose-500 to-pink-600" },
       { nome: "Crônicas do Desejo", desc: "Fantasia imersiva e VR", cor: "from-purple-500 to-violet-600" },
@@ -154,30 +164,6 @@
       });
     }
 
-    function renderRelacionamentos() {
-      const container = document.getElementById("affinity-list");
-      container.innerHTML = "";
-      const chars = [
-        {nome: "Ana", afinidade: 68},
-        {nome: "Rainha Cristiana", afinidade: 45},
-        {nome: "Évora", afinidade: 82}
-      ];
-      chars.forEach(char => {
-        const div = document.createElement("div");
-        div.className = "bg-zinc-900 p-6 rounded-3xl border border-gold/30";
-        div.innerHTML = `
-          <div class="flex justify-between mb-4">
-            <span class="font-semibold">${char.nome}</span>
-            <span class="text-gold">${char.afinidade}% ❤️</span>
-          </div>
-          <div class="h-2 bg-zinc-800 rounded-full overflow-hidden">
-            <div class="h-full bg-gradient-to-r from-pink-500 to-rose-600" style="width: ${char.afinidade}%"></div>
-          </div>
-        `;
-        container.appendChild(div);
-      });
-    }
-
     let excitement = 25;
     function updateExcitement() {
       excitement = Math.min(100, excitement + 8);
@@ -190,12 +176,11 @@
     }
 
     function showRelacionamentos() {
-      document.getElementById("relacionamentos-section").classList.toggle("hidden");
+      alert("Meus Relacionamentos - Em breve!");
     }
 
     window.onload = () => {
       renderUniversos();
-      renderRelacionamentos();
       document.addEventListener("click", updateExcitement);
     };
   </script>
