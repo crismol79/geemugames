@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Geemu Games – Plataforma de Relacionamento Interativo</title>
+  <title>Geemu Games</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <style>
@@ -13,11 +13,7 @@
     }
     .gold { color: #d4af37; }
 
-    /* Barra de excitação vermelha delicada com chama */
-    .excitement-container {
-      background: #1f1f23;
-      padding: 12px 0;
-    }
+    /* Barra de excitação vermelha delicada */
     .excitement-bar {
       height: 9px;
       background: linear-gradient(to right, #ff3333, #ff6600);
@@ -64,19 +60,17 @@
   <header class="fixed top-0 left-0 right-0 z-50 bg-black border-b border-gold/30 py-5">
     <div class="max-w-7xl mx-auto px-6 flex items-center relative">
 
+      <!-- Hamburger -->
       <button onclick="toggleMenu()" class="text-4xl text-gold hover:text-amber-400 transition-all">
         <i class="fas fa-bars"></i>
       </button>
 
-      <!-- Logo maior centralizado -->
-      <div class="logo-center flex items-center gap-4">
-        <img src="images/logo.png" alt="Geemu Games" class="h-20 md:h-24">
-        <div class="hidden sm:block">
-          <h1 class="text-3xl font-bold gold">Geemu Games</h1>
-          <p class="text-xs text-zinc-400 -mt-1">Plataforma de Relacionamento Interativo</p>
-        </div>
+      <!-- Logo maior e centralizado -->
+      <div class="logo-center">
+        <img src="images/logo.png" alt="Geemu Games" class="h-24 md:h-28">
       </div>
 
+      <!-- Menu direito -->
       <nav class="ml-auto flex items-center gap-8 text-lg">
         <a href="#" onclick="showRelacionamentos()" class="hover:text-gold transition hidden md:flex items-center gap-2">
           <i class="fas fa-heart"></i> Meus Relacionamentos
@@ -90,7 +84,7 @@
   </header>
 
   <!-- BARRA DE EXCITAÇÃO -->
-  <div class="excitement-container fixed top-24 left-0 right-0 z-40">
+  <div class="fixed top-24 left-0 right-0 bg-zinc-900 border-b border-gold/30 z-40">
     <div class="max-w-7xl mx-auto px-8">
       <div class="flex items-center gap-4">
         <span class="text-gold font-medium text-sm flex items-center gap-2">
@@ -128,19 +122,19 @@
 
   </main>
 
-  <!-- FOOTER COM POLÍTICA, TERMOS E AVISO LEGAL -->
+  <!-- RODAPÉ EXATAMENTE COMO VOCÊ PEDIU -->
   <footer class="bg-black py-12 border-t border-gold/20">
-    <div class="max-w-7xl mx-auto px-6 text-center text-sm text-zinc-400">
-      <p class="text-lg gold mb-4">GEEMU GAMES – Aqui você gemi de prazer</p>
+    <div class="max-w-7xl mx-auto px-6 text-center">
+      <p class="text-xl gold mb-2">GEEMU GAMES – Aqui você gemi de prazer</p>
       
-      <div class="flex flex-wrap justify-center gap-x-8 gap-y-3 mb-8">
+      <div class="flex flex-wrap justify-center gap-x-8 gap-y-3 my-6 text-sm">
         <a href="privacidade.html" class="hover:text-gold transition">Política de Privacidade</a>
         <a href="#" class="hover:text-gold transition">Termos de Uso</a>
         <a href="#" class="hover:text-gold transition">Aviso Legal</a>
       </div>
 
-      <p>contato@geemugames.com</p>
-      <p class="mt-6 text-xs">© 2026 GEEMU GAMES. Todos os direitos reservados.</p>
+      <p class="text-zinc-400">Fale conosco: contato@geemugames.com</p>
+      <p class="mt-8 text-xs text-zinc-500">© 2026 GEEMU GAMES. Todos os direitos reservados.</p>
     </div>
   </footer>
 
