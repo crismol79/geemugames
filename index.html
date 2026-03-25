@@ -13,44 +13,35 @@
     }
     .gold { color: #d4af37; }
 
-    /* Barra de excitação vermelha delicada */
+    /* Barra de excitação - layout antigo, mais para baixo */
+    .excitement-container {
+      background: #1a1a1e;
+      margin-top: 20px;
+      padding: 14px 0;
+      border-top: 1px solid #d4af37;
+      border-bottom: 1px solid #d4af37;
+    }
     .excitement-bar {
-      height: 9px;
-      background: linear-gradient(to right, #ff3333, #ff6600);
+      height: 10px;
+      background: linear-gradient(to right, #ff3333, #ff6600, #ffaa00);
       border-radius: 9999px;
       position: relative;
       overflow: hidden;
-      box-shadow: 0 0 10px rgba(255, 80, 0, 0.6);
+      box-shadow: 0 0 12px rgba(255, 100, 0, 0.8);
     }
     .excitement-bar::after {
       content: '';
       position: absolute;
-      top: -50%;
-      right: -30%;
-      width: 40%;
-      height: 200%;
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.7), transparent);
-      animation: flame 2s infinite linear;
+      top: -40%;
+      right: -40%;
+      width: 50%;
+      height: 180%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.75), transparent);
+      animation: flame 1.8s infinite linear;
     }
     @keyframes flame {
-      0% { transform: translateX(-100%); }
-      100% { transform: translateX(300%); }
-    }
-
-    .universe-card {
-      transition: all 0.4s ease;
-      background: #18181b;
-      border-radius: 28px;
-    }
-    .universe-card:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 20px 30px rgba(212, 175, 55, 0.25);
-    }
-    .logo-center {
-      position: absolute;
-      left: 50%;
-      top: 50%;
-      transform: translate(-50%, -50%);
+      0% { transform: translateX(-120%); }
+      100% { transform: translateX(350%); }
     }
   </style>
 </head>
@@ -60,17 +51,15 @@
   <header class="fixed top-0 left-0 right-0 z-50 bg-black border-b border-gold/30 py-5">
     <div class="max-w-7xl mx-auto px-6 flex items-center relative">
 
-      <!-- Hamburger -->
-      <button onclick="toggleMenu()" class="text-4xl text-gold hover:text-amber-400 transition-all">
+      <button onclick="toggleMenu()" class="text-4xl text-gold hover:text-amber-400">
         <i class="fas fa-bars"></i>
       </button>
 
-      <!-- Logo maior e centralizado -->
-      <div class="logo-center">
-        <img src="images/logo.png" alt="Geemu Games" class="h-24 md:h-28">
+      <!-- Logo maior centralizado -->
+      <div class="logo-center flex items-center gap-4">
+        <img src="images/logo.png" alt="Geemu Games" class="h-20 md:h-24">
       </div>
 
-      <!-- Menu direito -->
       <nav class="ml-auto flex items-center gap-8 text-lg">
         <a href="#" onclick="showRelacionamentos()" class="hover:text-gold transition hidden md:flex items-center gap-2">
           <i class="fas fa-heart"></i> Meus Relacionamentos
@@ -83,8 +72,8 @@
     </div>
   </header>
 
-  <!-- BARRA DE EXCITAÇÃO -->
-  <div class="fixed top-24 left-0 right-0 bg-zinc-900 border-b border-gold/30 z-40">
+  <!-- BARRA DE EXCITAÇÃO (mais para baixo, como no layout antigo) -->
+  <div class="excitement-container fixed top-28 left-0 right-0 z-40">
     <div class="max-w-7xl mx-auto px-8">
       <div class="flex items-center gap-4">
         <span class="text-gold font-medium text-sm flex items-center gap-2">
@@ -99,7 +88,7 @@
   </div>
 
   <!-- BANNER -->
-  <div class="pt-36 pb-8">
+  <div class="pt-44 pb-8">
     <div class="max-w-7xl mx-auto px-6">
       <img src="images/banner.png" alt="Banner Geemu Games" 
            class="w-full rounded-3xl shadow-2xl object-cover h-64 md:h-96">
@@ -122,7 +111,7 @@
 
   </main>
 
-  <!-- RODAPÉ EXATAMENTE COMO VOCÊ PEDIU -->
+  <!-- RODAPÉ -->
   <footer class="bg-black py-12 border-t border-gold/20">
     <div class="max-w-7xl mx-auto px-6 text-center">
       <p class="text-xl gold mb-2">GEEMU GAMES – Aqui você gemi de prazer</p>
@@ -175,7 +164,7 @@
 
     let excitement = 25;
     function updateExcitement() {
-      excitement = Math.min(100, excitement + 8);
+      excitement = Math.min(100, excitement + 9);
       document.getElementById("excitement-bar").style.width = excitement + "%";
       document.getElementById("excitement-percent").textContent = excitement + "%";
     }
