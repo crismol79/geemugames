@@ -13,38 +13,38 @@
     }
     .gold { color: #d4af37; }
 
-    /* Barra de excitação vermelha com chama */
+    /* Barra de excitação vermelha delicada com chama */
     .excitement-container {
       background: #1f1f23;
       padding: 12px 0;
     }
     .excitement-bar {
       height: 9px;
-      background: linear-gradient(to right, #ff3333, #ff6600, #ffaa00);
+      background: linear-gradient(to right, #ff3333, #ff6600);
       border-radius: 9999px;
       position: relative;
       overflow: hidden;
-      box-shadow: 0 0 12px rgba(255, 80, 0, 0.7);
+      box-shadow: 0 0 10px rgba(255, 80, 0, 0.6);
     }
     .excitement-bar::after {
       content: '';
       position: absolute;
       top: -50%;
-      right: 0;
-      width: 30%;
+      right: -30%;
+      width: 40%;
       height: 200%;
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.6), transparent);
-      animation: flame 1.5s infinite linear;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.7), transparent);
+      animation: flame 2s infinite linear;
     }
     @keyframes flame {
       0% { transform: translateX(-100%); }
-      100% { transform: translateX(400%); }
+      100% { transform: translateX(300%); }
     }
 
     .universe-card {
       transition: all 0.4s ease;
       background: #18181b;
-      border-radius: 28px; /* cantos bem arredondados */
+      border-radius: 28px;
     }
     .universe-card:hover {
       transform: translateY(-10px);
@@ -64,7 +64,6 @@
   <header class="fixed top-0 left-0 right-0 z-50 bg-black border-b border-gold/30 py-5">
     <div class="max-w-7xl mx-auto px-6 flex items-center relative">
 
-      <!-- Hamburger -->
       <button onclick="toggleMenu()" class="text-4xl text-gold hover:text-amber-400 transition-all">
         <i class="fas fa-bars"></i>
       </button>
@@ -78,7 +77,6 @@
         </div>
       </div>
 
-      <!-- Menu direito -->
       <nav class="ml-auto flex items-center gap-8 text-lg">
         <a href="#" onclick="showRelacionamentos()" class="hover:text-gold transition hidden md:flex items-center gap-2">
           <i class="fas fa-heart"></i> Meus Relacionamentos
@@ -91,7 +89,7 @@
     </div>
   </header>
 
-  <!-- BARRA DE EXCITAÇÃO VERMELHA COM CHAMA -->
+  <!-- BARRA DE EXCITAÇÃO -->
   <div class="excitement-container fixed top-24 left-0 right-0 z-40">
     <div class="max-w-7xl mx-auto px-8">
       <div class="flex items-center gap-4">
@@ -130,12 +128,19 @@
 
   </main>
 
-  <!-- FOOTER -->
+  <!-- FOOTER COM POLÍTICA, TERMOS E AVISO LEGAL -->
   <footer class="bg-black py-12 border-t border-gold/20">
     <div class="max-w-7xl mx-auto px-6 text-center text-sm text-zinc-400">
-      <p>GEEMU GAMES – Aqui você gemi de prazer</p>
-      <p class="mt-2">contato@geemugames.com</p>
-      <p class="mt-8">© 2026 GEEMU GAMES. Todos os direitos reservados.</p>
+      <p class="text-lg gold mb-4">GEEMU GAMES – Aqui você gemi de prazer</p>
+      
+      <div class="flex flex-wrap justify-center gap-x-8 gap-y-3 mb-8">
+        <a href="privacidade.html" class="hover:text-gold transition">Política de Privacidade</a>
+        <a href="#" class="hover:text-gold transition">Termos de Uso</a>
+        <a href="#" class="hover:text-gold transition">Aviso Legal</a>
+      </div>
+
+      <p>contato@geemugames.com</p>
+      <p class="mt-6 text-xs">© 2026 GEEMU GAMES. Todos os direitos reservados.</p>
     </div>
   </footer>
 
