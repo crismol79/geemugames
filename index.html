@@ -26,14 +26,14 @@
         </div>
       </div>
 
-      <!-- Menu Desktop -->
+      <!-- Menu Desktop (visível no PC) -->
       <nav class="hidden md:flex gap-8 text-lg">
         <a href="#" class="hover:text-gold transition">Início</a>
         <a href="#" onclick="showRelacionamentos()" class="hover:text-gold transition">Meus Relacionamentos</a>
         <a href="https://patreon.com/geemugames" target="_blank" class="hover:text-gold transition">Patreon</a>
       </nav>
 
-      <!-- Hamburger Menu -->
+      <!-- Hamburger (visível apenas no celular) -->
       <div onclick="toggleMenu()" class="md:hidden text-3xl cursor-pointer">☰</div>
     </div>
   </header>
@@ -164,7 +164,7 @@
       document.getElementById("excitement-percent").textContent = excitement + "%";
     }
 
-    // ==================== MENU HAMBURGER ====================
+    // ==================== MENU ====================
     function toggleMenu() {
       alert("Menu mobile em desenvolvimento - Em breve!");
     }
