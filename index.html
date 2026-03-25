@@ -6,103 +6,86 @@
   <title>Geemu Games – Plataforma de Relacionamento Interativo</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- Estilos personalizados -->
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@400;600&display=swap');
-    
     body { 
-      font-family: 'Inter', system_ui, sans-serif;
-      background-color: #0a0a0a;
+      font-family: system-ui, sans-serif; 
+      background-color: #0a0a0a; 
+      color: white;
     }
-    .title-font { font-family: 'Playfair Display', serif; }
     .gold { color: #d4af37; }
-    
-    .header {
-      background: linear-gradient(to bottom, #111113 0%, #000000 100%);
-      box-shadow: 0 4px 20px rgba(0,0,0,0.6);
+    .header { background: #000000; }
+    .excitement-bar { 
+      height: 10px; 
+      background: linear-gradient(to right, #ff1493, #ff69b4, #ff4500); 
+      transition: width 0.6s ease-out; 
     }
-    
-    .excitement-bar {
-      height: 12px;
-      background: linear-gradient(90deg, #ff1493, #ff69b4, #ff4500);
-      transition: width 0.8s cubic-bezier(0.68, -0.55, 0.27, 1.55);
-      box-shadow: 0 0 15px rgba(255, 20, 147, 0.6);
-    }
-    
     .universe-card {
-      transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+      transition: all 0.4s ease;
       background: #18181b;
-      border: 1px solid rgba(212, 175, 55, 0.15);
     }
-    
     .universe-card:hover {
-      transform: translateY(-15px) scale(1.04);
-      border-color: #d4af37;
-      box-shadow: 0 30px 40px -15px rgba(212, 175, 55, 0.3);
+      transform: translateY(-8px);
+      box-shadow: 0 20px 25px rgba(212, 175, 55, 0.2);
     }
-    
     .logo-center {
       position: absolute;
       left: 50%;
-      transform: translateX(-50%);
+      top: 50%;
+      transform: translate(-50%, -50%);
     }
   </style>
 </head>
-<body class="text-white min-h-screen">
+<body class="min-h-screen">
 
   <!-- HEADER -->
-  <header class="header fixed top-0 left-0 right-0 z-50 border-b border-gold/30">
-    <div class="max-w-7xl mx-auto px-6 py-6 flex items-center relative">
-      
-      <!-- Hamburger esquerdo - visível em TODOS os tamanhos -->
-      <button onclick="toggleMenu()" 
-              class="text-4xl text-gold hover:text-amber-300 transition-all active:scale-90">
+  <header class="header fixed top-0 left-0 right-0 z-50 border-b border-gold/30 py-5">
+    <div class="max-w-7xl mx-auto px-6 flex items-center relative">
+
+      <!-- Hamburger - visível no PC e no celular -->
+      <button onclick="toggleMenu()" class="text-4xl text-gold hover:text-amber-400 transition-all">
         <i class="fas fa-bars"></i>
       </button>
 
       <!-- Logo centralizado -->
       <div class="logo-center flex items-center gap-4">
-        <img src="images/logo.png" alt="Geemu Games" class="h-14 md:h-20 drop-shadow-2xl">
+        <img src="images/logo.png" alt="Geemu Games" class="h-14 md:h-16">
         <div class="hidden sm:block">
-          <h1 class="title-font text-4xl font-bold tracking-tighter gold">Geemu Games</h1>
-          <p class="text-xs text-zinc-400 tracking-[3px] -mt-1">PLATAFORMA DE RELACIONAMENTO INTERATIVO</p>
+          <h1 class="text-3xl font-bold gold">Geemu Games</h1>
+          <p class="text-xs text-zinc-400 -mt-1">Plataforma de Relacionamento Interativo</p>
         </div>
       </div>
 
       <!-- Menu direito -->
       <nav class="ml-auto flex items-center gap-8 text-lg">
-        <a href="#" onclick="showRelacionamentos()" 
-           class="hover:text-gold transition-colors flex items-center gap-2 hidden md:flex">
-          <i class="fas fa-heart"></i>
-          <span>Meus Relacionamentos</span>
+        <a href="#" onclick="showRelacionamentos()" class="hover:text-gold transition hidden md:flex items-center gap-2">
+          <i class="fas fa-heart"></i> Meus Relacionamentos
         </a>
-        <a href="https://patreon.com/geemugames" target="_blank" 
-           class="hover:text-gold transition-colors flex items-center gap-2">
-          <i class="fas fa-crown"></i>
-          <span>Patreon</span>
+        <a href="https://patreon.com/geemugames" target="_blank" class="hover:text-gold transition flex items-center gap-2">
+          <i class="fas fa-crown"></i> Patreon
         </a>
       </nav>
+
     </div>
   </header>
 
   <!-- BARRA DE EXCITAÇÃO -->
-  <div class="fixed top-24 left-0 right-0 bg-zinc-900 border-b border-gold/40 z-40">
-    <div class="max-w-7xl mx-auto px-6 py-5 flex items-center gap-6">
-      <div class="flex items-center gap-3 text-gold font-semibold">
-        <i class="fas fa-fire-flame-curved text-xl"></i>
-        <span class="text-lg">Excitação</span>
-      </div>
-      <div class="flex-1 bg-zinc-800 h-3 rounded-full overflow-hidden shadow-inner">
+  <div class="fixed top-20 left-0 right-0 bg-zinc-900 border-b border-gold/30 z-40">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex items-center gap-4">
+      <span class="text-gold font-medium">Excitação</span>
+      <div class="flex-1 h-3 bg-zinc-800 rounded-full overflow-hidden">
         <div id="excitement-bar" class="excitement-bar w-[25%]"></div>
       </div>
-      <span id="excitement-percent" class="font-mono font-bold text-3xl text-gold">25%</span>
+      <span id="excitement-percent" class="font-bold text-xl text-gold">25%</span>
     </div>
   </div>
 
-  <main class="pt-40 pb-24 max-w-7xl mx-auto px-6">
+  <main class="pt-36 pb-20 max-w-7xl mx-auto px-6">
 
     <!-- SLOGAN -->
-    <div class="text-center mb-20">
-      <p class="text-4xl md:text-5xl font-light italic gold leading-snug max-w-4xl mx-auto">
+    <div class="text-center mb-16">
+      <p class="text-4xl md:text-5xl font-light italic gold leading-tight">
         “Existe um desejo adormecido dentro de você…<br>
         e um universo pronto para despertá-lo.”
       </p>
@@ -110,68 +93,54 @@
 
     <!-- RELACIONAMENTOS -->
     <div id="relacionamentos-section" class="hidden mb-20">
-      <h2 class="text-4xl font-bold gold mb-10 flex items-center gap-4">
-        <i class="fas fa-heart text-5xl"></i> Meus Relacionamentos
-      </h2>
-      <div id="affinity-list" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"></div>
+      <h2 class="text-3xl font-bold gold mb-8">Meus Relacionamentos</h2>
+      <div id="affinity-list" class="grid grid-cols-1 md:grid-cols-3 gap-6"></div>
     </div>
 
     <!-- UNIVERSOS -->
-    <h2 class="text-4xl font-bold gold text-center mb-14 tracking-widest">NOSSOS UNIVERSOS</h2>
-    
-    <div id="universos-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10"></div>
+    <h2 class="text-4xl font-bold gold text-center mb-12">NOSSOS UNIVERSOS</h2>
+    <div id="universos-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"></div>
+
   </main>
 
   <!-- FOOTER -->
-  <footer class="bg-black py-16 border-t border-gold/20">
-    <div class="max-w-7xl mx-auto px-6 text-center">
-      <p class="text-3xl gold mb-3">GEEMU GAMES</p>
-      <p class="text-zinc-400 max-w-md mx-auto">Aqui você gemi de prazer com elegância, tesão e respeito.</p>
-      
-      <div class="mt-12 flex flex-wrap justify-center gap-x-10 gap-y-4 text-sm">
-        <a href="privacidade.html" class="hover:text-gold transition">Política de Privacidade</a>
-        <a href="#" class="hover:text-gold transition">Termos de Uso</a>
-        <a href="#" class="hover:text-gold transition">Aviso Legal</a>
-        <a href="mailto:contato@geemugames.com" class="hover:text-gold transition">contato@geemugames.com</a>
-      </div>
-
-      <div class="mt-16 text-xs text-zinc-500">
-        © 2026 GEEMU GAMES. Todos os direitos reservados.
-      </div>
+  <footer class="bg-black py-12 border-t border-gold/20">
+    <div class="max-w-7xl mx-auto px-6 text-center text-sm text-zinc-400">
+      <p>GEEMU GAMES – Aqui você gemi de prazer</p>
+      <p class="mt-2">contato@geemugames.com</p>
+      <p class="mt-8">© 2026 GEEMU GAMES. Todos os direitos reservados.</p>
     </div>
   </footer>
 
   <script>
-    // ==================== DADOS DOS 12 UNIVERSOS ====================
+    // Dados dos 12 universos
     const universos = [
-      { id: 1, nome: "Escolha Seu Prazer", desc: "Realismo brasileiro, traição e risco", cor: "from-rose-500 to-pink-600" },
-      { id: 2, nome: "Crônicas do Desejo", desc: "Fantasia imersiva e VR", cor: "from-purple-500 to-violet-600" },
-      { id: 3, nome: "Escritório Proibido", desc: "Poder, hierarquia e tensão no trabalho", cor: "from-amber-500 to-orange-600" },
-      { id: 4, nome: "Academia do Pecado", desc: "Idade gap e iniciação", cor: "from-cyan-500 to-blue-600" },
-      { id: 5, nome: "Noite Eterna", desc: "Vampiros, lobisomens e dark romance", cor: "from-red-700 to-rose-900" },
-      { id: 6, nome: "Ilha dos Desejos", desc: "Reality erótico e orgias", cor: "from-emerald-500 to-teal-600" },
-      { id: 7, nome: "A Escolha do Jogador", desc: "Harém customizável", cor: "from-fuchsia-500 to-pink-600" },
-      { id: 8, nome: "Doramas Proibidos", desc: "Romance asiático intenso", cor: "from-red-500 to-rose-600" },
-      { id: 9, nome: "Corte do Prazer", desc: "Monarquia, bailes e luxo", cor: "from-amber-400 to-yellow-600" },
-      { id: 10, nome: "Império das Sombras", desc: "Máfia, poder e perigo", cor: "from-slate-700 to-zinc-900" },
-      { id: 11, nome: "Viagem Proibida", desc: "Mile high club, risco em trânsito", cor: "from-sky-500 to-indigo-600" },
-      { id: 12, nome: "Sonhos Molhados", desc: "Fantasia surreal e sonhos intensos", cor: "from-purple-600 to-indigo-700" }
+      { nome: "Escolha Seu Prazer", desc: "Realismo brasileiro, traição e risco", cor: "from-rose-500 to-pink-600" },
+      { nome: "Crônicas do Desejo", desc: "Fantasia imersiva e VR", cor: "from-purple-500 to-violet-600" },
+      { nome: "Escritório Proibido", desc: "Poder, hierarquia e tensão no trabalho", cor: "from-amber-500 to-orange-600" },
+      { nome: "Academia do Pecado", desc: "Idade gap e iniciação", cor: "from-cyan-500 to-blue-600" },
+      { nome: "Noite Eterna", desc: "Vampiros, lobisomens e dark romance", cor: "from-red-700 to-rose-900" },
+      { nome: "Ilha dos Desejos", desc: "Reality erótico e orgias", cor: "from-emerald-500 to-teal-600" },
+      { nome: "A Escolha do Jogador", desc: "Harém customizável", cor: "from-fuchsia-500 to-pink-600" },
+      { nome: "Doramas Proibidos", desc: "Romance asiático intenso", cor: "from-red-500 to-rose-600" },
+      { nome: "Corte do Prazer", desc: "Monarquia, bailes e luxo", cor: "from-amber-400 to-yellow-600" },
+      { nome: "Império das Sombras", desc: "Máfia, poder e perigo", cor: "from-slate-700 to-zinc-900" },
+      { nome: "Viagem Proibida", desc: "Mile high club, risco em trânsito", cor: "from-sky-500 to-indigo-600" },
+      { nome: "Sonhos Molhados", desc: "Fantasia surreal e sonhos intensos", cor: "from-purple-600 to-indigo-700" }
     ];
 
-    // Renderizar universos
     function renderUniversos() {
       const container = document.getElementById("universos-grid");
       container.innerHTML = "";
-      
       universos.forEach(u => {
         const card = document.createElement("div");
-        card.className = `universe-card p-8 rounded-3xl`;
+        card.className = `universe-card p-8 rounded-3xl border border-gold/20`;
         card.innerHTML = `
-          <div class="h-3 bg-gradient-to-r ${u.cor} rounded mb-8"></div>
-          <h3 class="text-2xl font-bold gold mb-4">${u.nome}</h3>
-          <p class="text-zinc-400 mb-12 leading-relaxed">${u.desc}</p>
-          <button onclick="alert('Em breve: ${u.nome} 💋')" 
-                  class="w-full py-5 bg-gradient-to-r from-gold via-amber-400 to-gold text-black font-bold rounded-2xl text-lg transition-all active:scale-95">
+          <div class="h-2 bg-gradient-to-r ${u.cor} rounded mb-6"></div>
+          <h3 class="text-2xl font-bold gold mb-3">${u.nome}</h3>
+          <p class="text-zinc-400 mb-8">${u.desc}</p>
+          <button onclick="alert('Em breve: ${u.nome}')" 
+                  class="w-full py-4 bg-gold hover:bg-amber-400 text-black font-semibold rounded-2xl transition">
             Explorar Universo
           </button>
         `;
@@ -179,26 +148,23 @@
       });
     }
 
-    // Renderizar relacionamentos
     function renderRelacionamentos() {
       const container = document.getElementById("affinity-list");
       container.innerHTML = "";
-
       const chars = [
         {nome: "Ana", afinidade: 68},
         {nome: "Rainha Cristiana", afinidade: 45},
         {nome: "Évora", afinidade: 82}
       ];
-
       chars.forEach(char => {
         const div = document.createElement("div");
-        div.className = "bg-zinc-900 p-7 rounded-3xl border border-gold/30";
+        div.className = "bg-zinc-900 p-6 rounded-3xl border border-gold/30";
         div.innerHTML = `
-          <div class="flex justify-between mb-5">
-            <span class="text-xl font-semibold">${char.nome}</span>
-            <span class="text-gold font-bold">${char.afinidade}% ❤️</span>
+          <div class="flex justify-between mb-4">
+            <span class="font-semibold">${char.nome}</span>
+            <span class="text-gold">${char.afinidade}% ❤️</span>
           </div>
-          <div class="h-3 bg-zinc-800 rounded-full overflow-hidden">
+          <div class="h-2 bg-zinc-800 rounded-full overflow-hidden">
             <div class="h-full bg-gradient-to-r from-pink-500 to-rose-600" style="width: ${char.afinidade}%"></div>
           </div>
         `;
@@ -206,29 +172,24 @@
       });
     }
 
-    // Excitação
     let excitement = 25;
     function updateExcitement() {
-      excitement = Math.min(100, excitement + 9);
+      excitement = Math.min(100, excitement + 8);
       document.getElementById("excitement-bar").style.width = excitement + "%";
       document.getElementById("excitement-percent").textContent = excitement + "%";
     }
 
-    // Menu
     function toggleMenu() {
-      alert("Menu em desenvolvimento\n\nEm breve terá:\n• Início\n• Meus Relacionamentos\n• Configurações\n• Sair da conta");
+      alert("Menu em desenvolvimento - Em breve!");
     }
 
     function showRelacionamentos() {
       document.getElementById("relacionamentos-section").classList.toggle("hidden");
     }
 
-    // Inicialização
     window.onload = () => {
       renderUniversos();
       renderRelacionamentos();
-
-      // Clique em qualquer lugar da tela aumenta a excitação
       document.addEventListener("click", updateExcitement);
     };
   </script>
