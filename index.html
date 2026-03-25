@@ -14,7 +14,7 @@
     .gold { color: #d4af37; }
     .header { background: #000000; }
     
-    /* Barra de excitação delicada e arredondada como antes */
+    /* Barra de excitação no modelo antigo - vermelha e delicada */
     .excitement-bar-container {
       background: #27272a;
       height: 8px;
@@ -23,10 +23,10 @@
     }
     .excitement-bar {
       height: 100%;
-      background: linear-gradient(to right, #ff69b4, #ff1493);
+      background: linear-gradient(to right, #ef4444, #f97316); /* vermelho para laranja-vermelho */
       border-radius: 9999px;
       transition: width 0.7s ease-out;
-      box-shadow: 0 0 8px rgba(255, 105, 180, 0.6);
+      box-shadow: 0 0 8px rgba(239, 68, 68, 0.6);
     }
     
     .universe-card {
@@ -52,7 +52,7 @@
   <header class="header fixed top-0 left-0 right-0 z-50 border-b border-gold/30 py-5">
     <div class="max-w-7xl mx-auto px-6 flex items-center relative">
 
-      <!-- Hamburger -->
+      <!-- Hamburger visível em todos os dispositivos -->
       <button onclick="toggleMenu()" class="text-4xl text-gold hover:text-amber-400 transition-all">
         <i class="fas fa-bars"></i>
       </button>
@@ -79,7 +79,7 @@
     </div>
   </header>
 
-  <!-- BARRA DE EXCITAÇÃO DELICADA -->
+  <!-- BARRA DE EXCITAÇÃO - Modelo antigo, vermelha e delicada -->
   <div class="fixed top-24 left-0 right-0 bg-zinc-900 border-b border-gold/30 z-40">
     <div class="max-w-7xl mx-auto px-6 py-4 flex items-center gap-4">
       <span class="text-gold font-medium text-sm">Excitação</span>
