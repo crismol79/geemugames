@@ -7,7 +7,10 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <style>
-    body { font-family: system-ui, sans-serif; background-color: #0a0a0a; }
+    body { 
+      font-family: system-ui, sans-serif; 
+      background-color: #0a0a0a; 
+    }
     .gold { color: #d4af37; }
 
     .excitement-bar {
@@ -32,9 +35,40 @@
       0% { transform: translateX(-120%); }
       100% { transform: translateX(350%); }
     }
+
+    /* Pop-up de idade */
+    #age-popup {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0,0,0,0.95);
+      z-index: 9999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
   </style>
 </head>
 <body class="text-white min-h-screen">
+
+  <!-- POP-UP DE VERIFICAÇÃO DE IDADE -->
+  <div id="age-popup" class="hidden flex-col items-center justify-center text-center px-6">
+    <div class="max-w-md bg-zinc-900 rounded-3xl p-10 border border-gold/30">
+      <h1 class="text-3xl font-bold gold mb-6">⚠️ Atenção</h1>
+      <p class="text-lg mb-8">Este site contém conteúdo adulto e é exclusivo para maiores de 18 anos.</p>
+      
+      <div class="flex flex-col gap-4">
+        <button onclick="confirmAge()" 
+                class="py-4 bg-gold hover:bg-amber-400 text-black font-bold rounded-2xl text-lg transition">
+          SIM, TENHO 18 ANOS OU MAIS
+        </button>
+        
+        <button onclick="denyAge()" 
+                class="py-4 bg-zinc-800 hover:bg-zinc-700 font-medium rounded-2xl text-lg transition">
+          NÃO, TENHO MENOS DE 18 ANOS
+        </button>
+      </div>
+    </div>
+  </div>
 
   <!-- HEADER -->
   <header class="fixed top-0 left-0 right-0 z-50 bg-black border-b border-gold/30 py-5">
@@ -112,6 +146,24 @@
   </footer>
 
   <script>
+    // ==================== POP-UP DE IDADE ====================
+    function checkAge() {
+      if (localStorage.getItem("ageVerified") !== "true") {
+        document.getElementById("age-popup").classList.remove("hidden");
+        document.getElementById("age-popup").classList.add("flex");
+      }
+    }
+
+    function confirmAge() {
+      localStorage.setItem("ageVerified", "true");
+      document.getElementById("age-popup").classList.add("hidden");
+    }
+
+    function denyAge() {
+      window.location.href = "https://www.google.com";
+    }
+
+    // ==================== RESTO DO CÓDIGO ====================
     const universos = [
       { nome: "Escolha Seu Prazer", desc: "Realismo brasileiro, traição e risco", cor: "from-rose-500 to-pink-600" },
       { nome: "Crônicas do Desejo", desc: "Fantasia imersiva e VR", cor: "from-purple-500 to-violet-600" },
@@ -161,9 +213,11 @@
       alert("Meus Relacionamentos - Em breve!");
     }
 
+    // Inicialização
     window.onload = () => {
       renderUniversos();
       document.addEventListener("click", updateExcitement);
+      checkAge();   // ← Ativa o pop-up de idade
     };
   </script>
 </body>
