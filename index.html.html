@@ -7,7 +7,10 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <style>
-    body { font-family: system-ui, sans-serif; background-color: #0a0a0a; }
+    body { 
+      font-family: system-ui, sans-serif; 
+      background-color: #0a0a0a; 
+    }
     .gold { color: #d4af37; }
 
     .excitement-bar {
@@ -43,6 +46,7 @@
         <i class="fas fa-bars"></i>
       </button>
 
+      <!-- Logo maior centralizado -->
       <div class="logo-center flex items-center gap-4">
         <img src="images/logo.png" alt="Geemu Games" class="h-20 md:h-24">
       </div>
@@ -82,6 +86,8 @@
   </div>
 
   <main class="max-w-7xl mx-auto px-6 pb-20">
+
+    <!-- SLOGAN -->
     <div class="text-center mb-16">
       <p class="text-4xl md:text-5xl font-light italic gold leading-tight">
         “Existe um desejo adormecido dentro de você…<br>
@@ -89,8 +95,10 @@
       </p>
     </div>
 
+    <!-- UNIVERSOS -->
     <h2 class="text-4xl font-bold gold text-center mb-12">NOSSOS UNIVERSOS</h2>
     <div id="universos-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"></div>
+
   </main>
 
   <!-- RODAPÉ -->
@@ -131,4 +139,40 @@
       const container = document.getElementById("universos-grid");
       container.innerHTML = "";
       universos.forEach(u => {
-        const card = document.createElement("div
+        const card = document.createElement("div");
+        card.className = `universe-card p-8 border border-gold/20`;
+        card.innerHTML = `
+          <div class="h-2 bg-gradient-to-r ${u.cor} rounded mb-6"></div>
+          <h3 class="text-2xl font-bold gold mb-3">${u.nome}</h3>
+          <p class="text-zinc-400 mb-8">${u.desc}</p>
+          <button onclick="alert('Em breve: ${u.nome} 💋')" 
+                  class="w-full py-4 bg-gold hover:bg-amber-400 text-black font-semibold rounded-2xl transition">
+            Explorar Universo
+          </button>
+        `;
+        container.appendChild(card);
+      });
+    }
+
+    let excitement = 25;
+    function updateExcitement() {
+      excitement = Math.min(100, excitement + 8);
+      document.getElementById("excitement-bar").style.width = excitement + "%";
+      document.getElementById("excitement-percent").textContent = excitement + "%";
+    }
+
+    function toggleMenu() {
+      alert("Menu em desenvolvimento - Em breve!");
+    }
+
+    function showRelacionamentos() {
+      alert("Meus Relacionamentos - Em breve!");
+    }
+
+    window.onload = () => {
+      renderUniversos();
+      document.addEventListener("click", updateExcitement);
+    };
+  </script>
+</body>
+</html>
