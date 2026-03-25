@@ -3,84 +3,98 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Geemu Games</title>
+  <title>Geemu Games - Plataforma de Relacionamento Interativo</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
   <style>
     body { 
       font-family: system-ui, sans-serif; 
       background-color: #0a0a0a; 
+      color: white;
     }
     .gold { color: #d4af37; }
 
+    /* Barra de excitação vermelha com chama */
+    .excitement-container {
+      background: #1f1f23;
+      padding: 14px 0;
+    }
     .excitement-bar {
       height: 9px;
-      background: linear-gradient(to right, #ff3333, #ff6600);
+      background: linear-gradient(to right, #ff3333, #ff6600, #ffaa00);
       border-radius: 9999px;
       position: relative;
       overflow: hidden;
-      box-shadow: 0 0 10px rgba(255, 80, 0, 0.6);
+      box-shadow: 0 0 12px rgba(255, 100, 0, 0.7);
     }
     .excitement-bar::after {
       content: '';
       position: absolute;
       top: -50%;
-      right: -30%;
-      width: 40%;
+      right: -40%;
+      width: 50%;
       height: 200%;
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.7), transparent);
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.75), transparent);
       animation: flame 1.8s infinite linear;
     }
     @keyframes flame {
-      0% { transform: translateX(-120%); }
-      100% { transform: translateX(350%); }
+      0% { transform: translateX(-150%); }
+      100% { transform: translateX(400%); }
     }
 
-    /* Pop-up de idade */
-    #age-popup {
-      position: fixed;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background: rgba(0,0,0,0.95);
-      z-index: 9999;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+    .universe-card {
+      transition: all 0.4s ease;
+      background: #18181b;
+      border-radius: 28px;
+    }
+    .universe-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 30px rgba(212, 175, 55, 0.25);
+    }
+    .logo-center {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
     }
   </style>
 </head>
-<body class="text-white min-h-screen">
+<body class="min-h-screen">
 
   <!-- POP-UP DE VERIFICAÇÃO DE IDADE -->
-  <div id="age-popup" class="hidden flex-col items-center justify-center text-center px-6">
-    <div class="max-w-md bg-zinc-900 rounded-3xl p-10 border border-gold/30">
-      <h1 class="text-3xl font-bold gold mb-6">⚠️ Atenção</h1>
-      <p class="text-lg mb-8">Este site contém conteúdo adulto e é exclusivo para maiores de 18 anos.</p>
-      
-      <div class="flex flex-col gap-4">
-        <button onclick="confirmAge()" 
-                class="py-4 bg-gold hover:bg-amber-400 text-black font-bold rounded-2xl text-lg transition">
-          SIM, TENHO 18 ANOS OU MAIS
-        </button>
-        
-        <button onclick="denyAge()" 
-                class="py-4 bg-zinc-800 hover:bg-zinc-700 font-medium rounded-2xl text-lg transition">
-          NÃO, TENHO MENOS DE 18 ANOS
-        </button>
-      </div>
+  <div id="age-popup" class="fixed inset-0 bg-black/95 z-[9999] hidden flex items-center justify-center">
+    <div class="bg-zinc-900 rounded-3xl p-10 max-w-md text-center border border-gold/30">
+      <h1 class="text-3xl font-bold gold mb-6">⚠️ Atenção Importante</h1>
+      <p class="text-lg leading-relaxed mb-8">
+        Este site contém conteúdo adulto e é destinado exclusivamente para pessoas maiores de 18 anos.
+      </p>
+      <button onclick="confirmAge()" 
+              class="w-full py-4 bg-gold hover:bg-amber-400 text-black font-bold rounded-2xl mb-4 transition">
+        SIM, TENHO 18 ANOS OU MAIS
+      </button>
+      <button onclick="denyAge()" 
+              class="w-full py-4 bg-zinc-800 hover:bg-zinc-700 font-medium rounded-2xl transition">
+        NÃO, TENHO MENOS DE 18 ANOS
+      </button>
     </div>
   </div>
 
   <!-- HEADER -->
   <header class="fixed top-0 left-0 right-0 z-50 bg-black border-b border-gold/30 py-5">
     <div class="max-w-7xl mx-auto px-6 flex items-center relative">
-      <button onclick="toggleMenu()" class="text-4xl text-gold hover:text-amber-400">
+
+      <!-- Hamburger -->
+      <button onclick="toggleMenu()" class="text-4xl text-gold hover:text-amber-400 transition-all">
         <i class="fas fa-bars"></i>
       </button>
 
+      <!-- Logo maior centralizado -->
       <div class="logo-center flex items-center gap-4">
-        <img src="images/logo.png" alt="Geemu Games" class="h-20 md:h-24">
+        <img src="images/logo.png" alt="Geemu Games" class="h-20 md:h-24 drop-shadow-2xl">
       </div>
 
+      <!-- Menu direito -->
       <nav class="ml-auto flex items-center gap-8 text-lg">
         <a href="#" onclick="showRelacionamentos()" class="hover:text-gold transition hidden md:flex items-center gap-2">
           <i class="fas fa-heart"></i> Meus Relacionamentos
@@ -89,11 +103,12 @@
           <i class="fas fa-crown"></i> Patreon
         </a>
       </nav>
+
     </div>
   </header>
 
   <!-- BARRA DE EXCITAÇÃO -->
-  <div class="fixed top-24 left-0 right-0 bg-zinc-900 border-b border-gold/30 z-40">
+  <div class="excitement-container fixed top-24 left-0 right-0 z-40">
     <div class="max-w-7xl mx-auto px-8">
       <div class="flex items-center gap-4">
         <span class="text-gold font-medium text-sm flex items-center gap-2">
@@ -116,6 +131,8 @@
   </div>
 
   <main class="max-w-7xl mx-auto px-6 pb-20">
+
+    <!-- SLOGAN -->
     <div class="text-center mb-16">
       <p class="text-4xl md:text-5xl font-light italic gold leading-tight">
         “Existe um desejo adormecido dentro de você…<br>
@@ -123,8 +140,10 @@
       </p>
     </div>
 
+    <!-- UNIVERSOS -->
     <h2 class="text-4xl font-bold gold text-center mb-12">NOSSOS UNIVERSOS</h2>
     <div id="universos-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"></div>
+
   </main>
 
   <!-- RODAPÉ -->
@@ -150,7 +169,6 @@
     function checkAge() {
       if (localStorage.getItem("ageVerified") !== "true") {
         document.getElementById("age-popup").classList.remove("hidden");
-        document.getElementById("age-popup").classList.add("flex");
       }
     }
 
@@ -163,7 +181,7 @@
       window.location.href = "https://www.google.com";
     }
 
-    // ==================== RESTO DO CÓDIGO ====================
+    // ==================== DADOS DOS UNIVERSOS ====================
     const universos = [
       { nome: "Escolha Seu Prazer", desc: "Realismo brasileiro, traição e risco", cor: "from-rose-500 to-pink-600" },
       { nome: "Crônicas do Desejo", desc: "Fantasia imersiva e VR", cor: "from-purple-500 to-violet-600" },
@@ -179,6 +197,7 @@
       { nome: "Sonhos Molhados", desc: "Fantasia surreal e sonhos intensos", cor: "from-purple-600 to-indigo-700" }
     ];
 
+    // Renderizar universos
     function renderUniversos() {
       const container = document.getElementById("universos-grid");
       container.innerHTML = "";
@@ -198,6 +217,7 @@
       });
     }
 
+    // Sistema de excitação
     let excitement = 25;
     function updateExcitement() {
       excitement = Math.min(100, excitement + 8);
@@ -205,6 +225,7 @@
       document.getElementById("excitement-percent").textContent = excitement + "%";
     }
 
+    // Funções simples
     function toggleMenu() {
       alert("Menu em desenvolvimento - Em breve!");
     }
@@ -217,7 +238,7 @@
     window.onload = () => {
       renderUniversos();
       document.addEventListener("click", updateExcitement);
-      checkAge();   // ← Ativa o pop-up de idade
+      checkAge();
     };
   </script>
 </body>
