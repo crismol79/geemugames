@@ -13,30 +13,28 @@
     }
     .gold { color: #d4af37; }
 
-    /* Barra de excitação - layout antigo, mais para baixo */
+    /* Barra de excitação vermelha delicada com chama */
     .excitement-container {
-      background: #1a1a1e;
+      background: #1f1f23;
       margin-top: 20px;
       padding: 14px 0;
-      border-top: 1px solid #d4af37;
-      border-bottom: 1px solid #d4af37;
     }
     .excitement-bar {
-      height: 10px;
-      background: linear-gradient(to right, #ff3333, #ff6600, #ffaa00);
+      height: 9px;
+      background: linear-gradient(to right, #ff3333, #ff6600);
       border-radius: 9999px;
       position: relative;
       overflow: hidden;
-      box-shadow: 0 0 12px rgba(255, 100, 0, 0.8);
+      box-shadow: 0 0 10px rgba(255, 80, 0, 0.6);
     }
     .excitement-bar::after {
       content: '';
       position: absolute;
-      top: -40%;
-      right: -40%;
-      width: 50%;
-      height: 180%;
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.75), transparent);
+      top: -50%;
+      right: -30%;
+      width: 40%;
+      height: 200%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.7), transparent);
       animation: flame 1.8s infinite linear;
     }
     @keyframes flame {
@@ -51,7 +49,7 @@
   <header class="fixed top-0 left-0 right-0 z-50 bg-black border-b border-gold/30 py-5">
     <div class="max-w-7xl mx-auto px-6 flex items-center relative">
 
-      <button onclick="toggleMenu()" class="text-4xl text-gold hover:text-amber-400">
+      <button onclick="toggleMenu()" class="text-4xl text-gold hover:text-amber-400 transition-all">
         <i class="fas fa-bars"></i>
       </button>
 
@@ -72,8 +70,8 @@
     </div>
   </header>
 
-  <!-- BARRA DE EXCITAÇÃO (mais para baixo, como no layout antigo) -->
-  <div class="excitement-container fixed top-28 left-0 right-0 z-40">
+  <!-- BARRA DE EXCITAÇÃO -->
+  <div class="excitement-container fixed top-24 left-0 right-0 z-40">
     <div class="max-w-7xl mx-auto px-8">
       <div class="flex items-center gap-4">
         <span class="text-gold font-medium text-sm flex items-center gap-2">
@@ -88,7 +86,7 @@
   </div>
 
   <!-- BANNER -->
-  <div class="pt-44 pb-8">
+  <div class="pt-36 pb-8">
     <div class="max-w-7xl mx-auto px-6">
       <img src="images/banner.png" alt="Banner Geemu Games" 
            class="w-full rounded-3xl shadow-2xl object-cover h-64 md:h-96">
@@ -111,19 +109,29 @@
 
   </main>
 
-  <!-- RODAPÉ -->
-  <footer class="bg-black py-12 border-t border-gold/20">
+  <!-- RODAPÉ EXATAMENTE COMO VOCÊ PEDIU -->
+  <footer class="bg-black py-14 border-t border-gold/20">
     <div class="max-w-7xl mx-auto px-6 text-center">
-      <p class="text-xl gold mb-2">GEEMU GAMES – Aqui você gemi de prazer</p>
       
-      <div class="flex flex-wrap justify-center gap-x-8 gap-y-3 my-6 text-sm">
+      <p class="text-xl text-white mb-4">
+        GEEMU GAMES – Plataforma de Relacionamento Interativo
+      </p>
+      
+      <p class="text-zinc-400 mb-6">
+        Fale conosco: contato@geemugames.com
+      </p>
+
+      <div class="flex flex-wrap justify-center gap-x-8 gap-y-3 text-sm mb-6">
         <a href="privacidade.html" class="hover:text-gold transition">Política de Privacidade</a>
+        <span class="text-zinc-500">|</span>
         <a href="#" class="hover:text-gold transition">Termos de Uso</a>
+        <span class="text-zinc-500">|</span>
         <a href="#" class="hover:text-gold transition">Aviso Legal</a>
       </div>
 
-      <p class="text-zinc-400">Fale conosco: contato@geemugames.com</p>
-      <p class="mt-8 text-xs text-zinc-500">© 2026 GEEMU GAMES. Todos os direitos reservados.</p>
+      <p class="text-xs text-zinc-500">
+        © 2026 GEEMU GAMES. Todos os direitos reservados.
+      </p>
     </div>
   </footer>
 
@@ -164,7 +172,7 @@
 
     let excitement = 25;
     function updateExcitement() {
-      excitement = Math.min(100, excitement + 9);
+      excitement = Math.min(100, excitement + 8);
       document.getElementById("excitement-bar").style.width = excitement + "%";
       document.getElementById("excitement-percent").textContent = excitement + "%";
     }
