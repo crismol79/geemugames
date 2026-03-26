@@ -13,6 +13,7 @@
     }
     .gold { color: #d4af37; }
 
+    /* Barra de Excitação */
     .excitement-bar {
       height: 9px;
       background: linear-gradient(to right, #ff3333, #ff6600);
@@ -36,32 +37,29 @@
       100% { transform: translateX(350%); }
     }
 
-    /* Banner ajustado */
-    .banner-container {
-      padding-left: 16px;
-      padding-right: 16px;
-    }
-
+    /* Banner */
     .banner-img {
       width: 100%;
-      height: 380px;           /* Desktop */
+      height: 380px;
       object-fit: cover;
-      object-position: center 30%;   /* Centraliza melhor os personagens */
+      object-position: center 30%;
       border-radius: 24px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.6);
     }
 
-    /* Celular - banner menor e melhor enquadramento */
     @media (max-width: 768px) {
-      .banner-container {
-        padding-left: 12px;
-        padding-right: 12px;
-      }
       .banner-img {
-        height: 210px;           /* Menor no celular */
+        height: 260px;           /* Aumentado um pouco no celular */
         border-radius: 16px;
-        object-position: center 25%;   /* Ajusta para não cortar rostos/corpos */
+        object-position: center 28%;
       }
+    }
+
+    /* Logo centralizado */
+    .logo-center {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
     }
   </style>
 </head>
@@ -70,12 +68,13 @@
   <!-- HEADER -->
   <header class="fixed top-0 left-0 right-0 z-50 bg-black border-b border-gold/30 py-5">
     <div class="max-w-7xl mx-auto px-6 flex items-center relative">
-      <button onclick="toggleMenu()" class="text-4xl text-gold hover:text-amber-400">
+      <button onclick="toggleMenu()" class="text-4xl text-gold hover:text-amber-400 z-10">
         <i class="fas fa-bars"></i>
       </button>
 
+      <!-- Logo centralizado -->
       <div class="logo-center flex items-center gap-4">
-        <img src="images/logo.png" alt="Geemu Games" class="h-20 md:h-24">
+        <img src="images/logo.png" alt="Geemu Games" class="h-20 md:h-28 transition-all">
       </div>
 
       <nav class="ml-auto flex items-center gap-8 text-lg">
@@ -89,11 +88,11 @@
     </div>
   </header>
 
-  <!-- BARRA DE EXCITAÇÃO -->
+  <!-- BARRA DE EXCITAÇÃO - Corrigida -->
   <div class="fixed top-24 left-0 right-0 bg-zinc-900 border-b border-gold/30 z-40">
-    <div class="max-w-7xl mx-auto px-8">
-      <div class="flex items-center gap-4">
-        <span class="text-gold font-medium text-sm flex items-center gap-2">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="flex items-center gap-4 py-2">
+        <span class="text-gold font-medium text-sm flex items-center gap-2 whitespace-nowrap">
           <i class="fas fa-fire"></i> Excitação
         </span>
         <div class="flex-1 excitement-bar">
@@ -105,9 +104,9 @@
   </div>
 
   <!-- BANNER -->
-  <div class="pt-36 pb-8 banner-container">
+  <div class="pt-36 pb-8 px-4 md:px-6">
     <img src="images/banner.png" alt="Banner Geemu Games" 
-         class="banner-img">
+         class="banner-img mx-auto">
   </div>
 
   <main class="max-w-7xl mx-auto px-6 pb-12">
@@ -124,7 +123,7 @@
     <h2 class="text-4xl font-bold gold text-center mb-12">NOSSOS UNIVERSOS</h2>
     <div id="universos-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"></div>
 
-    <!-- AVISO DE PAGAMENTO -->
+    <!-- AVISO -->
     <div class="max-w-5xl mx-auto mt-20 bg-zinc-900/80 border border-gold/30 rounded-2xl p-10 text-center">
       <p class="text-base text-zinc-300 leading-relaxed">
         <strong>Aviso importante!</strong><br><br>
@@ -155,7 +154,7 @@
   </footer>
 
   <script>
-    const universos = [ /* seu array de universos */ 
+    const universos = [
       { nome: "Escolha Seu Prazer", desc: "Realismo brasileiro, traição e risco", cor: "from-rose-500 to-pink-600" },
       { nome: "Crônicas do Desejo", desc: "Fantasia imersiva e VR", cor: "from-purple-500 to-violet-600" },
       { nome: "Escritório Proibido", desc: "Poder, hierarquia e tensão no trabalho", cor: "from-amber-500 to-orange-600" },
@@ -175,7 +174,7 @@
       container.innerHTML = "";
       universos.forEach(u => {
         const card = document.createElement("div");
-        card.className = `universe-card p-8 border border-gold/20 rounded-3xl`;
+        card.className = `p-8 border border-gold/20 rounded-3xl`;
         card.innerHTML = `
           <div class="h-2 bg-gradient-to-r ${u.cor} rounded mb-6"></div>
           <h3 class="text-2xl font-bold gold mb-3">${u.nome}</h3>
