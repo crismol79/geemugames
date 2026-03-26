@@ -3,98 +3,53 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Geemu Games - Plataforma de Relacionamento Interativo</title>
+  <title>Geemu Games</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-
   <style>
     body { 
       font-family: system-ui, sans-serif; 
       background-color: #0a0a0a; 
-      color: white;
     }
     .gold { color: #d4af37; }
 
-    /* Barra de excitação vermelha com chama */
-    .excitement-container {
-      background: #1f1f23;
-      padding: 14px 0;
-    }
     .excitement-bar {
       height: 9px;
-      background: linear-gradient(to right, #ff3333, #ff6600, #ffaa00);
+      background: linear-gradient(to right, #ff3333, #ff6600);
       border-radius: 9999px;
       position: relative;
       overflow: hidden;
-      box-shadow: 0 0 12px rgba(255, 100, 0, 0.7);
+      box-shadow: 0 0 10px rgba(255, 80, 0, 0.6);
     }
     .excitement-bar::after {
       content: '';
       position: absolute;
       top: -50%;
-      right: -40%;
-      width: 50%;
+      right: -30%;
+      width: 40%;
       height: 200%;
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.75), transparent);
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.7), transparent);
       animation: flame 1.8s infinite linear;
     }
     @keyframes flame {
-      0% { transform: translateX(-150%); }
-      100% { transform: translateX(400%); }
-    }
-
-    .universe-card {
-      transition: all 0.4s ease;
-      background: #18181b;
-      border-radius: 28px;
-    }
-    .universe-card:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 20px 30px rgba(212, 175, 55, 0.25);
-    }
-    .logo-center {
-      position: absolute;
-      left: 50%;
-      top: 50%;
-      transform: translate(-50%, -50%);
+      0% { transform: translateX(-120%); }
+      100% { transform: translateX(350%); }
     }
   </style>
 </head>
-<body class="min-h-screen">
-
-  <!-- POP-UP DE VERIFICAÇÃO DE IDADE -->
-  <div id="age-popup" class="fixed inset-0 bg-black/95 z-[9999] hidden flex items-center justify-center">
-    <div class="bg-zinc-900 rounded-3xl p-10 max-w-md text-center border border-gold/30">
-      <h1 class="text-3xl font-bold gold mb-6">⚠️ Atenção Importante</h1>
-      <p class="text-lg leading-relaxed mb-8">
-        Este site contém conteúdo adulto e é destinado exclusivamente para pessoas maiores de 18 anos.
-      </p>
-      <button onclick="confirmAge()" 
-              class="w-full py-4 bg-gold hover:bg-amber-400 text-black font-bold rounded-2xl mb-4 transition">
-        SIM, TENHO 18 ANOS OU MAIS
-      </button>
-      <button onclick="denyAge()" 
-              class="w-full py-4 bg-zinc-800 hover:bg-zinc-700 font-medium rounded-2xl transition">
-        NÃO, TENHO MENOS DE 18 ANOS
-      </button>
-    </div>
-  </div>
+<body class="text-white min-h-screen">
 
   <!-- HEADER -->
   <header class="fixed top-0 left-0 right-0 z-50 bg-black border-b border-gold/30 py-5">
     <div class="max-w-7xl mx-auto px-6 flex items-center relative">
-
-      <!-- Hamburger -->
-      <button onclick="toggleMenu()" class="text-4xl text-gold hover:text-amber-400 transition-all">
+      <button onclick="toggleMenu()" class="text-4xl text-gold hover:text-amber-400">
         <i class="fas fa-bars"></i>
       </button>
 
-      <!-- Logo maior centralizado -->
       <div class="logo-center flex items-center gap-4">
-        <img src="images/logo.png" alt="Geemu Games" class="h-20 md:h-24 drop-shadow-2xl">
+        <img src="images/logo.png" alt="Geemu Games" class="h-20 md:h-24">
       </div>
 
-      <!-- Menu direito -->
       <nav class="ml-auto flex items-center gap-8 text-lg">
         <a href="#" onclick="showRelacionamentos()" class="hover:text-gold transition hidden md:flex items-center gap-2">
           <i class="fas fa-heart"></i> Meus Relacionamentos
@@ -103,12 +58,11 @@
           <i class="fas fa-crown"></i> Patreon
         </a>
       </nav>
-
     </div>
   </header>
 
   <!-- BARRA DE EXCITAÇÃO -->
-  <div class="excitement-container fixed top-24 left-0 right-0 z-40">
+  <div class="fixed top-24 left-0 right-0 bg-zinc-900 border-b border-gold/30 z-40">
     <div class="max-w-7xl mx-auto px-8">
       <div class="flex items-center gap-4">
         <span class="text-gold font-medium text-sm flex items-center gap-2">
@@ -140,6 +94,17 @@
       </p>
     </div>
 
+    <!-- AVISO DE PAGAMENTO -->
+    <div class="max-w-md mx-auto mb-12 bg-zinc-900/50 rounded-2xl p-6 border border-gold/20">
+      <p class="text-sm text-zinc-400 text-center">
+        Pagamento processado pela <strong>GEEMU GAMES</strong><br><br>
+        Por questões fiscais temporárias, o nome que aparecerá na fatura do seu cartão será:<br>
+        <strong>Villa Pizza</strong><br><br>
+        Estamos ajustando essa informação, qualquer dúvida, entre em contato conosco:<br>
+        <a href="mailto:contato@geemugames.com" class="text-gold hover:underline">contato@geemugames.com</a>
+      </p>
+    </div>
+
     <!-- UNIVERSOS -->
     <h2 class="text-4xl font-bold gold text-center mb-12">NOSSOS UNIVERSOS</h2>
     <div id="universos-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"></div>
@@ -165,39 +130,21 @@
   </footer>
 
   <script>
-    // ==================== POP-UP DE IDADE ====================
-    function checkAge() {
-      if (localStorage.getItem("ageVerified") !== "true") {
-        document.getElementById("age-popup").classList.remove("hidden");
-      }
-    }
-
-    function confirmAge() {
-      localStorage.setItem("ageVerified", "true");
-      document.getElementById("age-popup").classList.add("hidden");
-    }
-
-    function denyAge() {
-      window.location.href = "https://www.google.com";
-    }
-
-    // ==================== DADOS DOS UNIVERSOS ====================
     const universos = [
       { nome: "Escolha Seu Prazer", desc: "Realismo brasileiro, traição e risco", cor: "from-rose-500 to-pink-600" },
       { nome: "Crônicas do Desejo", desc: "Fantasia imersiva e VR", cor: "from-purple-500 to-violet-600" },
       { nome: "Escritório Proibido", desc: "Poder, hierarquia e tensão no trabalho", cor: "from-amber-500 to-orange-600" },
       { nome: "Academia do Pecado", desc: "Idade gap e iniciação", cor: "from-cyan-500 to-blue-600" },
-      { nome: "Noite Eterna", desc: "Vampiros, lobisomens e dark romance", cor: "from-red-700 to-rose-900" },
+      { nome: "Noites Eternas", desc: "Vampiros, lobisomens e dark romance", cor: "from-red-700 to-rose-900" },
       { nome: "Ilha dos Desejos", desc: "Reality erótico e orgias", cor: "from-emerald-500 to-teal-600" },
       { nome: "A Escolha do Jogador", desc: "Harém customizável", cor: "from-fuchsia-500 to-pink-600" },
       { nome: "Doramas Proibidos", desc: "Romance asiático intenso", cor: "from-red-500 to-rose-600" },
       { nome: "Corte do Prazer", desc: "Monarquia, bailes e luxo", cor: "from-amber-400 to-yellow-600" },
       { nome: "Império das Sombras", desc: "Máfia, poder e perigo", cor: "from-slate-700 to-zinc-900" },
-      { nome: "Viagem Proibida", desc: "Mile high club, risco em trânsito", cor: "from-sky-500 to-indigo-600" },
+      { nome: "Desejos pelo Mundo", desc: "Viagens, escapismo e encontros pelo mundo", cor: "from-sky-500 to-indigo-600" },
       { nome: "Sonhos Molhados", desc: "Fantasia surreal e sonhos intensos", cor: "from-purple-600 to-indigo-700" }
     ];
 
-    // Renderizar universos
     function renderUniversos() {
       const container = document.getElementById("universos-grid");
       container.innerHTML = "";
@@ -217,7 +164,6 @@
       });
     }
 
-    // Sistema de excitação
     let excitement = 25;
     function updateExcitement() {
       excitement = Math.min(100, excitement + 8);
@@ -225,7 +171,6 @@
       document.getElementById("excitement-percent").textContent = excitement + "%";
     }
 
-    // Funções simples
     function toggleMenu() {
       alert("Menu em desenvolvimento - Em breve!");
     }
@@ -234,11 +179,9 @@
       alert("Meus Relacionamentos - Em breve!");
     }
 
-    // Inicialização
     window.onload = () => {
       renderUniversos();
       document.addEventListener("click", updateExcitement);
-      checkAge();
     };
   </script>
 </body>
