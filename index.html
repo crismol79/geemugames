@@ -13,17 +13,16 @@
     }
     .gold { color: #d4af37; }
 
-    /* Barra de Excitação - Apenas a barra, sem linhas brancas */
+    /* Barra de Excitação simples */
     .excitement-wrapper {
-      margin-top: 68px;           /* Espaço para o logo ficar acima */
+      margin-top: 78px;           /* Desceu a barra para dar espaço ao logo */
     }
 
-    .excitement-bar-container {
+    .excitement-container {
       height: 9px;
       background: #1f1f1f;
       border-radius: 9999px;
       overflow: hidden;
-      box-shadow: 0 2px 8px rgba(255, 80, 0, 0.3);
     }
 
     .excitement-bar {
@@ -44,7 +43,6 @@
       background: linear-gradient(90deg, transparent, rgba(255,255,255,0.7), transparent);
       animation: flame 1.8s infinite linear;
     }
-
     @keyframes flame {
       0% { transform: translateX(-120%); }
       100% { transform: translateX(350%); }
@@ -56,7 +54,7 @@
       left: 50%;
       transform: translateX(-50%);
       z-index: 30;
-      margin-top: 12px;
+      margin-top: 8px;
     }
 
     /* Banner */
@@ -71,9 +69,12 @@
 
     @media (max-width: 768px) {
       .banner-img {
-        height: 210px;
+        height: 220px;           /* Subido mais no celular */
         border-radius: 16px;
         object-position: center 25%;
+      }
+      .pt-banner {
+        padding-top: 120px;      /* Reduz espaço acima do banner no celular */
       }
     }
   </style>
@@ -93,14 +94,14 @@
     </div>
   </header>
 
-  <!-- BARRA DE EXCITAÇÃO - Apenas a barra -->
+  <!-- BARRA DE EXCITAÇÃO -->
   <div class="fixed left-0 right-0 z-40 excitement-wrapper">
     <div class="max-w-7xl mx-auto px-6">
       <div class="flex items-center gap-4 py-2">
         <span class="text-gold font-medium text-sm flex items-center gap-2 whitespace-nowrap">
           <i class="fas fa-fire"></i> Excitação
         </span>
-        <div class="flex-1 excitement-bar-container">
+        <div class="flex-1 excitement-container">
           <div id="excitement-bar" class="excitement-bar"></div>
         </div>
         <span id="excitement-percent" class="font-bold text-lg text-gold min-w-[50px]">25%</span>
@@ -109,7 +110,7 @@
   </div>
 
   <!-- BANNER -->
-  <div class="pt-44 pb-8 px-4 md:px-6">
+  <div class="pt-banner pb-8 px-4 md:px-6">
     <img src="images/banner.png" alt="Banner Geemu Games" 
          class="banner-img mx-auto">
   </div>
