@@ -13,17 +13,19 @@
     }
     .gold { color: #d4af37; }
 
-    /* Barra de Excitação - MOVIDA PARA BAIXO */
+    /* Barra de Excitação - Apenas a barra, sem linhas brancas */
     .excitement-wrapper {
-      margin-top: 68px;           /* Aumentado para descer a barra */
+      margin-top: 68px;           /* Espaço para o logo ficar acima */
     }
 
-    .excitement-container {
+    .excitement-bar-container {
       height: 9px;
       background: #1f1f1f;
       border-radius: 9999px;
       overflow: hidden;
+      box-shadow: 0 2px 8px rgba(255, 80, 0, 0.3);
     }
+
     .excitement-bar {
       height: 100%;
       background: linear-gradient(to right, #ff3333, #ff6600);
@@ -31,6 +33,7 @@
       transition: width 0.4s ease-out;
       position: relative;
     }
+
     .excitement-bar::after {
       content: '';
       position: absolute;
@@ -41,21 +44,13 @@
       background: linear-gradient(90deg, transparent, rgba(255,255,255,0.7), transparent);
       animation: flame 1.8s infinite linear;
     }
+
     @keyframes flame {
       0% { transform: translateX(-120%); }
       100% { transform: translateX(350%); }
     }
 
-    /* Hover nos cards */
-    .universe-card {
-      transition: all 0.3s ease;
-    }
-    .universe-card:hover {
-      transform: scale(1.04) translateY(-4px);
-      box-shadow: 0 15px 25px rgba(212, 175, 55, 0.15);
-    }
-
-    /* Logo - posição mantida */
+    /* Logo */
     .logo-center {
       position: absolute;
       left: 50%;
@@ -98,14 +93,14 @@
     </div>
   </header>
 
-  <!-- BARRA DE EXCITAÇÃO - MOVIDA PARA BAIXO -->
-  <div class="fixed left-0 right-0 bg-zinc-900 border-b border-gold/30 z-40 excitement-wrapper">
+  <!-- BARRA DE EXCITAÇÃO - Apenas a barra -->
+  <div class="fixed left-0 right-0 z-40 excitement-wrapper">
     <div class="max-w-7xl mx-auto px-6">
       <div class="flex items-center gap-4 py-2">
         <span class="text-gold font-medium text-sm flex items-center gap-2 whitespace-nowrap">
           <i class="fas fa-fire"></i> Excitação
         </span>
-        <div class="flex-1 excitement-container">
+        <div class="flex-1 excitement-bar-container">
           <div id="excitement-bar" class="excitement-bar"></div>
         </div>
         <span id="excitement-percent" class="font-bold text-lg text-gold min-w-[50px]">25%</span>
@@ -114,7 +109,7 @@
   </div>
 
   <!-- BANNER -->
-  <div class="pt-44 pb-8 px-4 md:px-6">   <!-- pt-44 para compensar a barra descida -->
+  <div class="pt-44 pb-8 px-4 md:px-6">
     <img src="images/banner.png" alt="Banner Geemu Games" 
          class="banner-img mx-auto">
   </div>
