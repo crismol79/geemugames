@@ -51,19 +51,19 @@
       box-shadow: 0 15px 25px rgba(212, 175, 55, 0.15);
     }
 
-    /* Logo - descido */
+    /* Logo - DESCIDO MAIS */
     .logo-center {
       position: absolute;
       left: 50%;
       transform: translateX(-50%);
       z-index: 30;
-      margin-top: 28px;           /* Desceu mais para sair da barra branca */
+      margin-top: 38px;           /* Desceu bastante para sair da linha branca */
     }
 
     /* Banner */
     .banner-img {
       width: 100%;
-      height: 380px;               /* Desktop */
+      height: 380px;
       object-fit: cover;
       object-position: center 30%;
       border-radius: 24px;
@@ -72,7 +72,7 @@
 
     @media (max-width: 768px) {
       .banner-img {
-        height: 210px;             /* Diminuído no celular para parar de cortar */
+        height: 210px;
         border-radius: 16px;
         object-position: center 25%;
       }
@@ -88,13 +88,12 @@
         <i class="fas fa-bars"></i>
       </button>
 
-      <!-- Logo centralizado e descido -->
+      <!-- Logo centralizado e bem descido -->
       <div class="logo-center">
         <img src="images/logo.png" alt="Geemu Games" class="h-20 md:h-28">
       </div>
 
-      <!-- Navegação visível apenas no desktop (removida) -->
-      <!-- Agora só aparece no hamburger -->
+      <!-- Navegação removida do header (só no hamburger) -->
     </div>
   </header>
 
@@ -129,8 +128,8 @@
       </p>
     </div>
 
-    <!-- UNIVERSOS -->
-    <h2 class="text-4xl font-bold gold text-center mb-12">NOSSOS UNIVERSOS</h2>
+    <!-- TÍTULO "NOSSOS UNIVERSOS" - MENOR NO CELULAR -->
+    <h2 class="text-3xl md:text-4xl font-bold gold text-center mb-12">NOSSOS UNIVERSOS</h2>
     <div id="universos-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"></div>
 
     <!-- AVISO -->
