@@ -14,13 +14,19 @@
     .gold { color: #d4af37; }
 
     /* Barra de Excitação */
-    .excitement-bar {
+    .excitement-container {
       height: 9px;
-      background: linear-gradient(to right, #ff3333, #ff6600);
+      background: #1f1f1f;
       border-radius: 9999px;
-      position: relative;
       overflow: hidden;
-      box-shadow: 0 0 10px rgba(255, 80, 0, 0.6);
+      box-shadow: 0 0 8px rgba(255, 80, 0, 0.4);
+    }
+    .excitement-bar {
+      height: 100%;
+      background: linear-gradient(to right, #ff3333, #ff6600);
+      width: 25%;                    /* Começa em 25% */
+      transition: width 0.4s ease-out;
+      position: relative;
     }
     .excitement-bar::after {
       content: '';
@@ -37,6 +43,23 @@
       100% { transform: translateX(350%); }
     }
 
+    /* Hover nos universos */
+    .universe-card {
+      transition: all 0.3s ease;
+    }
+    .universe-card:hover {
+      transform: scale(1.04) translateY(-4px);
+      box-shadow: 0 15px 25px rgba(212, 175, 55, 0.15);
+    }
+
+    /* Logo */
+    .logo-center {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 20;
+    }
+
     /* Banner */
     .banner-img {
       width: 100%;
@@ -49,17 +72,10 @@
 
     @media (max-width: 768px) {
       .banner-img {
-        height: 260px;           /* Aumentado um pouco no celular */
+        height: 220px;           /* Diminuído no celular */
         border-radius: 16px;
-        object-position: center 28%;
+        object-position: center 25%;
       }
-    }
-
-    /* Logo centralizado */
-    .logo-center {
-      position: absolute;
-      left: 50%;
-      transform: translateX(-50%);
     }
   </style>
 </head>
@@ -72,9 +88,8 @@
         <i class="fas fa-bars"></i>
       </button>
 
-      <!-- Logo centralizado -->
-      <div class="logo-center flex items-center gap-4">
-        <img src="images/logo.png" alt="Geemu Games" class="h-20 md:h-28 transition-all">
+      <div class="logo-center">
+        <img src="images/logo.png" alt="Geemu Games" class="h-20 md:h-28">
       </div>
 
       <nav class="ml-auto flex items-center gap-8 text-lg">
@@ -88,15 +103,15 @@
     </div>
   </header>
 
-  <!-- BARRA DE EXCITAÇÃO - Corrigida -->
+  <!-- BARRA DE EXCITAÇÃO -->
   <div class="fixed top-24 left-0 right-0 bg-zinc-900 border-b border-gold/30 z-40">
     <div class="max-w-7xl mx-auto px-6">
       <div class="flex items-center gap-4 py-2">
         <span class="text-gold font-medium text-sm flex items-center gap-2 whitespace-nowrap">
           <i class="fas fa-fire"></i> Excitação
         </span>
-        <div class="flex-1 excitement-bar">
-          <div id="excitement-bar" class="excitement-bar w-[25%]"></div>
+        <div class="flex-1 excitement-container">
+          <div id="excitement-bar" class="excitement-bar"></div>
         </div>
         <span id="excitement-percent" class="font-bold text-lg text-gold min-w-[50px]">25%</span>
       </div>
@@ -174,7 +189,7 @@
       container.innerHTML = "";
       universos.forEach(u => {
         const card = document.createElement("div");
-        card.className = `p-8 border border-gold/20 rounded-3xl`;
+        card.className = `universe-card p-8 border border-gold/20 rounded-3xl cursor-pointer`;
         card.innerHTML = `
           <div class="h-2 bg-gradient-to-r ${u.cor} rounded mb-6"></div>
           <h3 class="text-2xl font-bold gold mb-3">${u.nome}</h3>
@@ -190,7 +205,7 @@
 
     let excitement = 25;
     function updateExcitement() {
-      excitement = Math.min(100, excitement + 8);
+      excitement = Math.min(100, excitement + 7);
       document.getElementById("excitement-bar").style.width = excitement + "%";
       document.getElementById("excitement-percent").textContent = excitement + "%";
     }
@@ -200,6 +215,7 @@
 
     window.onload = () => {
       renderUniversos();
+      // Clique em qualquer lugar da página aumenta a excitação
       document.addEventListener("click", updateExcitement);
     };
   </script>
