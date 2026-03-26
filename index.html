@@ -13,39 +13,42 @@
     }
     .gold { color: #d4af37; }
 
-    /* Barra de Excitação simples */
+    /* Barra de Excitação - Arredondada e com tesão vermelho (estilo antigo) */
     .excitement-wrapper {
-      margin-top: 78px;           /* Desceu a barra para dar espaço ao logo */
+      margin-top: 72px;           /* Ajustado para o logo ficar bem posicionado */
     }
 
     .excitement-container {
-      height: 9px;
+      height: 10px;
       background: #1f1f1f;
       border-radius: 9999px;
       overflow: hidden;
+      box-shadow: 0 2px 8px rgba(255, 80, 0, 0.4);
     }
 
     .excitement-bar {
       height: 100%;
-      background: linear-gradient(to right, #ff3333, #ff6600);
+      background: linear-gradient(to right, #ff1a1a, #ff7700);
       width: 25%;
-      transition: width 0.4s ease-out;
+      transition: width 0.5s ease-out;
       position: relative;
+      border-radius: 9999px;
     }
 
     .excitement-bar::after {
       content: '';
       position: absolute;
-      top: -50%;
-      right: -30%;
-      width: 40%;
-      height: 200%;
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.7), transparent);
-      animation: flame 1.8s infinite linear;
+      top: -40%;
+      left: 0;
+      width: 100%;
+      height: 180%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.6), transparent);
+      animation: flame 1.6s infinite linear;
     }
+
     @keyframes flame {
-      0% { transform: translateX(-120%); }
-      100% { transform: translateX(350%); }
+      0% { transform: translateX(-100%); }
+      100% { transform: translateX(200%); }
     }
 
     /* Logo */
@@ -54,7 +57,7 @@
       left: 50%;
       transform: translateX(-50%);
       z-index: 30;
-      margin-top: 8px;
+      margin-top: 10px;
     }
 
     /* Banner */
@@ -69,12 +72,12 @@
 
     @media (max-width: 768px) {
       .banner-img {
-        height: 220px;           /* Subido mais no celular */
+        height: 205px;           /* Subido e mais próximo da barra */
         border-radius: 16px;
         object-position: center 25%;
       }
       .pt-banner {
-        padding-top: 120px;      /* Reduz espaço acima do banner no celular */
+        padding-top: 110px;      /* Reduz espaço acima do banner no celular */
       }
     }
   </style>
