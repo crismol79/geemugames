@@ -57,13 +57,13 @@
       left: 50%;
       transform: translateX(-50%);
       z-index: 30;
-      margin-top: 12px;           /* Desce o logo para não colar na barra */
+      margin-top: 18px;           /* Desceu mais para sair da linha */
     }
 
-    /* Banner - Voltando ao tamanho anterior */
+    /* Banner */
     .banner-img {
       width: 100%;
-      height: 380px;              /* Desktop - como estava antes */
+      height: 380px;
       object-fit: cover;
       object-position: center 30%;
       border-radius: 24px;
@@ -72,9 +72,9 @@
 
     @media (max-width: 768px) {
       .banner-img {
-        height: 260px;            /* Celular - como estava antes */
+        height: 240px;           /* Voltou ao tamanho anterior no celular */
         border-radius: 16px;
-        object-position: center 28%;
+        object-position: center 25%;
       }
     }
   </style>
@@ -93,10 +93,10 @@
         <img src="images/logo.png" alt="Geemu Games" class="h-20 md:h-28">
       </div>
 
-      <!-- Navegação -->
-      <nav class="ml-auto flex items-center gap-6 md:gap-8 text-base md:text-lg">
+      <!-- Navegação visível apenas no desktop -->
+      <nav class="ml-auto hidden md:flex items-center gap-8 text-lg">
         <a href="#" onclick="showRelacionamentos()" class="hover:text-gold transition flex items-center gap-2">
-          <i class="fas fa-heart"></i> <span class="hidden md:inline">Meus Relacionamentos</span>
+          <i class="fas fa-heart"></i> Meus Relacionamentos
         </a>
         <a href="https://patreon.com/geemugames" target="_blank" class="hover:text-gold transition flex items-center gap-2">
           <i class="fas fa-crown"></i> Patreon
@@ -120,7 +120,7 @@
     </div>
   </div>
 
-  <!-- BANNER - Tamanho original -->
+  <!-- BANNER -->
   <div class="pt-36 pb-8 px-4 md:px-6">
     <img src="images/banner.png" alt="Banner Geemu Games" 
          class="banner-img mx-auto">
@@ -156,7 +156,9 @@
   <footer class="bg-black py-14 border-t border-gold/20">
     <div class="max-w-7xl mx-auto px-6 text-center">
       <p class="text-xl text-white mb-4">GEEMU GAMES – Plataforma de Relacionamento Interativo</p>
-      <p class="text-zinc-400 mb-6">Fale conosco: contato@geemugames.com</p>
+      <p class="text-zinc-400 mb-6">
+        Fale conosco: <a href="mailto:contato@geemugames.com" class="text-gold hover:underline">contato@geemugames.com</a>
+      </p>
 
       <div class="flex flex-wrap justify-center gap-x-8 gap-y-3 text-sm mb-8">
         <a href="privacidade.html" class="hover:text-gold transition">Política de Privacidade</a>
@@ -170,8 +172,20 @@
     </div>
   </footer>
 
+  <!-- MENU HAMBURGER (Mobile) -->
+  <div id="mobile-menu" class="hidden fixed inset-0 bg-black/95 z-[100] pt-24 px-6">
+    <div class="flex flex-col gap-8 text-2xl">
+      <a href="#" onclick="showRelacionamentos(); toggleMenu()" class="hover:text-gold transition flex items-center gap-3">
+        <i class="fas fa-heart"></i> Meus Relacionamentos
+      </a>
+      <a href="https://patreon.com/geemugames" target="_blank" onclick="toggleMenu()" class="hover:text-gold transition flex items-center gap-3">
+        <i class="fas fa-crown"></i> Patreon
+      </a>
+    </div>
+  </div>
+
   <script>
-    const universos = [
+    const universos = [ /* ... seu array completo ... */ 
       { nome: "Escolha Seu Prazer", desc: "Realismo brasileiro, traição e risco", cor: "from-rose-500 to-pink-600" },
       { nome: "Crônicas do Desejo", desc: "Fantasia imersiva e VR", cor: "from-purple-500 to-violet-600" },
       { nome: "Escritório Proibido", desc: "Poder, hierarquia e tensão no trabalho", cor: "from-amber-500 to-orange-600" },
@@ -212,8 +226,14 @@
       document.getElementById("excitement-percent").textContent = excitement + "%";
     }
 
-    function toggleMenu() { alert("Menu em desenvolvimento - Em breve!"); }
-    function showRelacionamentos() { alert("Meus Relacionamentos - Em breve!"); }
+    function toggleMenu() {
+      const menu = document.getElementById("mobile-menu");
+      menu.classList.toggle("hidden");
+    }
+
+    function showRelacionamentos() {
+      alert("Meus Relacionamentos - Em breve!");
+    }
 
     window.onload = () => {
       renderUniversos();
