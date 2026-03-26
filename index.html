@@ -13,12 +13,13 @@
     }
     .gold { color: #d4af37; }
 
-    /* Barra de Excitação */
+    /* Barra de Excitação - DESCEMOS A LINHA */
     .excitement-container {
       height: 9px;
       background: #1f1f1f;
       border-radius: 9999px;
       overflow: hidden;
+      margin-top: 12px;           /* Desceu a barra para dar espaço ao logo */
     }
     .excitement-bar {
       height: 100%;
@@ -51,16 +52,16 @@
       box-shadow: 0 15px 25px rgba(212, 175, 55, 0.15);
     }
 
-    /* Logo - DESCIDO MAIS */
+    /* Logo - posição mantida */
     .logo-center {
       position: absolute;
       left: 50%;
       transform: translateX(-50%);
       z-index: 30;
-      margin-top: 38px;           /* Desceu bastante para sair da linha branca */
+      margin-top: 12px;
     }
 
-    /* Banner */
+    /* Banner - mais largo no celular sem cortar */
     .banner-img {
       width: 100%;
       height: 380px;
@@ -72,9 +73,10 @@
 
     @media (max-width: 768px) {
       .banner-img {
-        height: 210px;
+        height: 230px;           /* Altura boa para não cortar */
         border-radius: 16px;
-        object-position: center 25%;
+        object-position: center 28%;
+        width: 100%;             /* Preenche mais os espaços laterais */
       }
     }
   </style>
@@ -88,16 +90,13 @@
         <i class="fas fa-bars"></i>
       </button>
 
-      <!-- Logo centralizado e bem descido -->
       <div class="logo-center">
         <img src="images/logo.png" alt="Geemu Games" class="h-20 md:h-28">
       </div>
-
-      <!-- Navegação removida do header (só no hamburger) -->
     </div>
   </header>
 
-  <!-- BARRA DE EXCITAÇÃO -->
+  <!-- BARRA DE EXCITAÇÃO - DESCIDA -->
   <div class="fixed top-24 left-0 right-0 bg-zinc-900 border-b border-gold/30 z-40">
     <div class="max-w-7xl mx-auto px-6">
       <div class="flex items-center gap-4 py-2">
@@ -113,7 +112,7 @@
   </div>
 
   <!-- BANNER -->
-  <div class="pt-36 pb-8 px-4 md:px-6">
+  <div class="pt-36 pb-8 px-3 md:px-6">
     <img src="images/banner.png" alt="Banner Geemu Games" 
          class="banner-img mx-auto">
   </div>
@@ -128,7 +127,7 @@
       </p>
     </div>
 
-    <!-- TÍTULO "NOSSOS UNIVERSOS" - MENOR NO CELULAR -->
+    <!-- UNIVERSOS -->
     <h2 class="text-3xl md:text-4xl font-bold gold text-center mb-12">NOSSOS UNIVERSOS</h2>
     <div id="universos-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"></div>
 
