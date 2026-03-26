@@ -57,7 +57,25 @@
       left: 50%;
       transform: translateX(-50%);
       z-index: 30;
-      margin-top: 8px;           /* Desce o logo */
+      margin-top: 12px;           /* Desce o logo para não colar na barra */
+    }
+
+    /* Banner - Voltando ao tamanho anterior */
+    .banner-img {
+      width: 100%;
+      height: 380px;              /* Desktop - como estava antes */
+      object-fit: cover;
+      object-position: center 30%;
+      border-radius: 24px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+    }
+
+    @media (max-width: 768px) {
+      .banner-img {
+        height: 260px;            /* Celular - como estava antes */
+        border-radius: 16px;
+        object-position: center 28%;
+      }
     }
   </style>
 </head>
@@ -72,7 +90,7 @@
 
       <!-- Logo centralizado e descido -->
       <div class="logo-center">
-        <img src="images/logo.png" alt="Geemu Games" class="h-16 md:h-24">
+        <img src="images/logo.png" alt="Geemu Games" class="h-20 md:h-28">
       </div>
 
       <!-- Navegação -->
@@ -102,15 +120,15 @@
     </div>
   </div>
 
-  <!-- BANNER -->
+  <!-- BANNER - Tamanho original -->
   <div class="pt-36 pb-8 px-4 md:px-6">
     <img src="images/banner.png" alt="Banner Geemu Games" 
-         class="w-full max-w-[98%] mx-auto rounded-3xl shadow-2xl object-cover">
+         class="banner-img mx-auto">
   </div>
 
   <main class="max-w-7xl mx-auto px-6 pb-12">
 
-    <!-- SLOGAN - Menor e em branco -->
+    <!-- SLOGAN - Menor e branco -->
     <div class="text-center mb-16 px-4">
       <p class="text-2xl md:text-3xl font-light text-white leading-tight">
         “Existe um desejo adormecido dentro de você…<br>
