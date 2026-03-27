@@ -65,16 +65,6 @@
         border-radius: 18px;
       }
     }
-
-    /* Cards */
-    .universe-card {
-      transition: all 0.4s ease;
-      background: rgba(20, 20, 20, 0.85);
-    }
-    .universe-card:hover {
-      transform: scale(1.06) translateY(-8px);
-      box-shadow: 0 20px 35px rgba(212, 175, 55, 0.3);
-    }
   </style>
 </head>
 <body class="text-white min-h-screen">
@@ -124,6 +114,30 @@
     <h2 class="text-3xl md:text-4xl font-bold gold text-center mb-12">NOSSOS UNIVERSOS</h2>
     <div id="universos-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"></div>
 
+    <!-- FORMULÁRIO DE CADASTRO DE E-MAIL -->
+    <div class="max-w-2xl mx-auto mt-20 bg-zinc-900/70 border border-gold/20 rounded-3xl p-8 md:p-10 text-center">
+      <h3 class="text-2xl font-bold gold mb-3">Fique por dentro de tudo</h3>
+      <p class="text-zinc-400 mb-8">
+        Cadastre seu e-mail e receba novidades, lançamentos exclusivos e conteúdos especiais direto da Nyra.
+      </p>
+      
+      <form class="flex flex-col md:flex-row gap-3 max-w-md mx-auto">
+        <input 
+          type="email" 
+          placeholder="Seu melhor e-mail" 
+          class="flex-1 bg-zinc-800 border border-gold/30 rounded-2xl px-6 py-4 text-white focus:outline-none focus:border-gold transition">
+        <button 
+          type="submit"
+          class="bg-gold hover:bg-amber-400 text-black font-semibold px-10 py-4 rounded-2xl transition whitespace-nowrap">
+          Quero receber
+        </button>
+      </form>
+      
+      <p class="text-xs text-zinc-500 mt-6">
+        Prometemos não encher sua caixa de spam. Você pode cancelar quando quiser.
+      </p>
+    </div>
+
   </main>
 
   <!-- RODAPÉ -->
@@ -146,12 +160,11 @@
     </div>
   </footer>
 
-  <!-- MENU HAMBURGER - Versão Profissional -->
+  <!-- MENU HAMBURGER -->
   <div id="mobile-menu" class="hidden fixed inset-0 bg-black/95 z-[100] pt-20 px-8">
     <button onclick="toggleMenu()" class="absolute top-8 right-8 text-4xl text-gold hover:text-amber-400">
       ✕
     </button>
-    
     <div class="flex flex-col gap-8 text-2xl mt-12">
       <a href="index.html" onclick="toggleMenu()" class="hover:text-gold transition flex items-center gap-4">
         <i class="fas fa-home"></i> Início
@@ -161,6 +174,9 @@
       </a>
       <a href="#" onclick="toggleMenu()" class="hover:text-gold transition flex items-center gap-4">
         <i class="fas fa-coins"></i> Tesão Tokens: <span id="token-balance" class="text-gold font-semibold">0</span>
+      </a>
+      <a href="#" onclick="showLogin(); toggleMenu()" class="hover:text-gold transition flex items-center gap-4">
+        <i class="fas fa-user-circle"></i> Entrar / Minha Conta
       </a>
       <a href="https://patreon.com/geemugames" target="_blank" onclick="toggleMenu()" class="hover:text-gold transition flex items-center gap-4">
         <i class="fas fa-crown"></i> Assinaturas
@@ -216,6 +232,10 @@
 
     function showRelacionamentos() {
       alert("Meus Relacionamentos - Em breve!");
+    }
+
+    function showLogin() {
+      alert("🔐 Sistema de Login em desenvolvimento.\n\nEm breve você poderá criar sua conta, salvar seu progresso e gerenciar seus Tesão Tokens.");
     }
 
     window.onload = () => {
