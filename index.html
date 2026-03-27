@@ -4,233 +4,223 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Geemu Games</title>
-  
-  <!-- Favicon -->
-  <link rel="icon" type="image/png" sizes="512x512" href="images/favicon-512.png">
-  <link rel="icon" type="image/png" sizes="256x256" href="images/favicon-256.png">
-  <link rel="icon" type="image/png" sizes="64x64" href="images/favicon-64.png">
-  <link rel="apple-touch-icon" sizes="180x180" href="images/favicon-512.png">
-
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="icon" type="image/png" sizes="512x512" href="images/favicon-512.png">
   <style>
-    body { 
-      font-family: system-ui, sans-serif; 
-      background-color: #0a0a0a; 
+    body {
+      font-family: system-ui, -apple-system, sans-serif;
+      background-color: #0a0a0a;
     }
     .gold { color: #d4af37; }
+    .gold-hover:hover { color: #f5d76e; }
 
-    /* Barra de Excitação - Modelo inicial (arredondada, não presa nas laterais) */
-    .excitement-wrapper { 
-      margin-top: 92px; 
-    }
-    .excitement-container {
-      height: 10px;
-      background: #1f1f1f;
-      border-radius: 9999px;
-      overflow: hidden;
-      max-width: 860px;
-      margin: 0 auto;
-    }
     .excitement-bar {
-      height: 100%;
-      background: linear-gradient(to right, #ff1a1a, #ff7700, #ffd700);
-      width: 25%;
-      transition: width 0.5s ease-out;
+      height: 8px;
+      background: linear-gradient(to right, #ff1a1a, #ff6600, #d4af37);
       border-radius: 9999px;
       position: relative;
+      overflow: hidden;
+      box-shadow: 0 0 12px rgba(212, 175, 55, 0.6);
     }
     .excitement-bar::after {
       content: '';
       position: absolute;
-      inset: 0;
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.7), transparent);
-      animation: flame 1.5s infinite linear;
+      top: -50%;
+      right: -40%;
+      width: 50%;
+      height: 200%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.8), transparent);
+      animation: flame 2s infinite linear;
     }
     @keyframes flame {
-      0% { transform: translateX(-100%); }
-      100% { transform: translateX(300%); }
+      0% { transform: translateX(-150%); }
+      100% { transform: translateX(400%); }
     }
 
-    /* Hamburger menor e discreto */
-    .hamburger-btn {
-      font-size: 1.75rem;
+    .universe-card {
+      transition: all 0.4s ease;
+      overflow: hidden;
+      border-radius: 16px;
+      background-color: #111;
     }
-
-    /* Logo */
-    .logo-center {
-      position: absolute;
-      left: 50%;
-      transform: translateX(-50%);
-      z-index: 30;
-      margin-top: 12px;
+    .universe-card:hover {
+      transform: scale(1.04);
+      box-shadow: 0 0 25px rgba(212, 175, 55, 0.3);
     }
-
-    /* Banner */
-    .banner-img {
-      width: 100%;
-      height: 380px;
-      object-fit: cover;
-      object-position: center 30%;
-      border-radius: 24px;
+    .universe-card img {
+      transition: transform 0.6s ease;
     }
-
-    @media (max-width: 768px) {
-      .banner-img {
-        height: 205px;           /* Subido um pouco mais */
-        border-radius: 16px;
-      }
+    .universe-card:hover img {
+      transform: scale(1.08);
     }
   </style>
 </head>
-<body class="text-white min-h-screen">
-
+<body class="text-white min-h-screen pb-20">
   <!-- HEADER -->
-  <header class="fixed top-0 left-0 right-0 z-50 bg-black/95 border-b border-gold/20 py-5">
-    <div class="max-w-7xl mx-auto px-6 flex items-center relative">
-      <button onclick="toggleMenu()" class="hamburger-btn text-gold hover:text-amber-400 z-10">
+  <header class="fixed top-0 left-0 right-0 z-50 bg-black/90 border-b border-[#d4af37]/30 py-4">
+    <div class="max-w-7xl mx-auto px-6 flex items-center justify-between">
+      <button onclick="toggleMenu()" class="text-3xl text-[#d4af37] hover:text-[#f5d76e]">
         <i class="fas fa-bars"></i>
       </button>
+      
+      <div class="flex-1 flex justify-center">
+        <img src="images/logo.png" alt="Geemu Games" class="h-14 md:h-20">
+      </div>
 
-      <div class="logo-center">
-        <img src="images/logo.png" alt="Geemu Games" class="h-20 md:h-28">
+      <div class="hidden md:flex items-center gap-8 text-sm">
+        <button onclick="showRelacionamentos()" class="gold-hover">Meus Relacionamentos</button>
+        <button onclick="alert('Assinaturas em breve 💎')" class="gold-hover">Assinaturas</button>
       </div>
     </div>
   </header>
 
   <!-- BARRA DE EXCITAÇÃO -->
-  <div class="fixed left-0 right-0 z-40 excitement-wrapper">
+  <div class="fixed top-20 left-0 right-0 z-40 bg-zinc-950 py-3">
     <div class="max-w-7xl mx-auto px-6">
-      <div class="flex items-center gap-4 py-3">
-        <span class="text-gold font-medium text-sm flex items-center gap-2">
-          <i class="fas fa-fire"></i> Excitação
-        </span>
-        <div class="flex-1 excitement-container">
-          <div id="excitement-bar" class="excitement-bar"></div>
+      <div class="flex items-center gap-3">
+        <span class="text-xs uppercase tracking-widest text-zinc-500">Tesão</span>
+        <div class="flex-1 excitement-bar" id="excitement-container">
+          <div id="excitement-bar" class="excitement-bar w-[25%]"></div>
         </div>
-        <span id="excitement-percent" class="font-bold text-lg text-gold">25%</span>
+        <span id="excitement-percent" class="text-xs font-mono text-[#d4af37]">25%</span>
       </div>
     </div>
   </div>
 
   <!-- BANNER -->
-  <div class="pt-52 pb-8 px-4 md:px-6">
-    <img src="images/banner.png" alt="Banner Geemu Games" class="banner-img mx-auto">
+  <div class="pt-32 pb-10 px-4">
+    <img src="images/banner.png" alt="Geemu Games Banner" 
+         class="w-full max-w-5xl mx-auto rounded-2xl shadow-2xl object-cover">
   </div>
 
-  <main class="max-w-7xl mx-auto px-6 pb-12">
+  <!-- SLOGAN -->
+  <div class="text-center px-6 mb-12">
+    <p class="text-xl md:text-2xl text-zinc-300 italic">
+      Existe um desejo adormecido dentro de você...<br>
+      e um universo pronto para despertá-lo.
+    </p>
+  </div>
 
-    <div class="text-center mb-16 px-4">
-      <p class="text-2xl md:text-3xl font-light text-white leading-tight">
-        “Existe um desejo adormecido dentro de você…<br>
-        e um universo pronto para despertá-lo.”
-      </p>
+  <!-- NOSSOS UNIVERSOS -->
+  <div class="max-w-7xl mx-auto px-6">
+    <h2 class="text-3xl font-bold text-center gold mb-12">NOSSOS UNIVERSOS</h2>
+    
+    <div id="universos-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <!-- Preenchido via JavaScript -->
     </div>
+  </div>
 
-    <h2 class="text-3xl md:text-4xl font-bold gold text-center mb-12">NOSSOS UNIVERSOS</h2>
-    <div id="universos-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"></div>
-
-    <!-- FORMULÁRIO DE CADASTRO DE E-MAIL -->
-    <div class="max-w-2xl mx-auto mt-20 bg-zinc-900/70 border border-gold/20 rounded-3xl p-8 md:p-10 text-center">
-      <h3 class="text-2xl font-bold gold mb-3">Fique por dentro de tudo</h3>
-      <p class="text-zinc-400 mb-8">
-        Cadastre seu e-mail e receba novidades, lançamentos exclusivos e conteúdos especiais direto da 🍒 Nyra.
-      </p>
-      
-      <form class="flex flex-col md:flex-row gap-3 max-w-md mx-auto">
-        <input 
-          type="email" 
-          placeholder="Seu melhor e-mail" 
-          class="flex-1 bg-zinc-800 border border-gold/30 rounded-2xl px-6 py-4 text-white focus:outline-none focus:border-gold transition">
-        <button 
-          type="submit"
-          class="bg-gold hover:bg-amber-400 text-black font-semibold px-10 py-4 rounded-2xl transition whitespace-nowrap">
-          Quero receber
-        </button>
-      </form>
-      
-      <p class="text-xs text-zinc-500 mt-6">
-        Prometemos não encher sua caixa de spam. Você pode cancelar quando quiser.
-      </p>
+  <!-- FORMULÁRIO DE EMAIL -->
+  <div class="max-w-md mx-auto mt-20 px-6 text-center">
+    <p class="text-zinc-400 mb-6">
+      Cadastre seu e-mail e receba novidades, lançamentos exclusivos e conteúdos especiais direto da 🍒 Nyra.
+    </p>
+    <div class="flex gap-3">
+      <input type="email" id="email-input" placeholder="Seu melhor e-mail" 
+             class="flex-1 bg-zinc-900 border border-[#d4af37]/30 rounded-2xl px-6 py-4 text-white focus:outline-none focus:border-[#d4af37]">
+      <button onclick="cadastrarEmail()" 
+              class="bg-[#d4af37] hover:bg-[#f5d76e] text-black font-semibold px-8 rounded-2xl transition">
+        Quero receber
+      </button>
     </div>
+  </div>
 
-  </main>
-
-  <!-- RODAPÉ -->
-  <footer class="bg-black py-14 border-t border-gold/20">
-    <div class="max-w-7xl mx-auto px-6 text-center">
-      <p class="text-xl text-white mb-4">GEEMU GAMES – Plataforma de Relacionamento Interativo</p>
-      <p class="text-zinc-400 mb-6">
-        Fale conosco: <a href="mailto:contato@geemugames.com" class="text-gold hover:underline">contato@geemugames.com</a>
-      </p>
-
-      <div class="flex flex-wrap justify-center gap-x-8 gap-y-3 text-sm mb-8">
-        <a href="privacidade.html" class="hover:text-gold transition">Política de Privacidade</a>
-        <span class="text-zinc-500">|</span>
-        <a href="termos.html" class="hover:text-gold transition">Termos de Uso</a>
-        <span class="text-zinc-500">|</span>
-        <a href="aviso-legal.html" class="hover:text-gold transition">Aviso Legal</a>
+  <!-- FOOTER -->
+  <footer class="mt-24 border-t border-zinc-800 py-10 text-center text-xs text-zinc-500">
+    <div class="max-w-7xl mx-auto px-6">
+      <p class="mb-2">GEEMU GAMES – Plataforma de Relacionamento Interativo</p>
+      <p class="mb-4">Fale conosco: <a href="mailto:contato@geemugames.com" class="gold-hover">contato@geemugames.com</a></p>
+      <p>© 2026 GEEMU GAMES. Todos os direitos reservados.</p>
+      <div class="mt-6 flex justify-center gap-6 text-xs">
+        <a href="privacidade.html" class="hover:text-[#d4af37]">Política de Privacidade</a>
+        <a href="termos.html" class="hover:text-[#d4af37]">Termos de Uso</a>
+        <a href="aviso-legal.html" class="hover:text-[#d4af37]">Aviso Legal</a>
       </div>
-
-      <p class="text-xs text-zinc-500">© 2026 GEEMU GAMES. Todos os direitos reservados.</p>
     </div>
   </footer>
 
-  <!-- MENU HAMBURGER -->
-  <div id="mobile-menu" class="hidden fixed inset-0 bg-black/95 z-[100] pt-20 px-8">
-    <button onclick="toggleMenu()" class="absolute top-8 right-8 text-4xl text-gold hover:text-amber-400">
-      ✕
-    </button>
-    <div class="flex flex-col gap-8 text-2xl mt-12">
-      <a href="index.html" onclick="toggleMenu()" class="hover:text-gold transition flex items-center gap-4">
-        <i class="fas fa-home"></i> Início
-      </a>
-      <a href="#" onclick="showRelacionamentos(); toggleMenu()" class="hover:text-gold transition flex items-center gap-4">
-        <i class="fas fa-heart"></i> Meus Relacionamentos
-      </a>
-      <a href="#" onclick="toggleMenu()" class="hover:text-gold transition flex items-center gap-4">
-        <i class="fas fa-coins"></i> Tesão Tokens: <span id="token-balance" class="text-gold font-semibold">0</span>
-      </a>
-      <a href="#" onclick="showLogin(); toggleMenu()" class="hover:text-gold transition flex items-center gap-4">
-        <i class="fas fa-user-circle"></i> Entrar / Minha Conta
-      </a>
-      <a href="https://patreon.com/geemugames" target="_blank" onclick="toggleMenu()" class="hover:text-gold transition flex items-center gap-4">
-        <i class="fas fa-crown"></i> Assinaturas
-      </a>
-    </div>
-  </div>
-
   <script>
     const universos = [
-      { nome: "Escolha Seu Prazer", desc: "Realismo brasileiro, traição e risco", cor: "from-rose-500 to-pink-600" },
-      { nome: "Crônicas do Desejo", desc: "Fantasia imersiva e VR", cor: "from-purple-500 to-violet-600" },
-      { nome: "Escritório Proibido", desc: "Poder, hierarquia e tensão no trabalho", cor: "from-amber-500 to-orange-600" },
-      { nome: "Academia do Pecado", desc: "Idade gap e iniciação", cor: "from-cyan-500 to-blue-600" },
-      { nome: "Noites Eternas", desc: "Vampiros, lobisomens e dark romance", cor: "from-red-700 to-rose-900" },
-      { nome: "Ilha dos Desejos", desc: "Reality erótico e orgias", cor: "from-emerald-500 to-teal-600" },
-      { nome: "A Escolha do Jogador", desc: "Harém customizável", cor: "from-fuchsia-500 to-pink-600" },
-      { nome: "Doramas Proibidos", desc: "Romance asiático intenso", cor: "from-red-500 to-rose-600" },
-      { nome: "Corte do Prazer", desc: "Monarquia, bailes e luxo", cor: "from-amber-400 to-yellow-600" },
-      { nome: "Império das Sombras", desc: "Máfia, poder e perigo", cor: "from-slate-700 to-zinc-900" },
-      { nome: "Desejos pelo Mundo", desc: "Viagens, escapismo e encontros pelo mundo", cor: "from-sky-500 to-indigo-600" },
-      { nome: "Sonhos Molhados", desc: "Fantasia surreal e sonhos intensos", cor: "from-purple-600 to-indigo-700" }
+      { 
+        nome: "Escolha Seu Prazer", 
+        img: "images/capas/capa-01-escolha-seu-prazer.png",
+        desc: "Realismo brasileiro, traição e risco"
+      },
+      { 
+        nome: "Crônicas do Desejo", 
+        img: "images/capas/capa-02-cronicas-do-desejo.png",
+        desc: "Fantasias misteriosas e desejos profundos"
+      },
+      { 
+        nome: "Escritório Proibido", 
+        img: "images/capas/capa-03-escritorio-proibido.png",
+        desc: "Tensão no trabalho, poder e desejo"
+      },
+      { 
+        nome: "Academia do Pecado", 
+        img: "images/capas/capa-04-academia-do-pecado.png",
+        desc: "Corpos suados, química explosiva"
+      },
+      { 
+        nome: "Noites Eternas", 
+        img: "images/capas/capa-05-noites-eternas.png",
+        desc: "Vampiros, lobisomens e dark romance"
+      },
+      { 
+        nome: "Ilha dos Desejos", 
+        img: "images/capas/capa-06-ilha-dos-desejos.png",
+        desc: "Prazer sem regras em paraíso tropical"
+      },
+      { 
+        nome: "A Escolha do Jogador", 
+        img: "images/capas/capa-07-escolha-do-jogador.png",
+        desc: "Harém, poder e múltiplas escolhas"
+      },
+      { 
+        nome: "Doramas Proibidos", 
+        img: "images/capas/capa-08-doramas-proibidos.png",
+        desc: "Romance intenso com toque de dorama"
+      },
+      { 
+        nome: "Corte do Prazer", 
+        img: "images/capas/capa-09-corte-do-prazer.png",
+        desc: "Luxo, bailes e desejos da corte"
+      },
+      { 
+        nome: "Império das Sombras", 
+        img: "images/capas/capa-10-imperio-das-sombras.png",
+        desc: "Máfia, poder e paixão perigosa"
+      },
+      { 
+        nome: "Desejos pelo Mundo", 
+        img: "images/capas/capa-11-desejos-pelo-mundo.png",
+        desc: "Viagens, escapismo e encontros intensos"
+      },
+      { 
+        nome: "Sonhos Molhados", 
+        img: "images/capas/capa-12-sonhos-molhados.png",
+        desc: "Fantasias impossíveis e surrealismo erótico"
+      }
     ];
 
     function renderUniversos() {
       const container = document.getElementById("universos-grid");
       container.innerHTML = "";
+      
       universos.forEach(u => {
         const card = document.createElement("div");
-        card.className = `universe-card p-8 border border-gold/20 rounded-3xl cursor-pointer`;
+        card.className = "universe-card";
         card.innerHTML = `
-          <div class="h-2 bg-gradient-to-r ${u.cor} rounded mb-6"></div>
-          <h3 class="text-2xl font-bold gold mb-3">${u.nome}</h3>
-          <p class="text-zinc-400 mb-8">${u.desc}</p>
-          <button onclick="alert('Em breve: ${u.nome} 💋')" 
-                  class="w-full py-4 bg-gold hover:bg-amber-400 text-black font-semibold rounded-2xl transition">
-            Explorar Universo
-          </button>
+          <div class="relative">
+            <img src="${u.img}" alt="${u.nome}" class="w-full h-80 object-cover">
+          </div>
+          <div class="p-6">
+            <h3 class="text-2xl font-bold gold mb-2">${u.nome}</h3>
+            <p class="text-zinc-400 text-sm leading-relaxed">${u.desc}</p>
+          </div>
         `;
+        card.onclick = () => alert(`Abrindo universo: ${u.nome} 💋\n\nEm breve com histórias completas!`);
         container.appendChild(card);
       });
     }
@@ -243,20 +233,27 @@
     }
 
     function toggleMenu() {
-      document.getElementById("mobile-menu").classList.toggle("hidden");
+      alert("Menu em desenvolvimento - Em breve!");
     }
 
     function showRelacionamentos() {
       alert("Meus Relacionamentos - Em breve!");
     }
 
-    function showLogin() {
-      alert("🔐 Sistema de Login em desenvolvimento.\n\nEm breve você poderá criar sua conta, salvar seu progresso e gerenciar seus Tesão Tokens.");
+    function cadastrarEmail() {
+      const email = document.getElementById("email-input").value.trim();
+      if (email) {
+        alert("✅ Email cadastrado com sucesso!\n\nObrigada por fazer parte da Geemu Games, Nyra vai te enviar novidades 🔥");
+        document.getElementById("email-input").value = "";
+      } else {
+        alert("Por favor, insira seu e-mail.");
+      }
     }
+
+    document.addEventListener("click", updateExcitement);
 
     window.onload = () => {
       renderUniversos();
-      document.addEventListener("click", updateExcitement);
     };
   </script>
 </body>
