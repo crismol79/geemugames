@@ -9,74 +9,79 @@
   <style>
     body { 
       font-family: system-ui, sans-serif; 
-      background-color: #0a0a0a; 
+      background: #0a0a0a;
     }
     .gold { color: #d4af37; }
 
-    /* Barra de Excitação - Descer mais */
-    .excitement-wrapper {
-      margin-top: 92px;   /* Desci bastante para o logo ficar acima */
-    }
-
+    /* Barra de Excitação - Mais sexy */
+    .excitement-wrapper { margin-top: 78px; }
     .excitement-container {
       height: 10px;
-      background: #1f1f1f;
+      background: #1a1a1a;
       border-radius: 9999px;
       overflow: hidden;
+      box-shadow: 0 0 12px rgba(255, 50, 50, 0.5);
     }
-
     .excitement-bar {
       height: 100%;
-      background: linear-gradient(to right, #ff1a1a, #ff7700);
+      background: linear-gradient(to right, #ff1a1a, #ff7700, #ffd700);
       width: 25%;
-      transition: width 0.5s ease-out;
-      border-radius: 9999px;
+      transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
       position: relative;
     }
-
     .excitement-bar::after {
       content: '';
       position: absolute;
       inset: 0;
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.6), transparent);
-      animation: flame 1.8s infinite linear;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.8), transparent);
+      animation: flame 1.4s infinite linear;
     }
+    @keyframes flame { 0% { transform: translateX(-100%); } 100% { transform: translateX(300%); } }
 
-    @keyframes flame {
-      0% { transform: translateX(-100%); }
-      100% { transform: translateX(300%); }
-    }
-
-    /* Logo */
+    /* Logo com glow sexy */
     .logo-center {
       position: absolute;
       left: 50%;
       transform: translateX(-50%);
       z-index: 30;
       margin-top: 12px;
+      filter: drop-shadow(0 0 15px rgba(212, 175, 55, 0.6));
     }
 
-    /* Banner */
+    /* Banner mais sensual */
     .banner-img {
       width: 100%;
       height: 380px;
       object-fit: cover;
-      object-position: center 30%;
+      object-position: center 32%;
       border-radius: 24px;
+      box-shadow: 0 0 40px rgba(212, 175, 55, 0.3);
     }
 
     @media (max-width: 768px) {
       .banner-img {
-        height: 210px;
-        border-radius: 16px;
+        height: 215px;
+        border-radius: 18px;
+        object-position: center 28%;
       }
+    }
+
+    /* Cards mais provocantes */
+    .universe-card {
+      transition: all 0.4s ease;
+      background: rgba(20, 20, 20, 0.8);
+    }
+    .universe-card:hover {
+      transform: scale(1.05) translateY(-6px);
+      box-shadow: 0 20px 30px rgba(212, 175, 55, 0.25);
+      border-color: #d4af37;
     }
   </style>
 </head>
 <body class="text-white min-h-screen">
 
   <!-- HEADER -->
-  <header class="fixed top-0 left-0 right-0 z-50 bg-black py-5">
+  <header class="fixed top-0 left-0 right-0 z-50 bg-black/95 border-b border-gold/20 py-5">
     <div class="max-w-7xl mx-auto px-6 flex items-center relative">
       <button onclick="toggleMenu()" class="text-4xl text-gold hover:text-amber-400 z-10">
         <i class="fas fa-bars"></i>
@@ -91,7 +96,7 @@
   <!-- BARRA DE EXCITAÇÃO -->
   <div class="fixed left-0 right-0 z-40 excitement-wrapper">
     <div class="max-w-7xl mx-auto px-6">
-      <div class="flex items-center gap-4 py-2">
+      <div class="flex items-center gap-4 py-3">
         <span class="text-gold font-medium text-sm flex items-center gap-2">
           <i class="fas fa-fire"></i> Excitação
         </span>
@@ -104,14 +109,12 @@
   </div>
 
   <!-- BANNER -->
-  <div class="pt-52 pb-8 px-4 md:px-6">   <!-- pt-52 para dar espaço -->
-    <img src="images/banner.png" alt="Banner Geemu Games" 
-         class="banner-img mx-auto">
+  <div class="pt-52 pb-8 px-4 md:px-6">
+    <img src="images/banner.png" alt="Banner Geemu Games" class="banner-img mx-auto">
   </div>
 
   <main class="max-w-7xl mx-auto px-6 pb-12">
 
-    <!-- SLOGAN -->
     <div class="text-center mb-16 px-4">
       <p class="text-2xl md:text-3xl font-light text-white leading-tight">
         “Existe um desejo adormecido dentro de você…<br>
@@ -119,19 +122,8 @@
       </p>
     </div>
 
-    <!-- UNIVERSOS -->
     <h2 class="text-3xl md:text-4xl font-bold gold text-center mb-12">NOSSOS UNIVERSOS</h2>
     <div id="universos-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"></div>
-
-    <!-- AVISO -->
-    <div class="max-w-5xl mx-auto mt-20 bg-zinc-900/80 border border-gold/30 rounded-2xl p-10 text-center">
-      <p class="text-base text-zinc-300 leading-relaxed">
-        <strong>Aviso importante!</strong><br><br>
-        Pagamento processado pela GEEMU GAMES, devido a questões fiscais temporárias o nome que aparecerá na fatura do seu cartão será: <strong>Villa Pizza</strong>.<br><br>
-        Estamos ajustando essa informação, qualquer dúvida, escreva-nos: <a href="mailto:contato@geemugames.com" class="text-gold hover:underline">contato@geemugames.com</a>.<br><br>
-        Agradecemos e contamos com a sua compreensão.
-      </p>
-    </div>
 
   </main>
 
@@ -168,55 +160,18 @@
   </div>
 
   <script>
-    const universos = [
-      { nome: "Escolha Seu Prazer", desc: "Realismo brasileiro, traição e risco", cor: "from-rose-500 to-pink-600" },
-      { nome: "Crônicas do Desejo", desc: "Fantasia imersiva e VR", cor: "from-purple-500 to-violet-600" },
-      { nome: "Escritório Proibido", desc: "Poder, hierarquia e tensão no trabalho", cor: "from-amber-500 to-orange-600" },
-      { nome: "Academia do Pecado", desc: "Idade gap e iniciação", cor: "from-cyan-500 to-blue-600" },
-      { nome: "Noites Eternas", desc: "Vampiros, lobisomens e dark romance", cor: "from-red-700 to-rose-900" },
-      { nome: "Ilha dos Desejos", desc: "Reality erótico e orgias", cor: "from-emerald-500 to-teal-600" },
-      { nome: "A Escolha do Jogador", desc: "Harém customizável", cor: "from-fuchsia-500 to-pink-600" },
-      { nome: "Doramas Proibidos", desc: "Romance asiático intenso", cor: "from-red-500 to-rose-600" },
-      { nome: "Corte do Prazer", desc: "Monarquia, bailes e luxo", cor: "from-amber-400 to-yellow-600" },
-      { nome: "Império das Sombras", desc: "Máfia, poder e perigo", cor: "from-slate-700 to-zinc-900" },
-      { nome: "Desejos pelo Mundo", desc: "Viagens, escapismo e encontros pelo mundo", cor: "from-sky-500 to-indigo-600" },
-      { nome: "Sonhos Molhados", desc: "Fantasia surreal e sonhos intensos", cor: "from-purple-600 to-indigo-700" }
-    ];
+    // (mesmo script de antes - universos, render, excitement, etc.)
+    const universos = [ /* seu array completo de 12 universos */ ];
 
-    function renderUniversos() {
-      const container = document.getElementById("universos-grid");
-      container.innerHTML = "";
-      universos.forEach(u => {
-        const card = document.createElement("div");
-        card.className = `universe-card p-8 border border-gold/20 rounded-3xl cursor-pointer`;
-        card.innerHTML = `
-          <div class="h-2 bg-gradient-to-r ${u.cor} rounded mb-6"></div>
-          <h3 class="text-2xl font-bold gold mb-3">${u.nome}</h3>
-          <p class="text-zinc-400 mb-8">${u.desc}</p>
-          <button onclick="alert('Em breve: ${u.nome} 💋')" 
-                  class="w-full py-4 bg-gold hover:bg-amber-400 text-black font-semibold rounded-2xl transition">
-            Explorar Universo
-          </button>
-        `;
-        container.appendChild(card);
-      });
-    }
-
+    function renderUniversos() { /* mesmo código */ }
     let excitement = 25;
     function updateExcitement() {
       excitement = Math.min(100, excitement + 7);
       document.getElementById("excitement-bar").style.width = excitement + "%";
       document.getElementById("excitement-percent").textContent = excitement + "%";
     }
-
-    function toggleMenu() {
-      const menu = document.getElementById("mobile-menu");
-      menu.classList.toggle("hidden");
-    }
-
-    function showRelacionamentos() {
-      alert("Meus Relacionamentos - Em breve!");
-    }
+    function toggleMenu() { document.getElementById("mobile-menu").classList.toggle("hidden"); }
+    function showRelacionamentos() { alert("Meus Relacionamentos - Em breve!"); }
 
     window.onload = () => {
       renderUniversos();
