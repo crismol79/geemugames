@@ -13,21 +13,19 @@
     }
     .gold { color: #d4af37; }
 
-    /* Barra de Excitação Sexy */
+    /* Barra de Excitação */
     .excitement-wrapper { margin-top: 78px; }
     .excitement-container {
       height: 10px;
       background: #1f1f1f;
       border-radius: 9999px;
       overflow: hidden;
-      box-shadow: 0 0 12px rgba(255, 50, 50, 0.5);
     }
     .excitement-bar {
       height: 100%;
       background: linear-gradient(to right, #ff1a1a, #ff7700, #ffd700);
       width: 25%;
       transition: width 0.5s ease-out;
-      border-radius: 9999px;
       position: relative;
     }
     .excitement-bar::after {
@@ -42,40 +40,10 @@
       100% { transform: translateX(300%); }
     }
 
-    /* Logo */
-    .logo-center {
-      position: absolute;
-      left: 50%;
-      transform: translateX(-50%);
-      z-index: 30;
-      margin-top: 12px;
-    }
-
-    /* Banner */
-    .banner-img {
-      width: 100%;
-      height: 380px;
-      object-fit: cover;
-      object-position: center 30%;
-      border-radius: 24px;
-      box-shadow: 0 0 40px rgba(212, 175, 55, 0.3);
-    }
-
-    @media (max-width: 768px) {
-      .banner-img {
-        height: 215px;
-        border-radius: 18px;
-      }
-    }
-
-    /* Cards sexy */
-    .universe-card {
-      transition: all 0.4s ease;
-      background: rgba(20, 20, 20, 0.85);
-    }
-    .universe-card:hover {
-      transform: scale(1.06) translateY(-8px);
-      box-shadow: 0 20px 35px rgba(212, 175, 55, 0.3);
+    /* Aviso discreto */
+    .aviso-container {
+      background: rgba(26, 26, 26, 0.85);
+      border: 1px solid rgba(212, 175, 55, 0.2);
     }
   </style>
 </head>
@@ -126,6 +94,17 @@
     <h2 class="text-3xl md:text-4xl font-bold gold text-center mb-12">NOSSOS UNIVERSOS</h2>
     <div id="universos-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"></div>
 
+    <!-- AVISO DISCRETO -->
+    <div class="aviso-container max-w-5xl mx-auto mt-16 md:mt-20 rounded-2xl p-6 md:p-8 text-center">
+      <p class="text-sm md:text-base text-zinc-400 leading-relaxed">
+        <strong class="text-gold">Aviso importante:</strong><br><br>
+        Pagamento processado pela GEEMU GAMES. Devido a questões fiscais temporárias, o nome que aparecerá na fatura será: <strong>Villa Pizza</strong>.<br><br>
+        Estamos ajustando essa informação. Qualquer dúvida, escreva para: 
+        <a href="mailto:contato@geemugames.com" class="text-gold hover:underline">contato@geemugames.com</a><br><br>
+        Agradecemos e contamos com a sua compreensão.
+      </p>
+    </div>
+
   </main>
 
   <!-- RODAPÉ -->
@@ -148,12 +127,11 @@
     </div>
   </footer>
 
-  <!-- MENU HAMBURGER com seta de retorno -->
+  <!-- MENU HAMBURGER -->
   <div id="mobile-menu" class="hidden fixed inset-0 bg-black/95 z-[100] pt-20 px-8">
     <button onclick="toggleMenu()" class="absolute top-8 right-8 text-4xl text-gold hover:text-amber-400">
       ✕
     </button>
-    
     <div class="flex flex-col gap-10 text-2xl mt-12">
       <a href="#" onclick="showRelacionamentos(); toggleMenu()" class="hover:text-gold transition flex items-center gap-4">
         <i class="fas fa-heart"></i> Meus Relacionamentos
