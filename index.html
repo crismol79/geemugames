@@ -146,17 +146,24 @@
     </div>
   </footer>
 
-  <!-- MENU HAMBURGER -->
-  <div id="mobile-menu" class="hidden fixed inset-0 bg-black/95 z-[100] pt-28 px-8">
+  <!-- MENU HAMBURGER - Versão Profissional -->
+  <div id="mobile-menu" class="hidden fixed inset-0 bg-black/95 z-[100] pt-20 px-8">
     <button onclick="toggleMenu()" class="absolute top-8 right-8 text-4xl text-gold hover:text-amber-400">
       ✕
     </button>
-    <div class="flex flex-col gap-10 text-2xl mt-12">
+    
+    <div class="flex flex-col gap-8 text-2xl mt-12">
+      <a href="index.html" onclick="toggleMenu()" class="hover:text-gold transition flex items-center gap-4">
+        <i class="fas fa-home"></i> Início
+      </a>
       <a href="#" onclick="showRelacionamentos(); toggleMenu()" class="hover:text-gold transition flex items-center gap-4">
         <i class="fas fa-heart"></i> Meus Relacionamentos
       </a>
+      <a href="#" onclick="toggleMenu()" class="hover:text-gold transition flex items-center gap-4">
+        <i class="fas fa-coins"></i> Tesão Tokens: <span id="token-balance" class="text-gold font-semibold">0</span>
+      </a>
       <a href="https://patreon.com/geemugames" target="_blank" onclick="toggleMenu()" class="hover:text-gold transition flex items-center gap-4">
-        <i class="fas fa-crown"></i> Patreon
+        <i class="fas fa-crown"></i> Assinaturas
       </a>
     </div>
   </div>
