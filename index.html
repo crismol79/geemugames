@@ -9,15 +9,15 @@
   <style>
     body { 
       font-family: system-ui, sans-serif; 
-      background: #0a0a0a;
+      background-color: #0a0a0a; 
     }
     .gold { color: #d4af37; }
 
-    /* Barra de Excitação - Mais sexy */
+    /* Barra de Excitação Sexy */
     .excitement-wrapper { margin-top: 78px; }
     .excitement-container {
       height: 10px;
-      background: #1a1a1a;
+      background: #1f1f1f;
       border-radius: 9999px;
       overflow: hidden;
       box-shadow: 0 0 12px rgba(255, 50, 50, 0.5);
@@ -26,34 +26,37 @@
       height: 100%;
       background: linear-gradient(to right, #ff1a1a, #ff7700, #ffd700);
       width: 25%;
-      transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+      transition: width 0.5s ease-out;
+      border-radius: 9999px;
       position: relative;
     }
     .excitement-bar::after {
       content: '';
       position: absolute;
       inset: 0;
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.8), transparent);
-      animation: flame 1.4s infinite linear;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.7), transparent);
+      animation: flame 1.5s infinite linear;
     }
-    @keyframes flame { 0% { transform: translateX(-100%); } 100% { transform: translateX(300%); } }
+    @keyframes flame {
+      0% { transform: translateX(-100%); }
+      100% { transform: translateX(300%); }
+    }
 
-    /* Logo com glow sexy */
+    /* Logo */
     .logo-center {
       position: absolute;
       left: 50%;
       transform: translateX(-50%);
       z-index: 30;
       margin-top: 12px;
-      filter: drop-shadow(0 0 15px rgba(212, 175, 55, 0.6));
     }
 
-    /* Banner mais sensual */
+    /* Banner */
     .banner-img {
       width: 100%;
       height: 380px;
       object-fit: cover;
-      object-position: center 32%;
+      object-position: center 30%;
       border-radius: 24px;
       box-shadow: 0 0 40px rgba(212, 175, 55, 0.3);
     }
@@ -62,19 +65,17 @@
       .banner-img {
         height: 215px;
         border-radius: 18px;
-        object-position: center 28%;
       }
     }
 
-    /* Cards mais provocantes */
+    /* Cards sexy */
     .universe-card {
       transition: all 0.4s ease;
-      background: rgba(20, 20, 20, 0.8);
+      background: rgba(20, 20, 20, 0.85);
     }
     .universe-card:hover {
-      transform: scale(1.05) translateY(-6px);
-      box-shadow: 0 20px 30px rgba(212, 175, 55, 0.25);
-      border-color: #d4af37;
+      transform: scale(1.06) translateY(-8px);
+      box-shadow: 0 20px 35px rgba(212, 175, 55, 0.3);
     }
   </style>
 </head>
@@ -147,9 +148,13 @@
     </div>
   </footer>
 
-  <!-- MENU HAMBURGER -->
-  <div id="mobile-menu" class="hidden fixed inset-0 bg-black/95 z-[100] pt-28 px-8">
-    <div class="flex flex-col gap-10 text-2xl">
+  <!-- MENU HAMBURGER com seta de retorno -->
+  <div id="mobile-menu" class="hidden fixed inset-0 bg-black/95 z-[100] pt-20 px-8">
+    <button onclick="toggleMenu()" class="absolute top-8 right-8 text-4xl text-gold hover:text-amber-400">
+      ✕
+    </button>
+    
+    <div class="flex flex-col gap-10 text-2xl mt-12">
       <a href="#" onclick="showRelacionamentos(); toggleMenu()" class="hover:text-gold transition flex items-center gap-4">
         <i class="fas fa-heart"></i> Meus Relacionamentos
       </a>
@@ -160,18 +165,54 @@
   </div>
 
   <script>
-    // (mesmo script de antes - universos, render, excitement, etc.)
-    const universos = [ /* seu array completo de 12 universos */ ];
+    const universos = [
+      { nome: "Escolha Seu Prazer", desc: "Realismo brasileiro, traição e risco", cor: "from-rose-500 to-pink-600" },
+      { nome: "Crônicas do Desejo", desc: "Fantasia imersiva e VR", cor: "from-purple-500 to-violet-600" },
+      { nome: "Escritório Proibido", desc: "Poder, hierarquia e tensão no trabalho", cor: "from-amber-500 to-orange-600" },
+      { nome: "Academia do Pecado", desc: "Idade gap e iniciação", cor: "from-cyan-500 to-blue-600" },
+      { nome: "Noites Eternas", desc: "Vampiros, lobisomens e dark romance", cor: "from-red-700 to-rose-900" },
+      { nome: "Ilha dos Desejos", desc: "Reality erótico e orgias", cor: "from-emerald-500 to-teal-600" },
+      { nome: "A Escolha do Jogador", desc: "Harém customizável", cor: "from-fuchsia-500 to-pink-600" },
+      { nome: "Doramas Proibidos", desc: "Romance asiático intenso", cor: "from-red-500 to-rose-600" },
+      { nome: "Corte do Prazer", desc: "Monarquia, bailes e luxo", cor: "from-amber-400 to-yellow-600" },
+      { nome: "Império das Sombras", desc: "Máfia, poder e perigo", cor: "from-slate-700 to-zinc-900" },
+      { nome: "Desejos pelo Mundo", desc: "Viagens, escapismo e encontros pelo mundo", cor: "from-sky-500 to-indigo-600" },
+      { nome: "Sonhos Molhados", desc: "Fantasia surreal e sonhos intensos", cor: "from-purple-600 to-indigo-700" }
+    ];
 
-    function renderUniversos() { /* mesmo código */ }
+    function renderUniversos() {
+      const container = document.getElementById("universos-grid");
+      container.innerHTML = "";
+      universos.forEach(u => {
+        const card = document.createElement("div");
+        card.className = `universe-card p-8 border border-gold/20 rounded-3xl cursor-pointer`;
+        card.innerHTML = `
+          <div class="h-2 bg-gradient-to-r ${u.cor} rounded mb-6"></div>
+          <h3 class="text-2xl font-bold gold mb-3">${u.nome}</h3>
+          <p class="text-zinc-400 mb-8">${u.desc}</p>
+          <button onclick="alert('Em breve: ${u.nome} 💋')" 
+                  class="w-full py-4 bg-gold hover:bg-amber-400 text-black font-semibold rounded-2xl transition">
+            Explorar Universo
+          </button>
+        `;
+        container.appendChild(card);
+      });
+    }
+
     let excitement = 25;
     function updateExcitement() {
       excitement = Math.min(100, excitement + 7);
       document.getElementById("excitement-bar").style.width = excitement + "%";
       document.getElementById("excitement-percent").textContent = excitement + "%";
     }
-    function toggleMenu() { document.getElementById("mobile-menu").classList.toggle("hidden"); }
-    function showRelacionamentos() { alert("Meus Relacionamentos - Em breve!"); }
+
+    function toggleMenu() {
+      document.getElementById("mobile-menu").classList.toggle("hidden");
+    }
+
+    function showRelacionamentos() {
+      alert("Meus Relacionamentos - Em breve!");
+    }
 
     window.onload = () => {
       renderUniversos();
