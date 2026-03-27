@@ -187,7 +187,7 @@
       { nome: "Sonhos Molhados", img: "images/capas/capa-12-sonhos-molhados.png", desc: "Fantasias surreais e desejos impossíveis" }
     ];
 
-    function renderUniversos() {
+        function renderUniversos() {
       const container = document.getElementById("universos-grid");
       container.innerHTML = "";
       universos.forEach(u => {
@@ -196,8 +196,7 @@
         card.innerHTML = `
           <img src="${u.img}" alt="${u.nome}" class="w-full h-64 object-cover">
           <div class="p-6">
-            <h3 class="text-xl font-bold gold mb-2">${u.nome}</h3>
-            <p class="text-white text-sm">${u.desc}</p>
+            <p class="text-white text-sm leading-snug">${u.desc}</p>
           </div>
         `;
         card.onclick = () => alert(`Em breve: ${u.nome} 💋`);
