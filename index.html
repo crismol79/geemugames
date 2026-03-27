@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Geemu Games</title>
   
-  <!-- Favicon - Logo da Geemu Games -->
+  <!-- Favicon -->
   <link rel="icon" type="image/png" sizes="512x512" href="images/favicon-512.png">
   <link rel="icon" type="image/png" sizes="256x256" href="images/favicon-256.png">
   <link rel="icon" type="image/png" sizes="64x64" href="images/favicon-64.png">
@@ -20,19 +20,24 @@
     }
     .gold { color: #d4af37; }
 
-    /* Barra de Excitação */
-    .excitement-wrapper { margin-top: 78px; }
+    /* Barra de Excitação - Modelo inicial (arredondada, não presa nas laterais) */
+    .excitement-wrapper { 
+      margin-top: 92px; 
+    }
     .excitement-container {
       height: 10px;
       background: #1f1f1f;
       border-radius: 9999px;
       overflow: hidden;
+      max-width: 860px;
+      margin: 0 auto;
     }
     .excitement-bar {
       height: 100%;
       background: linear-gradient(to right, #ff1a1a, #ff7700, #ffd700);
       width: 25%;
       transition: width 0.5s ease-out;
+      border-radius: 9999px;
       position: relative;
     }
     .excitement-bar::after {
@@ -45,6 +50,11 @@
     @keyframes flame {
       0% { transform: translateX(-100%); }
       100% { transform: translateX(300%); }
+    }
+
+    /* Hamburger menor e discreto */
+    .hamburger-btn {
+      font-size: 1.75rem;
     }
 
     /* Logo */
@@ -63,13 +73,12 @@
       object-fit: cover;
       object-position: center 30%;
       border-radius: 24px;
-      box-shadow: 0 0 40px rgba(212, 175, 55, 0.3);
     }
 
     @media (max-width: 768px) {
       .banner-img {
-        height: 215px;
-        border-radius: 18px;
+        height: 205px;           /* Subido um pouco mais */
+        border-radius: 16px;
       }
     }
   </style>
@@ -79,7 +88,7 @@
   <!-- HEADER -->
   <header class="fixed top-0 left-0 right-0 z-50 bg-black/95 border-b border-gold/20 py-5">
     <div class="max-w-7xl mx-auto px-6 flex items-center relative">
-      <button onclick="toggleMenu()" class="text-4xl text-gold hover:text-amber-400 z-10">
+      <button onclick="toggleMenu()" class="hamburger-btn text-gold hover:text-amber-400 z-10">
         <i class="fas fa-bars"></i>
       </button>
 
@@ -125,7 +134,7 @@
     <div class="max-w-2xl mx-auto mt-20 bg-zinc-900/70 border border-gold/20 rounded-3xl p-8 md:p-10 text-center">
       <h3 class="text-2xl font-bold gold mb-3">Fique por dentro de tudo</h3>
       <p class="text-zinc-400 mb-8">
-        Cadastre seu e-mail e receba novidades, lançamentos exclusivos e conteúdos especiais direto da Nyra.
+        Cadastre seu e-mail e receba novidades, lançamentos exclusivos e conteúdos especiais direto da 🍒 Nyra.
       </p>
       
       <form class="flex flex-col md:flex-row gap-3 max-w-md mx-auto">
