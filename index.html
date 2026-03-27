@@ -8,10 +8,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <link rel="icon" type="image/png" sizes="512x512" href="images/favicon-512.png">
   <style>
-    body {
-      font-family: system-ui, -apple-system, sans-serif;
-      background-color: #0a0a0a;
-    }
+    body { font-family: system-ui, sans-serif; background-color: #0a0a0a; }
     .gold { color: #d4af37; }
     .gold-hover:hover { color: #f5d76e; }
 
@@ -40,9 +37,9 @@
 
     .universe-card {
       transition: all 0.4s ease;
-      overflow: hidden;
-      border-radius: 16px;
       background-color: #111;
+      border-radius: 16px;
+      overflow: hidden;
     }
     .universe-card:hover {
       transform: scale(1.04);
@@ -57,6 +54,7 @@
   </style>
 </head>
 <body class="text-white min-h-screen pb-20">
+
   <!-- HEADER -->
   <header class="fixed top-0 left-0 right-0 z-50 bg-black/90 border-b border-[#d4af37]/30 py-4">
     <div class="max-w-7xl mx-auto px-6 flex items-center justify-between">
@@ -80,7 +78,7 @@
     <div class="max-w-7xl mx-auto px-6">
       <div class="flex items-center gap-3">
         <span class="text-xs uppercase tracking-widest text-zinc-500">Tesão</span>
-        <div class="flex-1 excitement-bar" id="excitement-container">
+        <div class="flex-1 excitement-bar">
           <div id="excitement-bar" class="excitement-bar w-[25%]"></div>
         </div>
         <span id="excitement-percent" class="text-xs font-mono text-[#d4af37]">25%</span>
@@ -90,7 +88,7 @@
 
   <!-- BANNER -->
   <div class="pt-32 pb-10 px-4">
-    <img src="images/banner.png" alt="Geemu Games Banner" 
+    <img src="images/banner.png" alt="Geemu Games" 
          class="w-full max-w-5xl mx-auto rounded-2xl shadow-2xl object-cover">
   </div>
 
@@ -107,7 +105,7 @@
     <h2 class="text-3xl font-bold text-center gold mb-12">NOSSOS UNIVERSOS</h2>
     
     <div id="universos-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-      <!-- Preenchido via JavaScript -->
+      <!-- Cards gerados pelo JS -->
     </div>
   </div>
 
@@ -142,66 +140,18 @@
 
   <script>
     const universos = [
-      { 
-        nome: "Escolha Seu Prazer", 
-        img: "images/capas/capa-01-escolha-seu-prazer.png",
-        desc: "Realismo brasileiro, traição e risco"
-      },
-      { 
-        nome: "Crônicas do Desejo", 
-        img: "images/capas/capa-02-cronicas-do-desejo.png",
-        desc: "Fantasias misteriosas e desejos profundos"
-      },
-      { 
-        nome: "Escritório Proibido", 
-        img: "images/capas/capa-03-escritorio-proibido.png",
-        desc: "Tensão no trabalho, poder e desejo"
-      },
-      { 
-        nome: "Academia do Pecado", 
-        img: "images/capas/capa-04-academia-do-pecado.png",
-        desc: "Corpos suados, química explosiva"
-      },
-      { 
-        nome: "Noites Eternas", 
-        img: "images/capas/capa-05-noites-eternas.png",
-        desc: "Vampiros, lobisomens e dark romance"
-      },
-      { 
-        nome: "Ilha dos Desejos", 
-        img: "images/capas/capa-06-ilha-dos-desejos.png",
-        desc: "Prazer sem regras em paraíso tropical"
-      },
-      { 
-        nome: "A Escolha do Jogador", 
-        img: "images/capas/capa-07-escolha-do-jogador.png",
-        desc: "Harém, poder e múltiplas escolhas"
-      },
-      { 
-        nome: "Doramas Proibidos", 
-        img: "images/capas/capa-08-doramas-proibidos.png",
-        desc: "Romance intenso com toque de dorama"
-      },
-      { 
-        nome: "Corte do Prazer", 
-        img: "images/capas/capa-09-corte-do-prazer.png",
-        desc: "Luxo, bailes e desejos da corte"
-      },
-      { 
-        nome: "Império das Sombras", 
-        img: "images/capas/capa-10-imperio-das-sombras.png",
-        desc: "Máfia, poder e paixão perigosa"
-      },
-      { 
-        nome: "Desejos pelo Mundo", 
-        img: "images/capas/capa-11-desejos-pelo-mundo.png",
-        desc: "Viagens, escapismo e encontros intensos"
-      },
-      { 
-        nome: "Sonhos Molhados", 
-        img: "images/capas/capa-12-sonhos-molhados.png",
-        desc: "Fantasias impossíveis e surrealismo erótico"
-      }
+      { nome: "Escolha Seu Prazer", img: "images/capas/capa-01-escolha-seu-prazer.png", desc: "Realismo brasileiro, traição e risco" },
+      { nome: "Crônicas do Desejo", img: "images/capas/capa-02-cronicas-do-desejo.png", desc: "Fantasias misteriosas e desejos profundos" },
+      { nome: "Escritório Proibido", img: "images/capas/capa-03-escritorio-proibido.png", desc: "Tensão no trabalho, poder e desejo" },
+      { nome: "Academia do Pecado", img: "images/capas/capa-04-academia-do-pecado.png", desc: "Corpos suados, química explosiva" },
+      { nome: "Noites Eternas", img: "images/capas/capa-05-noites-eternas.png", desc: "Vampiros, lobisomens e dark romance" },
+      { nome: "Ilha dos Desejos", img: "images/capas/capa-06-ilha-dos-desejos.png", desc: "Prazer sem regras em paraíso tropical" },
+      { nome: "A Escolha do Jogador", img: "images/capas/capa-07-escolha-do-jogador.png", desc: "Harém, poder e múltiplas escolhas" },
+      { nome: "Doramas Proibidos", img: "images/capas/capa-08-doramas-proibidos.png", desc: "Romance intenso com toque de dorama" },
+      { nome: "Corte do Prazer", img: "images/capas/capa-09-corte-do-prazer.png", desc: "Luxo, bailes e desejos da corte" },
+      { nome: "Império das Sombras", img: "images/capas/capa-10-imperio-das-sombras.png", desc: "Máfia, poder e paixão perigosa" },
+      { nome: "Desejos pelo Mundo", img: "images/capas/capa-11-desejos-pelo-mundo.png", desc: "Viagens, escapismo e encontros intensos" },
+      { nome: "Sonhos Molhados", img: "images/capas/capa-12-sonhos-molhados.png", desc: "Fantasias impossíveis e surrealismo erótico" }
     ];
 
     function renderUniversos() {
@@ -212,15 +162,13 @@
         const card = document.createElement("div");
         card.className = "universe-card";
         card.innerHTML = `
-          <div class="relative">
-            <img src="${u.img}" alt="${u.nome}" class="w-full h-80 object-cover">
-          </div>
+          <img src="${u.img}" alt="${u.nome}" class="w-full h-80 object-cover">
           <div class="p-6">
-            <h3 class="text-2xl font-bold gold mb-2">${u.nome}</h3>
-            <p class="text-zinc-400 text-sm leading-relaxed">${u.desc}</p>
+            <h3 class="text-2xl font-bold gold mb-3">${u.nome}</h3>
+            <p class="text-zinc-400 text-sm">${u.desc}</p>
           </div>
         `;
-        card.onclick = () => alert(`Abrindo universo: ${u.nome} 💋\n\nEm breve com histórias completas!`);
+        card.onclick = () => alert(`Abrindo ${u.nome} 💋\n\nEm breve com histórias completas!`);
         container.appendChild(card);
       });
     }
@@ -232,18 +180,13 @@
       document.getElementById("excitement-percent").textContent = excitement + "%";
     }
 
-    function toggleMenu() {
-      alert("Menu em desenvolvimento - Em breve!");
-    }
-
-    function showRelacionamentos() {
-      alert("Meus Relacionamentos - Em breve!");
-    }
+    function toggleMenu() { alert("Menu em desenvolvimento - Em breve!"); }
+    function showRelacionamentos() { alert("Meus Relacionamentos - Em breve!"); }
 
     function cadastrarEmail() {
       const email = document.getElementById("email-input").value.trim();
       if (email) {
-        alert("✅ Email cadastrado com sucesso!\n\nObrigada por fazer parte da Geemu Games, Nyra vai te enviar novidades 🔥");
+        alert("✅ Email cadastrado com sucesso! Nyra vai te enviar novidades 🔥");
         document.getElementById("email-input").value = "";
       } else {
         alert("Por favor, insira seu e-mail.");
@@ -251,10 +194,7 @@
     }
 
     document.addEventListener("click", updateExcitement);
-
-    window.onload = () => {
-      renderUniversos();
-    };
+    window.onload = renderUniversos;
   </script>
 </body>
 </html>
