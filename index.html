@@ -8,12 +8,10 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <link rel="icon" type="image/png" sizes="512x512" href="images/favicon-512.png">
   <style>
-    body {
-      font-family: system-ui, -apple-system, sans-serif;
-      background-color: #0a0a0a;
-    }
+    body { font-family: system-ui, sans-serif; background-color: #0a0a0a; }
     .gold { color: #d4af37; }
     .gold-hover:hover { color: #e8c670; }
+
     .excitement-bar {
       height: 9px;
       background: linear-gradient(to right, #ff3333, #ff6600);
@@ -36,13 +34,14 @@
       0% { transform: translateX(-120%); }
       100% { transform: translateX(350%); }
     }
+
     .universe-card {
       transition: all 0.3s ease;
     }
     .universe-card:hover {
       transform: scale(1.04);
-      box-shadow: 0 0 25px rgba(212, 175, 55, 0.3);
     }
+
     .banner-img {
       width: 100%;
       height: 380px;
@@ -50,18 +49,16 @@
       object-position: center 25%;
     }
     @media (max-width: 768px) {
-      .banner-img {
-        height: 210px;
-        object-position: center 30%;
-      }
+      .banner-img { height: 210px; object-position: center 30%; }
     }
   </style>
 </head>
-<body class="text-white min-h-screen pb-20">
+<body class="text-white min-h-screen">
+
   <!-- HEADER -->
   <header class="fixed top-0 left-0 right-0 z-50 bg-black/95 border-b border-gold/30 py-4">
     <div class="max-w-7xl mx-auto px-6 flex items-center justify-between">
-      <button onclick="toggleMenu()" class="text-3xl text-gold hover:text-amber-300 transition">
+      <button onclick="toggleMenu()" class="text-3xl text-gold hover:text-amber-300">
         <i class="fas fa-bars"></i>
       </button>
       
@@ -70,8 +67,8 @@
       </div>
 
       <div class="hidden md:flex items-center gap-8 text-sm uppercase tracking-widest">
-        <a href="#" onclick="showRelacionamentos()" class="gold-hover transition">Meus Relacionamentos</a>
-        <a href="https://patreon.com/geemugames" target="_blank" class="gold-hover transition">Assinaturas</a>
+        <a href="#" onclick="showRelacionamentos()" class="gold-hover">Meus Relacionamentos</a>
+        <a href="https://patreon.com/geemugames" target="_blank" class="gold-hover">Assinaturas</a>
       </div>
     </div>
   </header>
@@ -81,7 +78,7 @@
     <div class="max-w-7xl mx-auto px-6">
       <div class="flex items-center gap-4">
         <span class="text-xs uppercase tracking-widest text-zinc-400">Tesão</span>
-        <div class="flex-1 excitement-container">
+        <div class="flex-1">
           <div id="excitement-bar" class="excitement-bar" style="width: 25%;"></div>
         </div>
         <span id="excitement-percent" class="text-xs font-mono text-gold">25%</span>
@@ -91,7 +88,7 @@
 
   <!-- BANNER -->
   <div class="pt-32 pb-8 px-6">
-    <img src="images/banner.png" alt="Geemu Games Banner" class="banner-img mx-auto rounded-2xl">
+    <img src="images/banner.png" alt="Banner Geemu Games" class="banner-img mx-auto rounded-2xl">
   </div>
 
   <!-- SLOGAN -->
@@ -102,21 +99,19 @@
     </p>
   </div>
 
-  <!-- NOSSOS UNIVERSOS -->
+  <!-- UNIVERSOS -->
   <div class="max-w-7xl mx-auto px-6">
     <h2 class="text-3xl font-bold gold text-center mb-10 tracking-wider">NOSSOS UNIVERSOS • EXPLORE SEM LIMITES</h2>
     
     <div id="universos-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8"></div>
   </div>
 
-  <!-- AVISO FISCAL (removido do index, mantido apenas em termos.html) -->
-
-  <!-- FORMULÁRIO DE E-MAIL -->
+  <!-- CADASTRO DE EMAIL -->
   <div class="max-w-md mx-auto mt-16 px-6 text-center">
     <p class="text-zinc-400 mb-4 text-sm">Cadastre seu e-mail e receba novidades, lançamentos exclusivos e conteúdos especiais direto da 🍒 Nyra.</p>
     <div class="flex gap-3">
       <input type="email" id="email-input" placeholder="seu@email.com" 
-             class="flex-1 bg-zinc-900 border border-gold/30 rounded-2xl px-5 py-4 text-white focus:outline-none focus:border-gold">
+             class="flex-1 bg-zinc-900 border border-gold/30 rounded-2xl px-5 py-4 focus:outline-none focus:border-gold">
       <button onclick="cadastrarEmail()" 
               class="bg-gold hover:bg-amber-300 text-black font-semibold px-8 rounded-2xl transition">
         Quero receber
@@ -125,67 +120,59 @@
   </div>
 
   <!-- FOOTER -->
-  <footer class="mt-20 border-t border-gold/20 py-12 bg-black/80">
-    <div class="max-w-7xl mx-auto px-6 text-center text-xs text-zinc-400">
-      <p class="mb-2">GEEMU GAMES – Plataforma de Relacionamento Interativo</p>
-      <p class="mb-4">Fale conosco: <a href="mailto:contato@geemugames.com" class="text-gold hover:underline">contato@geemugames.com</a></p>
-      <p class="mb-6">© 2026 GEEMU GAMES. Todos os direitos reservados.</p>
-      
-      <div class="flex justify-center gap-6 text-xs">
-        <a href="privacidade.html" class="hover:text-gold transition">Política de Privacidade</a>
-        <a href="termos.html" class="hover:text-gold transition">Termos de Uso</a>
-        <a href="aviso-legal.html" class="hover:text-gold transition">Aviso Legal</a>
-      </div>
+  <footer class="mt-20 border-t border-gold/20 py-12 bg-black/80 text-center text-xs text-zinc-400">
+    <p class="mb-2">GEEMU GAMES – Plataforma de Relacionamento Interativo</p>
+    <p class="mb-4">Fale conosco: <a href="mailto:contato@geemugames.com" class="text-gold hover:underline">contato@geemugames.com</a></p>
+    <p class="mb-6">© 2026 GEEMU GAMES. Todos os direitos reservados.</p>
+    <div class="flex justify-center gap-6">
+      <a href="privacidade.html" class="hover:text-gold">Política de Privacidade</a>
+      <a href="termos.html" class="hover:text-gold">Termos de Uso</a>
+      <a href="aviso-legal.html" class="hover:text-gold">Aviso Legal</a>
     </div>
   </footer>
 
-  <!-- MENU HAMBURGER -->
+  <!-- MENU MOBILE -->
   <div id="mobile-menu" class="hidden fixed inset-0 bg-black/95 z-[100] flex flex-col">
-    <div class="p-6 flex justify-between items-center border-b border-gold/30">
+    <div class="p-6 flex justify-between border-b border-gold/30">
       <img src="images/logo.png" alt="Geemu Games" class="h-12">
       <button onclick="toggleMenu()" class="text-4xl text-gold">✕</button>
     </div>
-    <div class="flex-1 flex flex-col p-8 text-lg gap-8">
+    <div class="flex-1 p-8 text-lg flex flex-col gap-8">
       <a href="#" onclick="toggleMenu();showRelacionamentos()" class="gold-hover">Meus Relacionamentos</a>
       <a href="https://patreon.com/geemugames" target="_blank" onclick="toggleMenu()" class="gold-hover">Assinaturas</a>
-      <a href="#" onclick="toggleMenu()" class="gold-hover">Tesão Tokens</a>
-      <button onclick="showLogin();toggleMenu()" 
-              class="mt-auto bg-gold text-black py-5 rounded-2xl font-semibold text-lg">
-        Entrar / Criar conta
-      </button>
+      <button onclick="showLogin();toggleMenu()" class="mt-auto bg-gold text-black py-5 rounded-2xl font-semibold">Entrar / Criar conta</button>
     </div>
   </div>
 
   <script>
     const universos = [
-      { nome: "Escolha Seu Prazer", img: "images/capas/capa-01-escolha-seu-prazer.png", desc: "Realismo brasileiro, traição e risco" },
-      { nome: "Crônicas do Desejo", img: "images/capas/capa-02-cronicas-do-desejo.png", desc: "Fantasia erótica e desejo proibido" },
-      { nome: "Escritório Proibido", img: "images/capas/capa-03-escritorio-proibido.png", desc: "Tensão no trabalho e poder" },
-      { nome: "Academia do Pecado", img: "images/capas/capa-04-academia-do-pecado.png", desc: "Corpos suados e desejo físico" },
-      { nome: "Noites Eternas", img: "images/capas/capa-05-noites-eternas.png", desc: "Vampiros, lobisomens e romance dark" },
-      { nome: "Ilha dos Desejos", img: "images/capas/capa-06-ilha-dos-desejos.png", desc: "Paraíso, liberdade e prazer sem regras" },
-      { nome: "A Escolha do Jogador", img: "images/capas/capa-07-escolha-do-jogador.png", desc: "Harém, poder e múltiplas parceiras" },
-      { nome: "Doramas Proibidos", img: "images/capas/capa-08-doramas-proibidos.png", desc: "Romance intenso e drama asiático" },
-      { nome: "Corte do Prazer", img: "images/capas/capa-09-corte-do-prazer.png", desc: "Luxo, bailes e intrigas da corte" },
-      { nome: "Império das Sombras", img: "images/capas/capa-10-imperio-das-sombras.png", desc: "Máfia, poder e perigo sedutor" },
-      { nome: "Desejos pelo Mundo", img: "images/capas/capa-11-desejos-pelo-mundo.png", desc: "Viagens, risco e encontros intensos" },
-      { nome: "Sonhos Molhados", img: "images/capas/capa-12-sonhos-molhados.png", desc: "Fantasias surreais e desejos impossíveis" }
+      { img: "images/capas/capa-01-escolha-seu-prazer.png", desc: "Realismo brasileiro, traição e risco" },
+      { img: "images/capas/capa-02-cronicas-do-desejo.png", desc: "Fantasia erótica e desejo proibido" },
+      { img: "images/capas/capa-03-escritorio-proibido.png", desc: "Tensão no trabalho e poder" },
+      { img: "images/capas/capa-04-academia-do-pecado.png", desc: "Corpos suados e desejo físico" },
+      { img: "images/capas/capa-05-noites-eternas.png", desc: "Vampiros, lobisomens e romance dark" },
+      { img: "images/capas/capa-06-ilha-dos-desejos.png", desc: "Paraíso, liberdade e prazer sem regras" },
+      { img: "images/capas/capa-07-escolha-do-jogador.png", desc: "Harém, poder e múltiplas parceiras" },
+      { img: "images/capas/capa-08-doramas-proibidos.png", desc: "Romance intenso e drama asiático" },
+      { img: "images/capas/capa-09-corte-do-prazer.png", desc: "Luxo, bailes e intrigas da corte" },
+      { img: "images/capas/capa-10-imperio-das-sombras.png", desc: "Máfia, poder e perigo sedutor" },
+      { img: "images/capas/capa-11-desejos-pelo-mundo.png", desc: "Viagens, risco e encontros intensos" },
+      { img: "images/capas/capa-12-sonhos-molhados.png", desc: "Fantasias surreais e desejos impossíveis" }
     ];
 
     function renderUniversos() {
       const container = document.getElementById("universos-grid");
       container.innerHTML = "";
-      
       universos.forEach(u => {
         const card = document.createElement("div");
         card.className = "universe-card bg-zinc-900 rounded-3xl overflow-hidden cursor-pointer";
         card.innerHTML = `
-          <img src="${u.img}" alt="${u.nome}" class="w-full h-64 object-cover">
+          <img src="${u.img}" alt="Capa" class="w-full h-64 object-cover">
           <div class="p-5">
             <p class="text-white text-sm leading-snug">${u.desc}</p>
           </div>
         `;
-        card.onclick = () => alert(`Em breve: ${u.nome} 💋`);
+        card.onclick = () => alert("Em breve 💋");
         container.appendChild(card);
       });
     }
@@ -198,12 +185,11 @@
     }
 
     function toggleMenu() {
-      const menu = document.getElementById("mobile-menu");
-      menu.classList.toggle("hidden");
+      document.getElementById("mobile-menu").classList.toggle("hidden");
     }
 
     function showRelacionamentos() {
-      alert("Meus Relacionamentos — Em breve! 💕");
+      alert("Meus Relacionamentos — Em breve 💕");
     }
 
     function showLogin() {
@@ -213,14 +199,13 @@
     function cadastrarEmail() {
       const email = document.getElementById("email-input").value.trim();
       if (email) {
-        alert(`Obrigado! Você receberá novidades direto da 🍒 Nyra no e-mail: ${email}`);
+        alert(`Obrigado! Novidades da 🍒 Nyra chegando em ${email}`);
         document.getElementById("email-input").value = "";
       } else {
-        alert("Por favor, digite seu e-mail.");
+        alert("Digite seu e-mail");
       }
     }
 
-    // Inicialização
     window.onload = () => {
       renderUniversos();
       document.addEventListener("click", updateExcitement);
