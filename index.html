@@ -29,20 +29,32 @@
       z-index: 30;
       margin-top: 12px;
     }
+
+    /* Banner ajustado para 1000x400 px */
+    .banner-container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 0 16px;
+    }
     .banner-img {
       width: 100%;
-      height: 380px;           /* Voltando ao tamanho anterior */
+      max-width: 1000px;
+      height: 400px;
       object-fit: cover;
-      object-position: center 28%;   /* Ajuste fino para reduzir corte */
+      object-position: center 28%;
       border-radius: 24px;
+      display: block;
+      margin: 0 auto;
     }
+
     @media (max-width: 768px) {
-      .banner-img { 
-        height: 205px; 
-        border-radius: 16px; 
+      .banner-img {
+        height: 205px;
+        border-radius: 16px;
         object-position: center 30%;
       }
     }
+
     .universe-card {
       transition: all 0.3s ease;
     }
@@ -65,9 +77,11 @@
     </div>
   </header>
 
-  <!-- BANNER - Subido -->
-  <div class="pt-36 pb-8 px-4 md:px-6">
-    <img src="images/banner.png" alt="Banner Geemu Games" class="banner-img mx-auto">
+  <!-- BANNER - Ajustado para 1000x400 -->
+  <div class="pt-36 pb-8">
+    <div class="banner-container">
+      <img src="images/banner.png" alt="Banner Geemu Games" class="banner-img">
+    </div>
   </div>
 
   <main class="max-w-7xl mx-auto px-6 pb-12">
