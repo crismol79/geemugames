@@ -4,23 +4,21 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Geemu Games</title>
- 
   <!-- Favicon -->
   <link rel="icon" type="image/png" sizes="512x512" href="images/favicon-512.png?v=2">
   <link rel="icon" type="image/png" sizes="256x256" href="images/favicon-256.png?v=2">
   <link rel="icon" type="image/png" sizes="64x64" href="images/favicon-64.png?v=2">
   <link rel="apple-touch-icon" sizes="180x180" href="images/favicon-512.png?v=2">
-
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-  
+ 
   <style>
     body {
       font-family: system-ui, sans-serif;
       background-color: #0a0a0a;
     }
     .gold { color: #d4af37; }
-    
+   
     .hamburger-btn { font-size: 1.75rem; }
     .logo-center {
       position: absolute;
@@ -29,8 +27,7 @@
       z-index: 30;
       margin-top: 12px;
     }
-
-    /* Banner ajustado para 1000x400 px */
+    /* Banner com mais espaço nas laterais */
     .banner-container {
       max-width: 1000px;
       margin: 0 auto;
@@ -46,7 +43,6 @@
       display: block;
       margin: 0 auto;
     }
-
     @media (max-width: 768px) {
       .banner-img {
         height: 205px;
@@ -54,7 +50,6 @@
         object-position: center 30%;
       }
     }
-
     .universe-card {
       transition: all 0.3s ease;
     }
@@ -64,7 +59,6 @@
   </style>
 </head>
 <body class="text-white min-h-screen">
-
   <!-- HEADER -->
   <header class="fixed top-0 left-0 right-0 z-50 bg-black/95 border-b border-gold/20 py-5">
     <div class="max-w-7xl mx-auto px-6 flex items-center relative">
@@ -77,7 +71,7 @@
     </div>
   </header>
 
-  <!-- BANNER - Ajustado para 1000x400 -->
+  <!-- BANNER - Ajustado para ocupar mais as laterais -->
   <div class="pt-36 pb-8">
     <div class="banner-container">
       <img src="images/banner.png" alt="Banner Geemu Games" class="banner-img">
@@ -91,24 +85,23 @@
         e um universo pronto para despertá-lo.”
       </p>
     </div>
-
     <h2 class="text-2xl md:text-3xl font-bold gold text-center mb-16 tracking-wider leading-tight px-4">
       O que você está esperando?<br>
       Mergulhe em Nossos Universos
     </h2>
-    
+   
     <div id="universos-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"></div>
 
     <!-- Formulário de e-mail -->
     <div class="max-w-2xl mx-auto mt-20 bg-zinc-900/70 border border-gold/20 rounded-3xl p-8 md:p-10 text-center">
       <h3 class="text-2xl font-bold gold mb-3">Fique por dentro de tudo</h3>
       <p class="text-zinc-400 mb-8">
-        Cadastre seu e-mail e receba novidades, lançamentos exclusivos e conteúdos especiais direto da 🍒 Nyra.
+        Cadastre seu e-mail e receba novidades, lançamentos exclusivos e conteúdos especiais direto da 🍒 Kyra.
       </p>
       <form class="flex flex-col md:flex-row gap-3 max-w-md mx-auto">
-        <input type="email" id="email-input" placeholder="Seu melhor e-mail" 
+        <input type="email" id="email-input" placeholder="Seu melhor e-mail"
                class="flex-1 bg-zinc-800 border border-gold/30 rounded-2xl px-6 py-4 text-white focus:outline-none focus:border-gold transition">
-        <button type="button" onclick="cadastrarEmail()" 
+        <button type="button" onclick="cadastrarEmail()"
                 class="bg-gold hover:bg-amber-400 text-black font-semibold px-10 py-4 rounded-2xl transition whitespace-nowrap">
           Quero receber
         </button>
@@ -199,7 +192,7 @@
     function cadastrarEmail() {
       const email = document.getElementById("email-input").value.trim();
       if (email) {
-        alert(`Obrigado! Novidades da 🍒 Nyra chegando em ${email}`);
+        alert(`Obrigado! Novidades da 🍒 Kyra chegando em ${email}`);
         document.getElementById("email-input").value = "";
       } else {
         alert("Digite seu e-mail");
