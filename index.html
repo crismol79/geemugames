@@ -55,6 +55,17 @@
     .universe-card:hover {
       transform: scale(1.04);
     }
+
+    /* Botão "Quero receber" com fundo amarelo fixo - sem efeito hover */
+    .btn-receber {
+      background-color: #d4af37;
+      color: #000;
+      font-weight: 600;
+      padding: 16px 32px;
+      border-radius: 9999px;
+      min-width: 180px;
+      transition: none; /* Remove qualquer efeito ao passar o mouse */
+    }
   </style>
 </head>
 <body class="text-white min-h-screen">
@@ -91,7 +102,7 @@
    
     <div id="universos-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"></div>
 
-    <!-- Formulário de e-mail - botão fixo dentro da caixa -->
+    <!-- Formulário de e-mail -->
     <div class="max-w-2xl mx-auto mt-20 bg-zinc-900/90 border border-gold/30 rounded-3xl p-10 text-center">
       <h3 class="text-2xl font-bold gold mb-4">Fique por dentro de tudo</h3>
       <p class="text-zinc-400 mb-8">
@@ -102,7 +113,7 @@
         <input type="email" id="email-input" placeholder="Seu melhor e-mail"
                class="flex-1 bg-zinc-800 border border-gold/30 rounded-2xl px-6 py-4 text-white focus:outline-none focus:border-gold transition">
         <button type="button" onclick="cadastrarEmail()" 
-                class="bg-gold hover:bg-amber-400 text-black font-semibold px-10 py-4 rounded-2xl transition whitespace-nowrap">
+                class="btn-receber">
           Quero receber
         </button>
       </form>
