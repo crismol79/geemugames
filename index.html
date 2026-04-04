@@ -27,7 +27,6 @@
       z-index: 30;
       margin-top: 12px;
     }
-    /* Banner com mais espaço nas laterais */
     .banner-container {
       max-width: 1000px;
       margin: 0 auto;
@@ -56,6 +55,10 @@
     .universe-card:hover {
       transform: scale(1.04);
     }
+    /* Botão fixo */
+    .btn-fixo {
+      min-width: 160px;
+    }
   </style>
 </head>
 <body class="text-white min-h-screen">
@@ -71,7 +74,7 @@
     </div>
   </header>
 
-  <!-- BANNER - Ajustado para ocupar mais as laterais -->
+  <!-- BANNER -->
   <div class="pt-36 pb-8">
     <div class="banner-container">
       <img src="images/banner.png" alt="Banner Geemu Games" class="banner-img">
@@ -101,8 +104,8 @@
       <form class="flex flex-col md:flex-row gap-3 max-w-md mx-auto">
         <input type="email" id="email-input" placeholder="Seu melhor e-mail"
                class="flex-1 bg-zinc-800 border border-gold/30 rounded-2xl px-6 py-4 text-white focus:outline-none focus:border-gold transition">
-        <button type="button" onclick="cadastrarEmail()"
-                class="bg-gold hover:bg-amber-400 text-black font-semibold px-10 py-4 rounded-2xl transition whitespace-nowrap">
+        <button type="button" onclick="cadastrarEmail()" 
+                class="btn-fixo bg-gold hover:bg-amber-400 text-black font-semibold px-10 py-4 rounded-2xl transition whitespace-nowrap">
           Quero receber
         </button>
       </form>
