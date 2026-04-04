@@ -12,11 +12,17 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <style>
-    body { font-family: system-ui, sans-serif; background-color: #0a0a0a; color: #ddd; }
+    body { 
+      font-family: system-ui, sans-serif; 
+      background-color: #0a0a0a; 
+      color: #ddd; 
+      line-height: 1.7;
+    }
     .gold { color: #d4af37; }
-    .container { max-width: 800px; margin: 0 auto; padding: 40px 20px; }
+    .container { max-width: 820px; margin: 0 auto; padding: 40px 20px; }
     a { color: #d4af37; text-decoration: underline; }
     a:hover { color: #ffd700; }
+    .email-link { word-break: break-all; }
   </style>
 </head>
 <body>
@@ -24,22 +30,19 @@
     <h1 class="text-3xl font-bold gold mb-8 text-center">Política de Privacidade</h1>
     <p class="text-sm text-zinc-400 mb-10 text-center">(Última atualização: 22 de março de 2026)</p>
 
-    <div class="prose prose-invert max-w-none">
-      <p>Nós da Geemu Games valorizamos a sua privacidade e estamos comprometidos em proteger seus dados pessoais de acordo com a Lei Geral de Proteção de Dados Pessoais (LGPD – Lei nº 13.709/2018) e demais legislações aplicáveis.</p>
+    <p>Nós da Geemu Games valorizamos a sua privacidade e estamos comprometidos em proteger seus dados pessoais de acordo com a Lei Geral de Proteção de Dados Pessoais (LGPD – Lei nº 13.709/2018) e demais legislações aplicáveis.</p>
 
-      <h2 class="text-2xl gold mt-10 mb-4">4. Seus direitos</h2>
-      <p>Você pode exercer seus direitos a qualquer momento enviando um e-mail para:</p>
-      <p class="font-semibold gold break-words">
-        <a href="mailto:contato@geemugames.com">contato@geemugames.com</a>
-      </p>
-      <p class="text-sm text-zinc-400 mt-2">Responderemos sua solicitação em até 15 dias úteis.</p>
+    <h2 class="text-2xl gold mt-10 mb-4">4. Seus direitos</h2>
+    <p>Você pode exercer seus direitos a qualquer momento enviando um e-mail para:</p>
+    <p class="font-semibold gold email-link">
+      <a href="mailto:contato@geemugames.com">contato@geemugames.com</a>
+    </p>
+    <p class="text-sm text-zinc-400 mt-2">Responderemos sua solicitação em até 15 dias úteis.</p>
 
-      <!-- resto do conteúdo da política permanece igual -->
-      <p class="mt-10 text-center text-xs text-zinc-500">
-        Ao continuar utilizando o site, você declara ter lido e concordado com esta Política de Privacidade.<br>
-        <a href="index.html" class="hover:text-gold">← Voltar para o site principal</a>
-      </p>
-    </div>
+    <p class="mt-16 text-center text-xs text-zinc-500">
+      Ao continuar utilizando o site, você declara ter lido e concordado com esta Política de Privacidade.<br>
+      <a href="index.html" class="hover:text-gold">← Voltar para o site principal</a>
+    </p>
   </div>
 </body>
 </html>
