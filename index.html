@@ -55,15 +55,12 @@
     .universe-card:hover {
       transform: scale(1.04);
     }
-
-    /* Sticky melhorado para o formulário */
-    .newsletter-sticky {
-      position: sticky;
-      top: 80px;
-      z-index: 40;
-      background-color: #0a0a0a;
-      padding: 24px 0 16px;
-      border-bottom: 1px solid rgba(212, 175, 55, 0.15);
+    /* Botão mais visível */
+    .btn-receber {
+      min-width: 180px;
+      padding: 16px 32px;
+      font-size: 1.05rem;
+      font-weight: 600;
     }
   </style>
 </head>
@@ -87,7 +84,7 @@
     </div>
   </div>
 
-  <main class="max-w-7xl mx-auto px-6 pb-12">
+  <main class="max-w-7xl mx-auto px-6 pb-20">
     <div class="text-center mb-16 px-4">
       <p class="text-2xl md:text-3xl font-light text-white leading-tight">
         “Existe um desejo adormecido dentro de você…<br>
@@ -101,25 +98,23 @@
    
     <div id="universos-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"></div>
 
-    <!-- Formulário com sticky melhorado -->
-    <div class="newsletter-sticky">
-      <div class="max-w-2xl mx-auto bg-zinc-900/90 border border-gold/30 rounded-3xl p-8 md:p-10 text-center">
-        <h3 class="text-2xl font-bold gold mb-3">Fique por dentro de tudo</h3>
-        <p class="text-zinc-400 mb-8">
-          Cadastre seu e-mail e receba novidades, lançamentos exclusivos e conteúdos especiais direto da 🍒 Kyra.
-        </p>
-        <form class="flex flex-col md:flex-row gap-3 max-w-md mx-auto">
-          <input type="email" id="email-input" placeholder="Seu melhor e-mail"
-                 class="flex-1 bg-zinc-800 border border-gold/30 rounded-2xl px-6 py-4 text-white focus:outline-none focus:border-gold transition">
-          <button type="button" onclick="cadastrarEmail()" 
-                  class="bg-gold hover:bg-amber-400 text-black font-semibold px-10 py-4 rounded-2xl transition whitespace-nowrap">
-            Quero receber
-          </button>
-        </form>
-        <p class="text-xs text-zinc-500 mt-6">
-          Prometemos não encher sua caixa de spam.
-        </p>
-      </div>
+    <!-- Formulário de e-mail -->
+    <div class="max-w-2xl mx-auto mt-20 bg-zinc-900/80 border border-gold/30 rounded-3xl p-10 text-center">
+      <h3 class="text-2xl font-bold gold mb-4">Fique por dentro de tudo</h3>
+      <p class="text-zinc-400 mb-8">
+        Cadastre seu e-mail e receba novidades, lançamentos exclusivos e conteúdos especiais direto da 🍒 Kyra.
+      </p>
+      <form class="flex flex-col md:flex-row gap-4 max-w-md mx-auto">
+        <input type="email" id="email-input" placeholder="Seu melhor e-mail"
+               class="flex-1 bg-zinc-800 border border-gold/30 rounded-2xl px-6 py-4 text-white focus:outline-none focus:border-gold transition">
+        <button type="button" onclick="cadastrarEmail()" 
+                class="btn-receber bg-gold hover:bg-amber-400 text-black font-semibold rounded-2xl transition">
+          Quero receber
+        </button>
+      </form>
+      <p class="text-xs text-zinc-500 mt-6">
+        Prometemos não encher sua caixa de spam.
+      </p>
     </div>
   </main>
 
