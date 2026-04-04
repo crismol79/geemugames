@@ -28,7 +28,7 @@
       margin-top: 12px;
     }
 
-    /* Banner ajustado para aparecer inteiro no PC e mobile */
+    /* Banner ajustado */
     .banner-container {
       max-width: 1250px;
       margin: 0 auto;
@@ -51,6 +51,17 @@
         border-radius: 16px;
         object-position: center 30%;
       }
+    }
+
+    /* Botão Quero receber - fundo amarelo fixo, sem efeito hover */
+    .btn-receber {
+      background-color: #d4af37;
+      color: #000000;
+      font-weight: 600;
+      padding: 16px 32px;
+      border-radius: 9999px;
+      min-width: 180px;
+      transition: none; /* remove qualquer efeito */
     }
 
     .universe-card {
@@ -105,8 +116,7 @@
       <form class="flex flex-col md:flex-row gap-4 max-w-md mx-auto">
         <input type="email" id="email-input" placeholder="Seu melhor e-mail"
                class="flex-1 bg-zinc-800 border border-gold/30 rounded-2xl px-6 py-4 text-white focus:outline-none focus:border-gold transition">
-        <button type="button" onclick="cadastrarEmail()" 
-                class="bg-gold hover:bg-amber-400 text-black font-semibold px-10 py-4 rounded-2xl transition">
+        <button type="button" onclick="cadastrarEmail()" class="btn-receber">
           Quero receber
         </button>
       </form>
