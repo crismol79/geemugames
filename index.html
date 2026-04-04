@@ -27,15 +27,17 @@
       z-index: 30;
       margin-top: 12px;
     }
+
+    /* Banner maior apenas no PC */
     .banner-container {
-      max-width: 1000px;
+      max-width: 1100px;
       margin: 0 auto;
       padding: 0 16px;
     }
     .banner-img {
       width: 100%;
-      max-width: 1000px;
-      height: 400px;
+      max-width: 1100px;
+      height: 420px;
       object-fit: cover;
       object-position: center 28%;
       border-radius: 24px;
@@ -49,22 +51,12 @@
         object-position: center 30%;
       }
     }
+
     .universe-card {
       transition: all 0.3s ease;
     }
     .universe-card:hover {
       transform: scale(1.04);
-    }
-
-    /* Botão "Quero receber" com fundo amarelo fixo - sem efeito hover */
-    .btn-receber {
-      background-color: #d4af37;
-      color: #000;
-      font-weight: 600;
-      padding: 16px 32px;
-      border-radius: 9999px;
-      min-width: 180px;
-      transition: none; /* Remove qualquer efeito ao passar o mouse */
     }
   </style>
 </head>
@@ -81,7 +73,7 @@
     </div>
   </header>
 
-  <!-- BANNER -->
+  <!-- BANNER - área aumentada no PC -->
   <div class="pt-36 pb-8">
     <div class="banner-container">
       <img src="images/banner.png" alt="Banner Geemu Games" class="banner-img">
@@ -113,7 +105,7 @@
         <input type="email" id="email-input" placeholder="Seu melhor e-mail"
                class="flex-1 bg-zinc-800 border border-gold/30 rounded-2xl px-6 py-4 text-white focus:outline-none focus:border-gold transition">
         <button type="button" onclick="cadastrarEmail()" 
-                class="btn-receber">
+                class="bg-gold hover:bg-amber-400 text-black font-semibold px-10 py-4 rounded-2xl transition">
           Quero receber
         </button>
       </form>
