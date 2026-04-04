@@ -55,12 +55,10 @@
     .universe-card:hover {
       transform: scale(1.04);
     }
-
-    /* Botão sempre visível e destacado */
+    /* Botão sempre visível */
     .btn-receber {
       min-width: 180px;
       padding: 16px 32px;
-      font-size: 1.1rem;
       font-weight: 600;
     }
   </style>
@@ -99,12 +97,13 @@
    
     <div id="universos-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"></div>
 
-    <!-- Formulário de e-mail - sempre visível -->
+    <!-- Formulário de e-mail -->
     <div class="max-w-2xl mx-auto mt-20 bg-zinc-900/90 border border-gold/30 rounded-3xl p-10 text-center">
       <h3 class="text-2xl font-bold gold mb-4">Fique por dentro de tudo</h3>
       <p class="text-zinc-400 mb-8">
         Cadastre seu e-mail e receba novidades, lançamentos exclusivos e conteúdos especiais direto da 🍒 Kyra.
       </p>
+      
       <form class="flex flex-col md:flex-row gap-4 max-w-md mx-auto">
         <input type="email" id="email-input" placeholder="Seu melhor e-mail"
                class="flex-1 bg-zinc-800 border border-gold/30 rounded-2xl px-6 py-4 text-white focus:outline-none focus:border-gold transition">
@@ -113,6 +112,7 @@
           Quero receber
         </button>
       </form>
+
       <p class="text-xs text-zinc-500 mt-6">
         Prometemos não encher sua caixa de spam.
       </p>
