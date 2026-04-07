@@ -14,21 +14,21 @@
     .gold { color: #d4af37; }
     .hamburger-btn { font-size: 1.75rem; }
 
-    /* Barra de Excitação Elegante - Formato Geiko */
+    /* Barra de Excitação - Modelo exato que você enviou */
     .excitement-container {
-      height: 46px;
-      background: #1a1a1a;
-      border: 2px solid #444;
+      height: 42px;
+      background: #111111;
+      border: 2px solid #ffffff;
       border-radius: 9999px;
       overflow: hidden;
       max-width: 460px;
       margin: 0 auto;
       position: relative;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
     }
     .excitement-bar {
       height: 100%;
-      background: linear-gradient(to right, #ff1a1a, #ff7700);
+      background: linear-gradient(to right, #ff1a1a, #ff5500);
       width: 25%;
       transition: width 0.8s ease-out;
     }
@@ -40,12 +40,11 @@
       font-size: 15px;
       font-weight: 700;
       color: #ffffff;
-      text-shadow: 0 1px 4px rgba(0,0,0,0.9);
+      text-shadow: 0 1px 3px rgba(0,0,0,0.9);
       z-index: 10;
-      letter-spacing: 0.5px;
     }
 
-    /* Banner - Descido corretamente */
+    /* Banner */
     .banner-container {
       max-width: 1250px;
       margin: 0 auto;
@@ -68,32 +67,17 @@
         object-position: center 30%;
       }
     }
-
-    .btn-receber {
-      background-color: #d4af37;
-      color: #000000;
-      font-weight: 600;
-      padding: 16px 32px;
-      border-radius: 9999px;
-      min-width: 180px;
-    }
-    .universe-card {
-      transition: all 0.3s ease;
-    }
-    .universe-card:hover {
-      transform: scale(1.04);
-    }
   </style>
 </head>
 <body class="text-white min-h-screen">
 
   <!-- HEADER -->
-  <header class="fixed top-0 left-0 right-0 z-50 bg-black/95 py-5 border-b border-gold/20">
+  <header class="fixed top-0 left-0 right-0 z-50 bg-black/95 py-5 border-b border-white/30">
     <div class="max-w-7xl mx-auto px-6 flex items-center justify-between">
       <!-- Logo à esquerda -->
       <img src="images/logo.png" alt="Geemu Games" class="h-20 md:h-28">
 
-      <!-- Barra de Excitação Elegante Centralizada -->
+      <!-- Barra de Excitação colada na linha branca -->
       <div class="flex-1 flex justify-center px-4">
         <div class="excitement-container w-full max-w-[460px]">
           <div id="excitement-bar" class="excitement-bar"></div>
@@ -108,8 +92,8 @@
     </div>
   </header>
 
-  <!-- BANNER - Descido corretamente -->
-  <div class="pt-32 pb-8">
+  <!-- BANNER -->
+  <div class="pt-28 pb-8">
     <div class="banner-container">
       <img src="images/banner.png" alt="Banner Geemu Games" class="banner-img">
     </div>
@@ -138,7 +122,7 @@
       <form class="flex flex-col md:flex-row gap-4 max-w-md mx-auto">
         <input type="email" id="email-input" placeholder="Seu melhor e-mail"
                class="flex-1 bg-zinc-800 border border-gold/30 rounded-2xl px-6 py-4 text-white focus:outline-none focus:border-gold transition">
-        <button type="button" onclick="cadastrarEmail()" class="btn-receber">
+        <button type="button" onclick="cadastrarEmail()" class="bg-[#d4af37] hover:bg-amber-400 text-black font-semibold px-10 py-4 rounded-2xl transition">
           Quero receber
         </button>
       </form>
