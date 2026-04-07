@@ -14,20 +14,21 @@
     .gold { color: #d4af37; }
     .hamburger-btn { font-size: 1.75rem; }
 
-    /* Barra de Excitação Retangular - Formato exato como na imagem */
+    /* Barra de Excitação Elegante - Formato Geiko */
     .excitement-container {
-      height: 42px;
+      height: 46px;
       background: #1a1a1a;
       border: 2px solid #444;
       border-radius: 9999px;
       overflow: hidden;
-      max-width: 420px;
+      max-width: 460px;
       margin: 0 auto;
       position: relative;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
     }
     .excitement-bar {
       height: 100%;
-      background: linear-gradient(to right, #ff3333, #ff5500);
+      background: linear-gradient(to right, #ff1a1a, #ff7700);
       width: 25%;
       transition: width 0.8s ease-out;
     }
@@ -36,14 +37,15 @@
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      font-size: 14px;
+      font-size: 15px;
       font-weight: 700;
       color: #ffffff;
-      text-shadow: 0 1px 3px rgba(0,0,0,0.8);
+      text-shadow: 0 1px 4px rgba(0,0,0,0.9);
       z-index: 10;
+      letter-spacing: 0.5px;
     }
 
-    /* Banner */
+    /* Banner - Descido corretamente */
     .banner-container {
       max-width: 1250px;
       margin: 0 auto;
@@ -66,6 +68,7 @@
         object-position: center 30%;
       }
     }
+
     .btn-receber {
       background-color: #d4af37;
       color: #000000;
@@ -90,9 +93,9 @@
       <!-- Logo à esquerda -->
       <img src="images/logo.png" alt="Geemu Games" class="h-20 md:h-28">
 
-      <!-- Barra Retangular Centralizada -->
+      <!-- Barra de Excitação Elegante Centralizada -->
       <div class="flex-1 flex justify-center px-4">
-        <div class="excitement-container w-full max-w-[420px]">
+        <div class="excitement-container w-full max-w-[460px]">
           <div id="excitement-bar" class="excitement-bar"></div>
           <div id="excitement-text" class="excitement-text">Excitação: 25%</div>
         </div>
@@ -105,8 +108,8 @@
     </div>
   </header>
 
-  <!-- BANNER -->
-  <div class="pt-28 pb-8">
+  <!-- BANNER - Descido corretamente -->
+  <div class="pt-32 pb-8">
     <div class="banner-container">
       <img src="images/banner.png" alt="Banner Geemu Games" class="banner-img">
     </div>
