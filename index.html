@@ -14,20 +14,45 @@
     .gold { color: #d4af37; }
     .hamburger-btn { font-size: 1.75rem; }
 
-    /* Barra de Excitação Circular Centralizada */
-    .excitement-circle {
-      width: 72px;
-      height: 72px;
+    /* Barra de Excitação - Formato Retangular como na imagem */
+    .excitement-container {
+      height: 42px;
+      background: #1a1a1a;
+      border: 2px solid #333;
       border-radius: 9999px;
-      background: conic-gradient(#ff3333 0% 25%, #1f1f1f 25% 100%);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 15px;
+      overflow: hidden;
+      max-width: 420px;
+      margin: 0 auto;
+      position: relative;
+    }
+    .excitement-bar {
+      height: 100%;
+      background: linear-gradient(to right, #ff3333, #ff6600);
+      width: 25%;
+      transition: width 0.8s ease-out;
+      position: relative;
+    }
+    .excitement-bar::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+      animation: flame 2s infinite linear;
+    }
+    @keyframes flame {
+      0% { transform: translateX(-150%); }
+      100% { transform: translateX(350%); }
+    }
+    .excitement-text {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 14px;
       font-weight: 700;
-      color: #d4af37;
-      box-shadow: 0 0 20px rgba(255, 51, 51, 0.6);
-      border: 3px solid #1f1f1f;
+      color: #fff;
+      text-shadow: 0 0 6px rgba(0,0,0,0.8);
+      z-index: 10;
     }
 
     /* Banner */
@@ -73,16 +98,16 @@
 <body class="text-white min-h-screen">
 
   <!-- HEADER -->
-  <header class="fixed top-0 left-0 right-0 z-50 bg-black/95 py-5 border-b border-gold/20">
+  <header class="fixed top-0 left-0 right-0 z-50 bg-black/95 py-5">
     <div class="max-w-7xl mx-auto px-6 flex items-center justify-between">
-      
       <!-- Logo à esquerda -->
       <img src="images/logo.png" alt="Geemu Games" class="h-20 md:h-28">
 
-      <!-- Barra Circular Centralizada -->
+      <!-- Barra de Excitação Retangular Centralizada -->
       <div class="flex-1 flex justify-center">
-        <div class="excitement-circle" id="excitement-circle">
-          25%
+        <div class="excitement-container">
+          <div id="excitement-bar" class="excitement-bar"></div>
+          <div id="excitement-text" class="excitement-text">Excitação: 25%</div>
         </div>
       </div>
 
@@ -199,19 +224,18 @@
         `;
         card.onclick = () => {
           excitementLevel = Math.min(100, excitementLevel + 15);
-          updateExcitementCircle();
+          updateExcitementBar();
           alert(`Em breve: ${u.nome} 💋`);
         };
         container.appendChild(card);
       });
     }
 
-    function updateExcitementCircle() {
-      const circle = document.getElementById("excitement-circle");
-      if (circle) {
-        circle.style.background = `conic-gradient(#ff3333 0% ${excitementLevel}%, #1f1f1f ${excitementLevel}% 100%)`;
-        circle.textContent = excitementLevel + "%";
-      }
+    function updateExcitementBar() {
+      const bar = document.getElementById("excitement-bar");
+      if (bar) bar.style.width = excitementLevel + "%";
+      const text = document.getElementById("excitement-text");
+      if (text) text.textContent = `Excitação: ${excitementLevel}%`;
     }
 
     function toggleMenu() {
@@ -238,7 +262,7 @@
 
     window.onload = () => {
       renderUniversos();
-      updateExcitementCircle();
+      updateExcitementBar();
     };
   </script>
 </body>
