@@ -22,7 +22,7 @@
       margin-top: 12px;
     }
 
-    /* Barra de Excitação - Logo abaixo do logo */
+    /* Barra de Excitação - Mais abaixo do logo */
     .excitement-container {
       height: 9px;
       background: #1f1f1f;
@@ -30,7 +30,7 @@
       overflow: hidden;
       max-width: 860px;
       margin: 0 auto;
-      margin-top: 28px;
+      margin-top: 85px;   /* Abaixada mais */
     }
     .excitement-bar {
       height: 100%;
@@ -97,7 +97,7 @@
 <body class="text-white min-h-screen">
 
   <!-- HEADER -->
-  <header class="fixed top-0 left-0 right-0 z-50 bg-black/95 py-5">
+  <header class="fixed top-0 left-0 right-0 z-50 bg-black/95 border-b border-gold/20 py-5">
     <div class="max-w-7xl mx-auto px-6 flex items-center relative">
       <button onclick="toggleMenu()" class="hamburger-btn text-gold hover:text-amber-400 z-10">
         <i class="fas fa-bars"></i>
@@ -108,8 +108,8 @@
     </div>
   </header>
 
-  <!-- BARRA DE EXCITAÇÃO -->
-  <div class="max-w-7xl mx-auto px-6 pt-6">
+  <!-- BARRA DE EXCITAÇÃO - Mais abaixo do logo -->
+  <div class="max-w-7xl mx-auto px-6">
     <div class="excitement-container">
       <div id="excitement-bar" class="excitement-bar"></div>
     </div>
