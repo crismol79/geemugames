@@ -14,21 +14,24 @@
     .gold { color: #d4af37; }
     .hamburger-btn { font-size: 1.75rem; }
 
-    /* Banner simples - sem alterações */
+    /* Banner ajustado para não cortar */
     .banner-container {
-      max-width: 1250px;
+      max-width: 1300px;
       margin: 0 auto;
       padding: 0 20px;
     }
     .banner-img {
       width: 100%;
-      border-radius: 24px;
+      max-width: 1300px;
+      height: auto;
+      max-height: 520px;
+      object-fit: contain;
       display: block;
       margin: 0 auto;
     }
     @media (max-width: 768px) {
       .banner-img {
-        border-radius: 16px;
+        max-height: 280px;
       }
     }
   </style>
@@ -49,7 +52,7 @@
   </header>
 
   <!-- BANNER -->
-  <div class="pt-28 pb-8">
+  <div class="pt-32 pb-8">
     <div class="banner-container">
       <img src="images/banner.png" alt="Banner Geemu Games" class="banner-img">
     </div>
