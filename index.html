@@ -14,11 +14,11 @@
     .gold { color: #d4af37; }
     .hamburger-btn { font-size: 1.75rem; }
 
-    /* Barra de Excitação - Formato Retangular como na imagem */
+    /* Barra de Excitação Retangular - Formato exato como na imagem */
     .excitement-container {
       height: 42px;
       background: #1a1a1a;
-      border: 2px solid #333;
+      border: 2px solid #444;
       border-radius: 9999px;
       overflow: hidden;
       max-width: 420px;
@@ -27,21 +27,9 @@
     }
     .excitement-bar {
       height: 100%;
-      background: linear-gradient(to right, #ff3333, #ff6600);
+      background: linear-gradient(to right, #ff3333, #ff5500);
       width: 25%;
       transition: width 0.8s ease-out;
-      position: relative;
-    }
-    .excitement-bar::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
-      animation: flame 2s infinite linear;
-    }
-    @keyframes flame {
-      0% { transform: translateX(-150%); }
-      100% { transform: translateX(350%); }
     }
     .excitement-text {
       position: absolute;
@@ -50,8 +38,8 @@
       transform: translate(-50%, -50%);
       font-size: 14px;
       font-weight: 700;
-      color: #fff;
-      text-shadow: 0 0 6px rgba(0,0,0,0.8);
+      color: #ffffff;
+      text-shadow: 0 1px 3px rgba(0,0,0,0.8);
       z-index: 10;
     }
 
@@ -85,7 +73,6 @@
       padding: 16px 32px;
       border-radius: 9999px;
       min-width: 180px;
-      transition: none;
     }
     .universe-card {
       transition: all 0.3s ease;
@@ -98,14 +85,14 @@
 <body class="text-white min-h-screen">
 
   <!-- HEADER -->
-  <header class="fixed top-0 left-0 right-0 z-50 bg-black/95 py-5">
+  <header class="fixed top-0 left-0 right-0 z-50 bg-black/95 py-5 border-b border-gold/20">
     <div class="max-w-7xl mx-auto px-6 flex items-center justify-between">
       <!-- Logo à esquerda -->
       <img src="images/logo.png" alt="Geemu Games" class="h-20 md:h-28">
 
-      <!-- Barra de Excitação Retangular Centralizada -->
-      <div class="flex-1 flex justify-center">
-        <div class="excitement-container">
+      <!-- Barra Retangular Centralizada -->
+      <div class="flex-1 flex justify-center px-4">
+        <div class="excitement-container w-full max-w-[420px]">
           <div id="excitement-bar" class="excitement-bar"></div>
           <div id="excitement-text" class="excitement-text">Excitação: 25%</div>
         </div>
@@ -136,7 +123,7 @@
       O que você está esperando?<br>
       Mergulhe em Nossos Universos
     </h2>
- 
+
     <div id="universos-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"></div>
 
     <!-- Formulário de e-mail -->
@@ -145,7 +132,6 @@
       <p class="text-zinc-400 mb-8">
         Cadastre seu e-mail e receba novidades, lançamentos exclusivos e conteúdos especiais direto da 🍒 Kyra.
       </p>
-    
       <form class="flex flex-col md:flex-row gap-4 max-w-md mx-auto">
         <input type="email" id="email-input" placeholder="Seu melhor e-mail"
                class="flex-1 bg-zinc-800 border border-gold/30 rounded-2xl px-6 py-4 text-white focus:outline-none focus:border-gold transition">
@@ -179,7 +165,7 @@
 
   <!-- MENU HAMBURGER -->
   <div id="mobile-menu" class="hidden fixed inset-0 bg-black/95 z-[100] pt-20 px-8">
-    <button onclick="toggleMenu()" class="absolute top-8 right-8 text-4xl text-gold hover:text-amber-400">✕</button>
+    <button onclick="toggleMenu()" class="absolute top-8 right-8 text-4xl text-gold">✕</button>
     <div class="flex flex-col gap-8 text-2xl mt-12">
       <a href="index.html" onclick="toggleMenu()" class="hover:text-gold transition flex items-center gap-4"><i class="fas fa-home"></i> Início</a>
       <a href="#" onclick="showRelacionamentos(); toggleMenu()" class="hover:text-gold transition flex items-center gap-4"><i class="fas fa-heart"></i> Meus Relacionamentos</a>
