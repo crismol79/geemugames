@@ -17,7 +17,7 @@
       background-color: #0a0a0a;
     }
     .gold { color: #d4af37; }
-  
+
     .hamburger-btn { font-size: 1.75rem; }
     .logo-center {
       position: absolute;
@@ -26,6 +26,36 @@
       z-index: 30;
       margin-top: 12px;
     }
+
+    /* Barra de Excitação Progressiva */
+    .excitement-bar-container {
+      height: 10px;
+      background: #1f1f1f;
+      border-radius: 9999px;
+      overflow: hidden;
+      max-width: 860px;
+      margin: 20px auto 0;
+    }
+    .excitement-bar {
+      height: 100%;
+      background: linear-gradient(to right, #ff1a1a, #ff7700, #ffd700);
+      width: 25%;
+      transition: width 0.8s ease-out;
+      border-radius: 9999px;
+      position: relative;
+    }
+    .excitement-bar::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.7), transparent);
+      animation: flame 2s infinite linear;
+    }
+    @keyframes flame {
+      0% { transform: translateX(-150%); }
+      100% { transform: translateX(350%); }
+    }
+
     /* Banner ajustado */
     .banner-container {
       max-width: 1250px;
@@ -49,7 +79,8 @@
         object-position: center 30%;
       }
     }
-    /* Botão Quero receber - fundo amarelo fixo, sem efeito hover */
+
+    /* Botão Quero receber */
     .btn-receber {
       background-color: #d4af37;
       color: #000000;
@@ -59,6 +90,7 @@
       min-width: 180px;
       transition: none;
     }
+
     .universe-card {
       transition: all 0.3s ease;
     }
@@ -86,6 +118,14 @@
     <div class="banner-container">
       <img src="images/banner.png" alt="Banner Geemu Games" class="banner-img">
     </div>
+  </div>
+
+  <!-- BARRA DE EXCITAÇÃO PROGRESSIVA -->
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="excitement-bar-container">
+      <div id="excitement-bar" class="excitement-bar"></div>
+    </div>
+    <div class="text-center text-gold text-sm mt-2" id="excitement-text">Tesão: 25%</div>
   </div>
 
   <main class="max-w-7xl mx-auto px-6 pb-20">
@@ -168,6 +208,8 @@
       { nome: "12. Mistério & Sedução", desc: "Investigação + tesão" }
     ];
 
+    let excitementLevel = 25;
+
     function renderUniversos() {
       const container = document.getElementById("universos-grid");
       container.innerHTML = "";
@@ -184,9 +226,20 @@
             <p class="text-zinc-400 text-sm">${u.desc}</p>
           </div>
         `;
-        card.onclick = () => alert(`Em breve: ${u.nome} 💋`);
+        card.onclick = () => {
+          excitementLevel = Math.min(100, excitementLevel + 12);
+          updateExcitementBar();
+          alert(`Em breve: ${u.nome} 💋`);
+        };
         container.appendChild(card);
       });
+    }
+
+    function updateExcitementBar() {
+      const bar = document.getElementById("excitement-bar");
+      if (bar) bar.style.width = excitementLevel + "%";
+      const text = document.getElementById("excitement-text");
+      if (text) text.textContent = `Tesão: ${excitementLevel}%`;
     }
 
     function toggleMenu() {
@@ -213,6 +266,7 @@
 
     window.onload = () => {
       renderUniversos();
+      updateExcitementBar();
     };
   </script>
 </body>
