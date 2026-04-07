@@ -18,19 +18,23 @@
       position: absolute;
       left: 50%;
       transform: translateX(-50%);
-      z-index: 30;
+      z-index: 40;
       margin-top: 12px;
     }
 
-    /* Barra de Excitação - Descida logo abaixo do logo */
+    /* Barra de Excitação Fixa - Descida abaixo do logo */
     .excitement-container {
+      position: fixed;
+      top: 92px;           /* Ajustado para descer mais no PC */
+      left: 0;
+      right: 0;
       height: 9px;
       background: #1f1f1f;
       border-radius: 9999px;
       overflow: hidden;
       max-width: 860px;
       margin: 0 auto;
-      margin-top: 95px;   /* Ajustado para descer mais */
+      z-index: 30;
     }
     .excitement-bar {
       height: 100%;
@@ -57,6 +61,7 @@
       max-width: 1250px;
       margin: 0 auto;
       padding: 0 20px;
+      margin-top: 50px;   /* Abaixado para dar espaço à barra */
     }
     .banner-img {
       width: 100%;
@@ -73,6 +78,9 @@
         height: 240px;
         border-radius: 16px;
         object-position: center 30%;
+      }
+      .excitement-container {
+        top: 78px;   /* Ajuste mobile */
       }
     }
 
@@ -97,7 +105,7 @@
 <body class="text-white min-h-screen">
 
   <!-- HEADER -->
-  <header class="fixed top-0 left-0 right-0 z-50 bg-black/95 py-5">
+  <header class="fixed top-0 left-0 right-0 z-50 bg-black/95 border-b border-gold/20 py-5">
     <div class="max-w-7xl mx-auto px-6 flex items-center relative">
       <button onclick="toggleMenu()" class="hamburger-btn text-gold hover:text-amber-400 z-10">
         <i class="fas fa-bars"></i>
@@ -108,16 +116,14 @@
     </div>
   </header>
 
-  <!-- BARRA DE EXCITAÇÃO - Descida abaixo do logo -->
-  <div class="max-w-7xl mx-auto px-6">
-    <div class="excitement-container">
-      <div id="excitement-bar" class="excitement-bar"></div>
-    </div>
-    <div class="text-center text-gold text-sm mt-1" id="excitement-text">Tesão: 25%</div>
+  <!-- BARRA DE EXCITAÇÃO FIXA -->
+  <div class="excitement-container">
+    <div id="excitement-bar" class="excitement-bar"></div>
   </div>
+  <div class="text-center text-gold text-sm mt-1 fixed w-full" style="top: 105px; z-index: 30;" id="excitement-text">Tesão: 25%</div>
 
   <!-- BANNER -->
-  <div class="pt-8 pb-8">
+  <div class="pt-32 pb-8">   <!-- Abaixado mais -->
     <div class="banner-container">
       <img src="images/banner.png" alt="Banner Geemu Games" class="banner-img">
     </div>
