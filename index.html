@@ -13,28 +13,59 @@
     }
     .gold { color: #d4af37; }
     .hamburger-btn { font-size: 1.75rem; }
+    .logo-center {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 30;
+      margin-top: 12px;
+    }
 
-    /* Banner - Ajuste final conforme sua solicitação */
+    /* Barra de Excitação - Mantida como estava no código que você enviou */
+    .excitement-container {
+      height: 9px;
+      background: #1f1f1f;
+      border-radius: 9999px;
+      overflow: hidden;
+      max-width: 860px;
+      margin: 0 auto;
+      margin-top: 95px;
+    }
+    .excitement-bar {
+      height: 100%;
+      background: linear-gradient(to right, #ff1a1a, #ff7700, #ffd700);
+      width: 25%;
+      transition: width 0.8s ease-out;
+      border-radius: 9999px;
+      position: relative;
+    }
+    .excitement-bar::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.7), transparent);
+      animation: flame 2s infinite linear;
+    }
+    @keyframes flame {
+      0% { transform: translateX(-150%); }
+      100% { transform: translateX(350%); }
+    }
+
+    /* Banner - Medidas e posição removidas (simples e limpo) */
     .banner-container {
-      max-width: 1300px;
+      max-width: 1250px;
       margin: 0 auto;
       padding: 0 20px;
     }
     .banner-img {
       width: 100%;
-      max-width: 1300px;
-      height: 500px;           /* PC - desci mais um pouco */
-      object-fit: cover;
-      object-position: center 30%;
       border-radius: 24px;
       display: block;
       margin: 0 auto;
     }
     @media (max-width: 768px) {
       .banner-img {
-        height: 260px;         /* Mobile - voltou ao tamanho anterior, só um pouco mais baixo */
         border-radius: 16px;
-        object-position: center 32%;
       }
     }
   </style>
@@ -43,19 +74,26 @@
 
   <!-- HEADER -->
   <header class="fixed top-0 left-0 right-0 z-50 bg-black/95 py-5">
-    <div class="max-w-7xl mx-auto px-6 flex items-center justify-between">
-      <!-- Logo à esquerda -->
-      <img src="images/logo.png" alt="Geemu Games" class="h-20 md:h-28">
-
-      <!-- Hambúrguer à direita -->
-      <button onclick="toggleMenu()" class="hamburger-btn text-gold hover:text-amber-400">
+    <div class="max-w-7xl mx-auto px-6 flex items-center relative">
+      <button onclick="toggleMenu()" class="hamburger-btn text-gold hover:text-amber-400 z-10">
         <i class="fas fa-bars"></i>
       </button>
+      <div class="logo-center">
+        <img src="images/logo.png" alt="Geemu Games" class="h-20 md:h-28">
+      </div>
     </div>
   </header>
 
+  <!-- BARRA DE EXCITAÇÃO -->
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="excitement-container">
+      <div id="excitement-bar" class="excitement-bar"></div>
+    </div>
+    <div class="text-center text-gold text-sm mt-1" id="excitement-text">Tesão: 25%</div>
+  </div>
+
   <!-- BANNER -->
-  <div class="pt-32 pb-8">
+  <div class="pt-8 pb-8">
     <div class="banner-container">
       <img src="images/banner.png" alt="Banner Geemu Games" class="banner-img">
     </div>
@@ -81,10 +119,11 @@
       <p class="text-zinc-400 mb-8">
         Cadastre seu e-mail e receba novidades, lançamentos exclusivos e conteúdos especiais direto da 🍒 Kyra.
       </p>
+    
       <form class="flex flex-col md:flex-row gap-4 max-w-md mx-auto">
         <input type="email" id="email-input" placeholder="Seu melhor e-mail"
                class="flex-1 bg-zinc-800 border border-gold/30 rounded-2xl px-6 py-4 text-white focus:outline-none focus:border-gold transition">
-        <button type="button" onclick="cadastrarEmail()" class="bg-[#d4af37] hover:bg-amber-400 text-black font-semibold px-10 py-4 rounded-2xl transition">
+        <button type="button" onclick="cadastrarEmail()" class="btn-receber">
           Quero receber
         </button>
       </form>
@@ -114,7 +153,7 @@
 
   <!-- MENU HAMBURGER -->
   <div id="mobile-menu" class="hidden fixed inset-0 bg-black/95 z-[100] pt-20 px-8">
-    <button onclick="toggleMenu()" class="absolute top-8 right-8 text-4xl text-gold">✕</button>
+    <button onclick="toggleMenu()" class="absolute top-8 right-8 text-4xl text-gold hover:text-amber-400">✕</button>
     <div class="flex flex-col gap-8 text-2xl mt-12">
       <a href="index.html" onclick="toggleMenu()" class="hover:text-gold transition flex items-center gap-4"><i class="fas fa-home"></i> Início</a>
       <a href="#" onclick="showRelacionamentos(); toggleMenu()" class="hover:text-gold transition flex items-center gap-4"><i class="fas fa-heart"></i> Meus Relacionamentos</a>
@@ -140,6 +179,8 @@
       { nome: "Mistério & Sedução", desc: "Investigação + tesão" }
     ];
 
+    let excitementLevel = 25;
+
     function renderUniversos() {
       const container = document.getElementById("universos-grid");
       container.innerHTML = "";
@@ -148,16 +189,27 @@
         card.className = `universe-card bg-zinc-900 rounded-3xl overflow-hidden cursor-pointer border border-gold/20`;
         card.innerHTML = `
           <div class="relative">
-            <img src="images/capas/capa-${u.nome.split(' ')[0].toLowerCase()}.png" alt="${u.nome}" class="w-full h-auto object-contain">
+            <img src="images/capas/capa-${u.nome.split('.')[0]}.png" alt="${u.nome}" class="w-full h-auto object-contain">
           </div>
           <div class="p-6">
             <h3 class="text-white font-bold mb-1">${u.nome}</h3>
             <p class="text-zinc-400 text-sm">${u.desc}</p>
           </div>
         `;
-        card.onclick = () => alert(`Em breve: ${u.nome} 💋`);
+        card.onclick = () => {
+          excitementLevel = Math.min(100, excitementLevel + 15);
+          updateExcitementBar();
+          alert(`Em breve: ${u.nome} 💋`);
+        };
         container.appendChild(card);
       });
+    }
+
+    function updateExcitementBar() {
+      const bar = document.getElementById("excitement-bar");
+      if (bar) bar.style.width = excitementLevel + "%";
+      const text = document.getElementById("excitement-text");
+      if (text) text.textContent = `Tesão: ${excitementLevel}%`;
     }
 
     function toggleMenu() {
@@ -184,6 +236,7 @@
 
     window.onload = () => {
       renderUniversos();
+      updateExcitementBar();
     };
   </script>
 </body>
