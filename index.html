@@ -11,14 +11,13 @@
   <link rel="apple-touch-icon" sizes="180x180" href="images/favicon-512.png?v=2">
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
- 
   <style>
     body {
       font-family: system-ui, sans-serif;
       background-color: #0a0a0a;
     }
     .gold { color: #d4af37; }
-   
+  
     .hamburger-btn { font-size: 1.75rem; }
     .logo-center {
       position: absolute;
@@ -27,7 +26,6 @@
       z-index: 30;
       margin-top: 12px;
     }
-
     /* Banner ajustado */
     .banner-container {
       max-width: 1250px;
@@ -44,7 +42,6 @@
       display: block;
       margin: 0 auto;
     }
-
     @media (max-width: 768px) {
       .banner-img {
         height: 240px;
@@ -52,7 +49,6 @@
         object-position: center 30%;
       }
     }
-
     /* Botão Quero receber - fundo amarelo fixo, sem efeito hover */
     .btn-receber {
       background-color: #d4af37;
@@ -61,9 +57,8 @@
       padding: 16px 32px;
       border-radius: 9999px;
       min-width: 180px;
-      transition: none; /* remove qualquer efeito */
+      transition: none;
     }
-
     .universe-card {
       transition: all 0.3s ease;
     }
@@ -73,6 +68,7 @@
   </style>
 </head>
 <body class="text-white min-h-screen">
+
   <!-- HEADER -->
   <header class="fixed top-0 left-0 right-0 z-50 bg-black/95 border-b border-gold/20 py-5">
     <div class="max-w-7xl mx-auto px-6 flex items-center relative">
@@ -103,7 +99,7 @@
       O que você está esperando?<br>
       Mergulhe em Nossos Universos
     </h2>
-   
+  
     <div id="universos-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"></div>
 
     <!-- Formulário de e-mail -->
@@ -112,7 +108,7 @@
       <p class="text-zinc-400 mb-8">
         Cadastre seu e-mail e receba novidades, lançamentos exclusivos e conteúdos especiais direto da 🍒 Kyra.
       </p>
-      
+     
       <form class="flex flex-col md:flex-row gap-4 max-w-md mx-auto">
         <input type="email" id="email-input" placeholder="Seu melhor e-mail"
                class="flex-1 bg-zinc-800 border border-gold/30 rounded-2xl px-6 py-4 text-white focus:outline-none focus:border-gold transition">
@@ -120,7 +116,6 @@
           Quero receber
         </button>
       </form>
-
       <p class="text-xs text-zinc-500 mt-6">
         Prometemos não encher sua caixa de spam.
       </p>
@@ -159,32 +154,34 @@
 
   <script>
     const universos = [
-      { nome: "Escolha Seu Prazer", img: "images/capas/capa-01-escolha-seu-prazer.png", desc: "Realismo brasileiro, traição e risco" },
-      { nome: "Crônicas do Desejo", img: "images/capas/capa-02-cronicas-do-desejo.png", desc: "Fantasia erótica e desejo proibido" },
-      { nome: "Escritório Proibido", img: "images/capas/capa-03-escritorio-proibido.png", desc: "Tensão no trabalho e poder" },
-      { nome: "Academia do Pecado", img: "images/capas/capa-04-academia-do-pecado.png", desc: "Corpos suados e desejo físico" },
-      { nome: "Noites Eternas", img: "images/capas/capa-05-noites-eternas.png", desc: "Vampiros, lobisomens e dark romance" },
-      { nome: "Ilha dos Desejos", img: "images/capas/capa-06-ilha-dos-desejos.png", desc: "Paraíso, liberdade e prazer sem regras" },
-      { nome: "A Escolha do Jogador", img: "images/capas/capa-07-escolha-do-jogador.png", desc: "Harém, poder e múltiplas parceiras" },
-      { nome: "Doramas Proibidos", img: "images/capas/capa-08-doramas-proibidos.png", desc: "Romance intenso e drama asiático" },
-      { nome: "Corte do Prazer", img: "images/capas/capa-09-corte-do-prazer.png", desc: "Luxo, bailes e intrigas da corte" },
-      { nome: "Império das Sombras", img: "images/capas/capa-10-imperio-das-sombras.png", desc: "Máfia, poder e perigo sedutor" },
-      { nome: "Desejos pelo Mundo", img: "images/capas/capa-11-desejos-pelo-mundo.png", desc: "Viagens, risco e encontros intensos" },
-      { nome: "Sonhos Molhados", img: "images/capas/capa-12-sonhos-molhados.png", desc: "Fantasias surreais e desejos impossíveis" }
+      { nome: "1. Desejos Reais", desc: "Realismo brasileiro, traição, risco" },
+      { nome: "2. Fazenda das Safadas", desc: "Rural, idade gap, poder" },
+      { nome: "3. Plantão Proibido", desc: "Hospital, hierarquia, risco profissional" },
+      { nome: "4. Edifício dos Segredos", desc: "Vizinhos, condomínio, risco diário" },
+      { nome: "5. Escritório Proibido", desc: "Poder corporativo, chefes e subordinados" },
+      { nome: "6. Academia do Pecado", desc: "Universidade, idade gap, iniciação" },
+      { nome: "7. Celebridades Proibidas", desc: "Fama, status, fãs e staff" },
+      { nome: "8. Desejos pelo Mundo", desc: "Viagens, mile high, risco em trânsito" },
+      { nome: "9. Luna: Sua IA Proibida", desc: "Fantasia imersiva / VR" },
+      { nome: "10. Vida Dupla – Segredos e Desejos", desc: "“Ela tem muitas faces… e todas safadas”" },
+      { nome: "11. Fim do Mundo Hot", desc: "Apocalipse, sem regras" },
+      { nome: "12. Mistério & Sedução", desc: "Investigação + tesão" }
     ];
 
     function renderUniversos() {
       const container = document.getElementById("universos-grid");
       container.innerHTML = "";
+
       universos.forEach(u => {
         const card = document.createElement("div");
         card.className = `universe-card bg-zinc-900 rounded-3xl overflow-hidden cursor-pointer border border-gold/20`;
         card.innerHTML = `
           <div class="relative">
-            <img src="${u.img}" alt="${u.nome}" class="w-full h-auto object-contain">
+            <img src="images/capas/capa-${u.nome.split('.')[0]}.png" alt="${u.nome}" class="w-full h-auto object-contain">
           </div>
           <div class="p-6">
-            <p class="text-white text-sm leading-snug">${u.desc}</p>
+            <h3 class="text-white font-bold mb-1">${u.nome}</h3>
+            <p class="text-zinc-400 text-sm">${u.desc}</p>
           </div>
         `;
         card.onclick = () => alert(`Em breve: ${u.nome} 💋`);
