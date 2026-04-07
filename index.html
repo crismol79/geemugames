@@ -14,42 +14,28 @@
     .gold { color: #d4af37; }
     .hamburger-btn { font-size: 1.75rem; }
 
-    /* Banner */
+    /* Banner ajustado para não cortar */
     .banner-container {
-      max-width: 1250px;
+      max-width: 1300px;
       margin: 0 auto;
       padding: 0 20px;
     }
     .banner-img {
       width: 100%;
-      max-width: 1250px;
-      height: 460px;
+      max-width: 1300px;
+      height: 480px;
       object-fit: cover;
-      object-position: center 25%;
+      object-position: center 28%;
       border-radius: 24px;
       display: block;
       margin: 0 auto;
     }
     @media (max-width: 768px) {
       .banner-img {
-        height: 240px;
+        height: 260px;
         border-radius: 16px;
-        object-position: center 30%;
+        object-position: center 32%;
       }
-    }
-    .btn-receber {
-      background-color: #d4af37;
-      color: #000000;
-      font-weight: 600;
-      padding: 16px 32px;
-      border-radius: 9999px;
-      min-width: 180px;
-    }
-    .universe-card {
-      transition: all 0.3s ease;
-    }
-    .universe-card:hover {
-      transform: scale(1.04);
     }
   </style>
 </head>
@@ -69,7 +55,7 @@
   </header>
 
   <!-- BANNER -->
-  <div class="pt-28 pb-8">
+  <div class="pt-32 pb-8">
     <div class="banner-container">
       <img src="images/banner.png" alt="Banner Geemu Games" class="banner-img">
     </div>
@@ -140,18 +126,18 @@
 
   <script>
     const universos = [
-      { nome: "1. Desejos Reais", desc: "Realismo brasileiro, traição, risco" },
-      { nome: "2. Fazenda das Safadas", desc: "Rural, idade gap, poder" },
-      { nome: "3. Plantão Sem Limites", desc: "Hospital, hierarquia, risco profissional" },
-      { nome: "4. Edifício dos Segredos", desc: "Vizinhos, condomínio, risco diário" },
-      { nome: "5. Por Trás das Portas", desc: "Poder corporativo, chefes e subordinados" },
-      { nome: "6. Campus do Pecado", desc: "Idade gap, iniciação e desejo no ambiente universitário" },
-      { nome: "7. Celebridades Proibidas", desc: "Fama, status, fãs e staff" },
-      { nome: "8. Desejos pelo Mundo", desc: "Viagens, mile high, risco em trânsito" },
-      { nome: "9. Luna: Sua IA Proibida", desc: "Fantasia imersiva / VR" },
-      { nome: "10. Vida Dupla", desc: "Segredos e desejos" },
-      { nome: "11. Fim do Mundo Hot", desc: "Apocalipse, sem regras" },
-      { nome: "12. Mistério & Sedução", desc: "Investigação + tesão" }
+      { nome: "Desejos Reais", desc: "Realismo brasileiro, traição, risco" },
+      { nome: "Fazenda das Safadas", desc: "Rural, idade gap, poder" },
+      { nome: "Plantão Sem Limites", desc: "Hospital, hierarquia, risco profissional" },
+      { nome: "Edifício dos Segredos", desc: "Vizinhos, condomínio, risco diário" },
+      { nome: "Por Trás das Portas", desc: "Poder corporativo, chefes e subordinados" },
+      { nome: "Campus do Pecado", desc: "Idade gap, iniciação e desejo no ambiente universitário" },
+      { nome: "Celebridades Proibidas", desc: "Fama, status, fãs e staff" },
+      { nome: "Desejos pelo Mundo", desc: "Viagens, mile high, risco em trânsito" },
+      { nome: "Luna: Sua IA Proibida", desc: "Fantasia imersiva / VR" },
+      { nome: "Vida Dupla", desc: "Segredos e desejos" },
+      { nome: "Fim do Mundo Hot", desc: "Apocalipse, sem regras" },
+      { nome: "Mistério & Sedução", desc: "Investigação + tesão" }
     ];
 
     function renderUniversos() {
@@ -162,7 +148,7 @@
         card.className = `universe-card bg-zinc-900 rounded-3xl overflow-hidden cursor-pointer border border-gold/20`;
         card.innerHTML = `
           <div class="relative">
-            <img src="images/capas/capa-${u.nome.split('.')[0]}.png" alt="${u.nome}" class="w-full h-auto object-contain">
+            <img src="images/capas/capa-${u.nome.split(' ')[0].toLowerCase()}.png" alt="${u.nome}" class="w-full h-auto object-contain">
           </div>
           <div class="p-6">
             <h3 class="text-white font-bold mb-1">${u.nome}</h3>
