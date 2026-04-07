@@ -12,48 +12,22 @@
       background-color: #0a0a0a;
     }
     .gold { color: #d4af37; }
-
     .hamburger-btn { font-size: 1.75rem; }
-    .logo-center {
-      position: absolute;
-      left: 50%;
-      transform: translateX(-50%);
-      z-index: 40;
-      margin-top: 12px;
-    }
 
-    /* Barra de Excitação Fixa - Descida abaixo do logo */
-    .excitement-container {
-      position: fixed;
-      top: 92px;           /* Ajustado para descer mais no PC */
-      left: 0;
-      right: 0;
-      height: 9px;
-      background: #1f1f1f;
+    /* Barra de Excitação Circular Centralizada */
+    .excitement-circle {
+      width: 72px;
+      height: 72px;
       border-radius: 9999px;
-      overflow: hidden;
-      max-width: 860px;
-      margin: 0 auto;
-      z-index: 30;
-    }
-    .excitement-bar {
-      height: 100%;
-      background: linear-gradient(to right, #ff1a1a, #ff7700, #ffd700);
-      width: 25%;
-      transition: width 0.8s ease-out;
-      border-radius: 9999px;
-      position: relative;
-    }
-    .excitement-bar::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.7), transparent);
-      animation: flame 2s infinite linear;
-    }
-    @keyframes flame {
-      0% { transform: translateX(-150%); }
-      100% { transform: translateX(350%); }
+      background: conic-gradient(#ff3333 0% 25%, #1f1f1f 25% 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 15px;
+      font-weight: 700;
+      color: #d4af37;
+      box-shadow: 0 0 20px rgba(255, 51, 51, 0.6);
+      border: 3px solid #1f1f1f;
     }
 
     /* Banner */
@@ -61,7 +35,6 @@
       max-width: 1250px;
       margin: 0 auto;
       padding: 0 20px;
-      margin-top: 50px;   /* Abaixado para dar espaço à barra */
     }
     .banner-img {
       width: 100%;
@@ -79,11 +52,7 @@
         border-radius: 16px;
         object-position: center 30%;
       }
-      .excitement-container {
-        top: 78px;   /* Ajuste mobile */
-      }
     }
-
     .btn-receber {
       background-color: #d4af37;
       color: #000000;
@@ -93,7 +62,6 @@
       min-width: 180px;
       transition: none;
     }
-
     .universe-card {
       transition: all 0.3s ease;
     }
@@ -105,25 +73,28 @@
 <body class="text-white min-h-screen">
 
   <!-- HEADER -->
-  <header class="fixed top-0 left-0 right-0 z-50 bg-black/95 border-b border-gold/20 py-5">
-    <div class="max-w-7xl mx-auto px-6 flex items-center relative">
-      <button onclick="toggleMenu()" class="hamburger-btn text-gold hover:text-amber-400 z-10">
+  <header class="fixed top-0 left-0 right-0 z-50 bg-black/95 py-5 border-b border-gold/20">
+    <div class="max-w-7xl mx-auto px-6 flex items-center justify-between">
+      
+      <!-- Logo à esquerda -->
+      <img src="images/logo.png" alt="Geemu Games" class="h-20 md:h-28">
+
+      <!-- Barra Circular Centralizada -->
+      <div class="flex-1 flex justify-center">
+        <div class="excitement-circle" id="excitement-circle">
+          25%
+        </div>
+      </div>
+
+      <!-- Hambúrguer à direita -->
+      <button onclick="toggleMenu()" class="hamburger-btn text-gold hover:text-amber-400">
         <i class="fas fa-bars"></i>
       </button>
-      <div class="logo-center">
-        <img src="images/logo.png" alt="Geemu Games" class="h-20 md:h-28">
-      </div>
     </div>
   </header>
 
-  <!-- BARRA DE EXCITAÇÃO FIXA -->
-  <div class="excitement-container">
-    <div id="excitement-bar" class="excitement-bar"></div>
-  </div>
-  <div class="text-center text-gold text-sm mt-1 fixed w-full" style="top: 105px; z-index: 30;" id="excitement-text">Tesão: 25%</div>
-
   <!-- BANNER -->
-  <div class="pt-32 pb-8">   <!-- Abaixado mais -->
+  <div class="pt-28 pb-8">
     <div class="banner-container">
       <img src="images/banner.png" alt="Banner Geemu Games" class="banner-img">
     </div>
@@ -140,7 +111,7 @@
       O que você está esperando?<br>
       Mergulhe em Nossos Universos
     </h2>
-  
+ 
     <div id="universos-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"></div>
 
     <!-- Formulário de e-mail -->
@@ -149,7 +120,7 @@
       <p class="text-zinc-400 mb-8">
         Cadastre seu e-mail e receba novidades, lançamentos exclusivos e conteúdos especiais direto da 🍒 Kyra.
       </p>
-     
+    
       <form class="flex flex-col md:flex-row gap-4 max-w-md mx-auto">
         <input type="email" id="email-input" placeholder="Seu melhor e-mail"
                class="flex-1 bg-zinc-800 border border-gold/30 rounded-2xl px-6 py-4 text-white focus:outline-none focus:border-gold transition">
@@ -214,7 +185,6 @@
     function renderUniversos() {
       const container = document.getElementById("universos-grid");
       container.innerHTML = "";
-
       universos.forEach(u => {
         const card = document.createElement("div");
         card.className = `universe-card bg-zinc-900 rounded-3xl overflow-hidden cursor-pointer border border-gold/20`;
@@ -229,18 +199,19 @@
         `;
         card.onclick = () => {
           excitementLevel = Math.min(100, excitementLevel + 15);
-          updateExcitementBar();
+          updateExcitementCircle();
           alert(`Em breve: ${u.nome} 💋`);
         };
         container.appendChild(card);
       });
     }
 
-    function updateExcitementBar() {
-      const bar = document.getElementById("excitement-bar");
-      if (bar) bar.style.width = excitementLevel + "%";
-      const text = document.getElementById("excitement-text");
-      if (text) text.textContent = `Tesão: ${excitementLevel}%`;
+    function updateExcitementCircle() {
+      const circle = document.getElementById("excitement-circle");
+      if (circle) {
+        circle.style.background = `conic-gradient(#ff3333 0% ${excitementLevel}%, #1f1f1f ${excitementLevel}% 100%)`;
+        circle.textContent = excitementLevel + "%";
+      }
     }
 
     function toggleMenu() {
@@ -267,7 +238,7 @@
 
     window.onload = () => {
       renderUniversos();
-      updateExcitementBar();
+      updateExcitementCircle();
     };
   </script>
 </body>
