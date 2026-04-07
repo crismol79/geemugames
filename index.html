@@ -13,35 +13,12 @@
     }
     .gold { color: #d4af37; }
     .hamburger-btn { font-size: 1.75rem; }
-
-    /* Barra de Excitação - Modelo exato que você enviou */
-    .excitement-container {
-      height: 42px;
-      background: #111111;
-      border: 2px solid #ffffff;
-      border-radius: 9999px;
-      overflow: hidden;
-      max-width: 460px;
-      margin: 0 auto;
-      position: relative;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
-    }
-    .excitement-bar {
-      height: 100%;
-      background: linear-gradient(to right, #ff1a1a, #ff5500);
-      width: 25%;
-      transition: width 0.8s ease-out;
-    }
-    .excitement-text {
+    .logo-center {
       position: absolute;
-      top: 50%;
       left: 50%;
-      transform: translate(-50%, -50%);
-      font-size: 15px;
-      font-weight: 700;
-      color: #ffffff;
-      text-shadow: 0 1px 3px rgba(0,0,0,0.9);
-      z-index: 10;
+      transform: translateX(-50%);
+      z-index: 30;
+      margin-top: 12px;
     }
 
     /* Banner */
@@ -67,28 +44,34 @@
         object-position: center 30%;
       }
     }
+    .btn-receber {
+      background-color: #d4af37;
+      color: #000000;
+      font-weight: 600;
+      padding: 16px 32px;
+      border-radius: 9999px;
+      min-width: 180px;
+      transition: none;
+    }
+    .universe-card {
+      transition: all 0.3s ease;
+    }
+    .universe-card:hover {
+      transform: scale(1.04);
+    }
   </style>
 </head>
 <body class="text-white min-h-screen">
 
   <!-- HEADER -->
-  <header class="fixed top-0 left-0 right-0 z-50 bg-black/95 py-5 border-b border-white/30">
-    <div class="max-w-7xl mx-auto px-6 flex items-center justify-between">
-      <!-- Logo à esquerda -->
-      <img src="images/logo.png" alt="Geemu Games" class="h-20 md:h-28">
-
-      <!-- Barra de Excitação colada na linha branca -->
-      <div class="flex-1 flex justify-center px-4">
-        <div class="excitement-container w-full max-w-[460px]">
-          <div id="excitement-bar" class="excitement-bar"></div>
-          <div id="excitement-text" class="excitement-text">Excitação: 25%</div>
-        </div>
-      </div>
-
-      <!-- Hambúrguer à direita -->
-      <button onclick="toggleMenu()" class="hamburger-btn text-gold hover:text-amber-400">
+  <header class="fixed top-0 left-0 right-0 z-50 bg-black/95 py-5">
+    <div class="max-w-7xl mx-auto px-6 flex items-center relative">
+      <button onclick="toggleMenu()" class="hamburger-btn text-gold hover:text-amber-400 z-10">
         <i class="fas fa-bars"></i>
       </button>
+      <div class="logo-center">
+        <img src="images/logo.png" alt="Geemu Games" class="h-20 md:h-28">
+      </div>
     </div>
   </header>
 
@@ -152,7 +135,7 @@
 
   <!-- MENU HAMBURGER -->
   <div id="mobile-menu" class="hidden fixed inset-0 bg-black/95 z-[100] pt-20 px-8">
-    <button onclick="toggleMenu()" class="absolute top-8 right-8 text-4xl text-gold">✕</button>
+    <button onclick="toggleMenu()" class="absolute top-8 right-8 text-4xl text-gold hover:text-amber-400">✕</button>
     <div class="flex flex-col gap-8 text-2xl mt-12">
       <a href="index.html" onclick="toggleMenu()" class="hover:text-gold transition flex items-center gap-4"><i class="fas fa-home"></i> Início</a>
       <a href="#" onclick="showRelacionamentos(); toggleMenu()" class="hover:text-gold transition flex items-center gap-4"><i class="fas fa-heart"></i> Meus Relacionamentos</a>
@@ -178,8 +161,6 @@
       { nome: "12. Mistério & Sedução", desc: "Investigação + tesão" }
     ];
 
-    let excitementLevel = 25;
-
     function renderUniversos() {
       const container = document.getElementById("universos-grid");
       container.innerHTML = "";
@@ -195,20 +176,9 @@
             <p class="text-zinc-400 text-sm">${u.desc}</p>
           </div>
         `;
-        card.onclick = () => {
-          excitementLevel = Math.min(100, excitementLevel + 15);
-          updateExcitementBar();
-          alert(`Em breve: ${u.nome} 💋`);
-        };
+        card.onclick = () => alert(`Em breve: ${u.nome} 💋`);
         container.appendChild(card);
       });
-    }
-
-    function updateExcitementBar() {
-      const bar = document.getElementById("excitement-bar");
-      if (bar) bar.style.width = excitementLevel + "%";
-      const text = document.getElementById("excitement-text");
-      if (text) text.textContent = `Excitação: ${excitementLevel}%`;
     }
 
     function toggleMenu() {
@@ -235,7 +205,6 @@
 
     window.onload = () => {
       renderUniversos();
-      updateExcitementBar();
     };
   </script>
 </body>
