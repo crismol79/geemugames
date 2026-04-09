@@ -14,45 +14,123 @@
     .gold { color: #d4af37; }
     .hamburger-btn { font-size: 1.75rem; }
 
-    /* Banner ajustado para não cortar */
+    /* === NOVA BARRA DE EXCITAÇÃO (estilo antigo que você pediu) === */
+    .top-header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      background: #0a0a0a;
+      padding: 12px 15px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 2px solid rgba(138, 43, 226, 0.4);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.9);
+      z-index: 1000;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: bold;
+      color: #ff00aa;
+      font-size: 20px;
+    }
+    .excitation-bar {
+      background: rgba(0, 0, 0, 0.95);
+      border: 2px solid #8a2be2;
+      border-radius: 30px;
+      padding: 8px 30px;
+      min-width: 320px;
+      text-align: center;
+      box-shadow: 0 0 20px rgba(138, 43, 226, 0.6);
+    }
+    .excitation-text {
+      font-size: 17px;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 5px;
+    }
+    .block-progress {
+      font-size: 28px;
+      letter-spacing: 6px;
+      color: #ff3366;
+      line-height: 1;
+    }
+    .hamburger-btn {
+      font-size: 34px;
+      cursor: pointer;
+      color: #fff;
+      padding: 4px 12px;
+    }
+
+    /* Mantém o resto do seu CSS original */
+    .excitement-container { display: none; } /* esconde a barra antiga */
     .banner-container {
-      max-width: 1300px;
+      max-width: 1250px;
       margin: 0 auto;
       padding: 0 20px;
     }
     .banner-img {
       width: 100%;
-      max-width: 1300px;
-      height: auto;
-      max-height: 520px;
-      object-fit: contain;
+      max-width: 1250px;
+      height: 460px;
+      object-fit: cover;
+      object-position: center 25%;
+      border-radius: 24px;
       display: block;
       margin: 0 auto;
     }
     @media (max-width: 768px) {
       .banner-img {
-        max-height: 280px;
+        height: 240px;
+        border-radius: 16px;
+        object-position: center 30%;
       }
+    }
+    .btn-receber {
+      background-color: #d4af37;
+      color: #000000;
+      font-weight: 600;
+      padding: 16px 32px;
+      border-radius: 9999px;
+      min-width: 180px;
+      transition: none;
+    }
+    .universe-card {
+      transition: all 0.3s ease;
+    }
+    .universe-card:hover {
+      transform: scale(1.04);
     }
   </style>
 </head>
 <body class="text-white min-h-screen">
 
-  <!-- HEADER -->
-  <header class="fixed top-0 left-0 right-0 z-50 bg-black/95 py-5 border-b border-gold/20">
-    <div class="max-w-7xl mx-auto px-6 flex items-center justify-between">
-      <!-- Logo à esquerda -->
-      <img src="images/logo.png" alt="Geemu Games" class="h-20 md:h-28">
-
-      <!-- Hambúrguer à direita -->
-      <button onclick="toggleMenu()" class="hamburger-btn text-gold hover:text-amber-400">
-        <i class="fas fa-bars"></i>
-      </button>
+  <!-- === NOVA HEADER COM BARRA DE EXCITAÇÃO === -->
+  <div class="top-header">
+    <!-- Logo à esquerda -->
+    <div class="logo">
+      <img src="images/logo.png" alt="Geemu Games" class="h-12 md:h-16">
     </div>
-  </header>
 
-  <!-- BANNER -->
-  <div class="pt-32 pb-8">
+    <!-- Barra centralizada -->
+    <div class="excitation-bar" id="excitationBar">
+      <div class="excitation-text">
+        <strong>Excitação: <span id="percent">25</span>%</strong>
+      </div>
+      <div class="block-progress" id="blocks">[▓▓▓▓▓░░░░░░░░░░░]</div>
+    </div>
+
+    <!-- Hamburger à direita -->
+    <button onclick="toggleMenu()" class="hamburger-btn">
+      <i class="fas fa-bars"></i>
+    </button>
+  </div>
+
+  <!-- BANNER (mantido exatamente igual) -->
+  <div class="pt-24 pb-8"> <!-- pt-24 pra dar espaço da barra fixa -->
     <div class="banner-container">
       <img src="images/banner.png" alt="Banner Geemu Games" class="banner-img">
     </div>
@@ -69,10 +147,10 @@
       O que você está esperando?<br>
       Mergulhe em Nossos Universos
     </h2>
-
+ 
     <div id="universos-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"></div>
 
-    <!-- Formulário de e-mail -->
+    <!-- Formulário de e-mail (mantido) -->
     <div class="max-w-2xl mx-auto mt-20 bg-zinc-900/90 border border-gold/30 rounded-3xl p-10 text-center">
       <h3 class="text-2xl font-bold gold mb-4">Fique por dentro de tudo</h3>
       <p class="text-zinc-400 mb-8">
@@ -81,7 +159,7 @@
       <form class="flex flex-col md:flex-row gap-4 max-w-md mx-auto">
         <input type="email" id="email-input" placeholder="Seu melhor e-mail"
                class="flex-1 bg-zinc-800 border border-gold/30 rounded-2xl px-6 py-4 text-white focus:outline-none focus:border-gold transition">
-        <button type="button" onclick="cadastrarEmail()" class="bg-[#d4af37] hover:bg-amber-400 text-black font-semibold px-10 py-4 rounded-2xl transition">
+        <button type="button" onclick="cadastrarEmail()" class="btn-receber">
           Quero receber
         </button>
       </form>
@@ -91,7 +169,7 @@
     </div>
   </main>
 
-  <!-- RODAPÉ -->
+  <!-- RODAPÉ (mantido) -->
   <footer class="bg-black py-14 border-t border-gold/20">
     <div class="max-w-7xl mx-auto px-6 text-center">
       <p class="text-xl text-white mb-4">GEEMU GAMES – Plataforma de Relacionamento Interativo</p>
@@ -109,9 +187,9 @@
     </div>
   </footer>
 
-  <!-- MENU HAMBURGER -->
+  <!-- MENU HAMBURGER (mantido) -->
   <div id="mobile-menu" class="hidden fixed inset-0 bg-black/95 z-[100] pt-20 px-8">
-    <button onclick="toggleMenu()" class="absolute top-8 right-8 text-4xl text-gold">✕</button>
+    <button onclick="toggleMenu()" class="absolute top-8 right-8 text-4xl text-gold hover:text-amber-400">✕</button>
     <div class="flex flex-col gap-8 text-2xl mt-12">
       <a href="index.html" onclick="toggleMenu()" class="hover:text-gold transition flex items-center gap-4"><i class="fas fa-home"></i> Início</a>
       <a href="#" onclick="showRelacionamentos(); toggleMenu()" class="hover:text-gold transition flex items-center gap-4"><i class="fas fa-heart"></i> Meus Relacionamentos</a>
@@ -124,7 +202,7 @@
   <script>
     const universos = [
       { nome: "Desejos Reais", desc: "Realismo brasileiro, traição, risco" },
-      { nome: "Fazenda das Safadas", desc: "Rural, idade gap, poder" },
+      { nome: "Fazenda das Tentações", desc: "Rural, idade gap, poder" },
       { nome: "Plantão Sem Limites", desc: "Hospital, hierarquia, risco profissional" },
       { nome: "Edifício dos Segredos", desc: "Vizinhos, condomínio, risco diário" },
       { nome: "Por Trás das Portas", desc: "Poder corporativo, chefes e subordinados" },
@@ -137,6 +215,19 @@
       { nome: "Mistério & Sedução", desc: "Investigação + tesão" }
     ];
 
+    let excitementLevel = 25;
+
+    function updateExcitementBar() {
+      const percentEl = document.getElementById('percent');
+      const blocksEl = document.getElementById('blocks');
+      
+      percentEl.textContent = excitementLevel;
+      
+      const full = Math.floor(excitementLevel / 5);
+      let bar = '▓'.repeat(full) + '░'.repeat(20 - full);
+      blocksEl.textContent = '[' + bar + ']';
+    }
+
     function renderUniversos() {
       const container = document.getElementById("universos-grid");
       container.innerHTML = "";
@@ -145,14 +236,18 @@
         card.className = `universe-card bg-zinc-900 rounded-3xl overflow-hidden cursor-pointer border border-gold/20`;
         card.innerHTML = `
           <div class="relative">
-            <img src="images/capas/capa-${u.nome.split(' ')[0].toLowerCase()}.png" alt="${u.nome}" class="w-full h-auto object-contain">
+            <img src="images/capas/capa-${u.nome.split('.')[0]}.png" alt="${u.nome}" class="w-full h-auto object-contain">
           </div>
           <div class="p-6">
             <h3 class="text-white font-bold mb-1">${u.nome}</h3>
             <p class="text-zinc-400 text-sm">${u.desc}</p>
           </div>
         `;
-        card.onclick = () => alert(`Em breve: ${u.nome} 💋`);
+        card.onclick = () => {
+          excitementLevel = Math.min(100, excitementLevel + 15);
+          updateExcitementBar();
+          alert(`Em breve: ${u.nome} 💋`);
+        };
         container.appendChild(card);
       });
     }
@@ -160,15 +255,12 @@
     function toggleMenu() {
       document.getElementById("mobile-menu").classList.toggle("hidden");
     }
-
     function showRelacionamentos() {
       alert("Meus Relacionamentos - Em breve!");
     }
-
     function showLogin() {
       alert("🔐 Sistema de Login em desenvolvimento.");
     }
-
     function cadastrarEmail() {
       const email = document.getElementById("email-input").value.trim();
       if (email) {
@@ -181,6 +273,7 @@
 
     window.onload = () => {
       renderUniversos();
+      updateExcitementBar();
     };
   </script>
 </body>
